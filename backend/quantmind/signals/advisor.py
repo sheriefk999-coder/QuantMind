@@ -111,6 +111,9 @@ def _n_strats(n: int) -> str:
 def message_ar(ev: dict) -> str:
     s, t = ev["symbol"], ev["type"]
     coin = s.replace("USDT", "")
+    if t == "coach" and ev.get("card"):
+        c = ev["card"]
+        return f"{c['icon']} {c['title_ar']}\n" + "\n".join(c["lines_ar"])
     if t == "open":
         buy = ev["side"] == "buy"
         return "\n".join([
@@ -124,6 +127,9 @@ def message_ar(ev: dict) -> str:
             f"🧠 ليه؟ السوق في حالة «{ev['regime_ar']}»، و{_n_strats(len(ev['strategies']))} "
             f"(قوة الإشارة {ev['conviction']:.0%}).",
             f"⏳ الإشارة صالحة لحد {ev['valid_until'][11:16]} UTC. بعد كده متدخلش.",
+            *([f"🌡️ نسبة الخطر: {ev['risk']['score']:.0f}% ({ev['risk']['level_ar']})"] if ev.get("risk") else []),
+            *([ln for ln in ev["coach"]["lines_ar"] if ln.startswith(("📐", "🎲", "✅", "⚠️", "❌", "لو وقف"))]
+              if ev.get("coach") else []),
             "📣 هبعتلك أول ما يبقى وقت البيع.",
             "⚠️ مفيش ضمان. ادخل بفلوس تقدر تستغنى عنها بس.",
         ])

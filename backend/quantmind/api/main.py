@@ -55,6 +55,9 @@ class Control(BaseModel):
     action: str
     level: int | str | None = None
     symbol: str | None = None
+    capital: float | None = None
+    currency: str | None = None
+    risk_profile: str | None = None
 
 
 @app.post("/control")
@@ -64,6 +67,14 @@ def control(c: Control, x_api_key: str | None = Header(None)):
             "research_now": ["control", "--research-now"]}.get(c.action)
     if c.action in ("taken", "skipped") and c.symbol and c.symbol.isalnum():
         args = ["control", f"--{c.action}", c.symbol]
+    if c.action == "profile":
+        args = ["control"]
+        if c.capital:
+            args += ["--capital", str(float(c.capital))]
+        if c.currency in ("USD", "EGP", "SAR", "EUR"):
+            args += ["--currency", c.currency]
+        if c.risk_profile in ("conservative", "balanced", "bold"):
+            args += ["--risk-profile", c.risk_profile]
     if c.action == "level" and str(c.level) in ("1", "2", "3"):
         args = ["control", "--level", str(c.level)]
     if not args:

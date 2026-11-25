@@ -40,3 +40,30 @@ def test_execution_plan():
     assert plan_entry(1, 100, 2, "strong_trend_up", 1.2, 2, 1).order_type == "market"
     p = plan_entry(1, 100, 2, "sideways", 0.5, 2, 1)
     assert p.order_type == "limit" and p.limit_price < 100
+
+
+def test_proof_math():
+    from quantmind.coach.proof import edge_proof, losing_streak_prob, wilson
+    assert abs(losing_streak_prob(0.5, 5, 20) - 0.2499) < 0.001          # known value for a fair coin
+    lo, hi = wilson(0.5, 100)
+    assert abs(lo - 0.4038) < 0.001 and abs(hi - 0.5962) < 0.001       # textbook Wilson interval
+    trap = edge_proof(0.9, 200, 0.6, -0.001)                           # 90% win rate, still a loser
+    assert trap["expectancy_R"] < 0 and trap["kelly"] < 0
+    good = edge_proof(0.45, 300, 1.6, 0.004)
+    assert good["proven"] and good["quarter_kelly"] > 0
+
+
+def test_risk_engine_rises_with_danger():
+    from quantmind.coach.risk import assess
+    df = random_walk(800)
+    f = build_features(df)
+    base = dict(features=f, debate={"disagreement": 0.1, "conviction": 0.4},
+                portfolio={"equity": 1, "peak_equity": 1, "positions": {}}, direction=1,
+                price=float(df.close.iloc[-1]), stop=None, sentiment=50, calendar=[], track_record={},
+                strategy_stats=None)
+    calm = assess(regime={"label": "strong_trend_up", "novelty": 0.1}, **base)
+    panic = assess(regime={"label": "panic_selling", "novelty": 0.99},
+                   **{**base, "debate": {"disagreement": 0.6, "conviction": 0.05}, "sentiment": 95})
+    assert panic.score > calm.score + 20 and panic.size_multiplier < calm.size_multiplier
+    cons = assess(regime={"label": "strong_trend_up", "novelty": 0.1}, profile="conservative", **base)
+    assert cons.size_multiplier < calm.size_multiplier

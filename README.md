@@ -22,6 +22,22 @@ After that it tells you when to sell: 🔴 *"Sell now"*, 🎯 *"First target rea
 The app's **Signals** tab shows the open signal, buttons to say whether you entered the trade, and an honest **record** of the result of every signal.
 The default is **Spot**: plain buying and selling with no leverage and no short selling. To allow short signals, set `QM_MARKET_TYPE=futures`. That's not recommended for beginners.
 
+## 🧭 The coach + 📐 the math
+
+Every hour, for every coin, you get one instruction: ✅ do / ⛔ don't / ⏸️ wait / 🤝 stay in the trade / ⬆️ raise the stop / ✂️ reduce / 🔴 close.
+
+Each instruction comes with a **dynamic risk percentage** (0–100%) built from 10 measured factors. That percentage sets the position size, and at 70% or above the coach says don't. Every buy signal also carries a mathematical proof based on the strategies' results on data they never trained on:
+
+| | Equation |
+|---|---|
+| Expectancy | `E = p·R − (1−p)` |
+| Break-even win rate | `p* = 1/(1+R)` |
+| Confidence | Wilson 95% interval; the edge counts as proven when the lower bound is above `p*` and n ≥ 30 |
+| Position size | Kelly `f* = p − (1−p)/R`, and the program uses ¼ of it at most |
+| Losing streaks | exact probability of 5 losses in a row within 20 trades |
+
+> A 90% win rate on its own means nothing: winning 1% and losing 15% gives `E = −0.6%`. The program judges by expectancy, not by win rate.
+
 ## How it works (in plain terms)
 
 | Part | What it does |

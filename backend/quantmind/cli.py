@@ -37,6 +37,9 @@ def main(argv=None) -> int:
     k.add_argument("--pause")
     k.add_argument("--resume", action="store_true")
     k.add_argument("--research-now", action="store_true")
+    k.add_argument("--capital", type=float, help="your trading capital (used to state exact amounts)")
+    k.add_argument("--currency", choices=["USD", "EGP", "SAR", "EUR"])
+    k.add_argument("--risk-profile", choices=["conservative", "balanced", "bold"])
     k.add_argument("--taken", metavar="SYMBOL", help="user entered the recommended trade")
     k.add_argument("--skipped", metavar="SYMBOL", help="user did not enter the recommended trade")
     a = ap.parse_args(argv)
@@ -47,6 +50,13 @@ def main(argv=None) -> int:
         p = store.load("portfolio.json", None)
         if a.level:
             ctl["level"] = a.level
+        prof = ctl.setdefault("profile", {})
+        if a.capital is not None and 0 < a.capital < 1e9:
+            prof["capital"] = a.capital
+        if a.currency:
+            prof["currency"] = a.currency
+        if a.risk_profile:
+            prof["risk"] = a.risk_profile
         if a.pause and p:
             p["halted"], p["halt_reason"] = True, f"paused by user: {a.pause}"
         if a.resume and p:

@@ -33,7 +33,14 @@ from ..regime.classifier import RegimeEngine
 from ..research.researcher import Researcher, decay_check
 from ..risk.manager import RiskManager, TradeIntent
 from ..strategies.spec import Status, spec_from_dict
-from .narrator import explain_ar
+from ..coach.coach import general_guidance
+from ..coach.coach import verdict as verdict_card
+from ..coach.risk import BLOCK_AT, assess, strategy_stats_from
+from .narrator import _why_ar, explain_ar
+
+
+def _wait_reason(reason: str | None) -> str:
+    return "مفيش فرصة مؤكدة دلوقتي" + (f": {_why_ar(reason)}" if reason else "")
 
 log = get_logger("orchestrator")
 LEVEL_AR = {1: "وضع البحث فقط", 2: "وضع الإشارات", 3: "تداول وهمي (Paper)", 4: "تداول حقيقي"}
@@ -62,6 +69,7 @@ class Orchestrator:
         self.broker = PaperBroker(self.store)
         self.advisor = Advisor(self.store)
         self._sentiment, self._oi_now = None, {}
+        self.profile = {"capital": None, "currency": "USD", "risk": "balanced", **self.control.get("profile", {})}
         self.meta = self.store.load("meta.json", {"last_research": {}, "learned_prefs": {}, "cycles": 0})
 
     # ------------------------------------------------------------------ data
@@ -153,9 +161,24 @@ class Orchestrator:
         atr = float(f["atr"].iloc[-1])
         ens = ctx.extras.get("ensemble")
         open_sig = self.advisor.book["open"].get(symbol)
+        prof = self.profile
+        sentiment = None if self._sentiment is None else float(self._sentiment.iloc[-1])
+        reg_entries = self.registry.data["strategies"]
+
+        def risk_for(direction: int, stop: float | None):
+            stats = strategy_stats_from(ens.components, reg_entries, direction) if ens else None
+            return assess(features=f, regime=regime.to_dict(), debate=debate.to_dict(), portfolio=self.broker.p,
+                          direction=direction, price=price, stop=stop, sentiment=sentiment,
+                          calendar=snap.calendar, track_record=self.advisor.track_record(),
+                          strategy_stats=stats, profile=prof.get("risk", "balanced")).to_dict()
+
+        coach = None
         # ---- 1. manage an open recommendation (and the mirrored paper position)
         if open_sig:
             side = 1 if open_sig["side"] == "buy" else -1
+            rk = risk_for(side, open_sig["stop"])
+            prev_score = (open_sig.get("risk") or {}).get("score", 0)
+            open_sig["risk"] = rk
             qr = next((o for o in debate.opinions if o["agent"] == "quant_research" and not o["abstain"]), None)
             why = None
             if qr is None or np.sign(qr["score"]) != side:
@@ -164,50 +187,115 @@ class Orchestrator:
                 why = "الوكلاء اتفقوا إن الاتجاه انعكس"
             elif self.risk.kill_switch_active(self.broker.p):
                 why = "إيقاف طوارئ"
+            elif rk["score"] >= 85:
+                why = f"نسبة الخطر قفزت لـ {rk['score']:.0f}%"
             if why and self.level >= AutonomyLevel.SIGNAL:
-                self.advisor.close_signal(symbol, price, why)
+                closed = self.advisor.close_signal(symbol, price, why)
+                coach = verdict_card(symbol=symbol, kind="CLOSE", risk=rk, profile=prof,
+                                     reason_ar=f"{why}. النتيجة: {closed['return_pct']:+.2f}%")
                 action = f"إشارة بيع/إغلاق: {why}"
                 if self.level >= AutonomyLevel.PAPER and symbol in self.broker.p["positions"]:
                     rec = self.broker.close(symbol, price, why)
                     self._learn_from_trade(rec)
+            elif rk["score"] >= BLOCK_AT and prev_score < BLOCK_AT and not open_sig.get("reduced"):
+                open_sig["reduced"] = True
+                coach = verdict_card(symbol=symbol, kind="REDUCE", risk=rk, profile=prof,
+                                     reason_ar="الخطر زاد وانت جوه الصفقة")
+                self.advisor.book["outbox"].append({"type": "coach", "card": coach, **open_sig})
+                action = "تقليل الصفقة (الخطر زاد)"
             else:
-                action = "مستمر في الصفقة"
-        # ---- 2. new recommendation
+                new_stop = ens.stop if ens else None
+                better = new_stop and side * (new_stop - open_sig["stop"]) > 0.3 * atr and \
+                    side * (price - new_stop) > 0.5 * atr
+                if better:
+                    coach = verdict_card(symbol=symbol, kind="RAISE_STOP", risk=rk, profile=prof,
+                                         stop=open_sig["stop"], new_stop=new_stop,
+                                         reason_ar="الصفقة ماشية كويس")
+                    open_sig["stop"] = new_stop
+                    if symbol in self.broker.p["positions"]:
+                        self.broker.p["positions"][symbol]["stop"] = new_stop
+                    self.advisor.book["outbox"].append({"type": "coach", "card": coach, **open_sig})
+                    action = "رفع وقف الخسارة"
+                else:
+                    coach = verdict_card(symbol=symbol, kind="HOLD", risk=rk, profile=prof,
+                                         reason_ar="الصفقة لسه سليمة")
+                    action = "مستمر في الصفقة"
+        # ---- 2. new opportunity
         wants = debate.direction != 0 and not (spot and debate.direction < 0)
-        if wants and symbol not in self.advisor.book["open"] and self.level >= AutonomyLevel.SIGNAL:
-            intent = TradeIntent(symbol, debate.direction, debate.conviction, price, atr)
-            verdict = self.risk.evaluate(intent, self.broker.p, snap.ohlcv, corr,
-                                         snap.orderbook.spread_bps if snap.orderbook else None, snap.calendar)
-            if verdict.approved:
-                stop = verdict.stop_price
-                if ens and ens.stop and 0.5 * atr <= debate.direction * (price - ens.stop) <= 6 * atr:
-                    stop = ens.stop                      # the strategies' own stop, if sane
-                size_pct = verdict.notional / self.broker.p["equity"] * 100
-                strat_names = [c["name"] for c in (ens.components if ens else []) if c["position"] == debate.direction]
-                from ..agents.execution import plan_entry
-                last = f.iloc[-1]
-                plan = plan_entry(debate.direction, price, atr, regime.label,
-                                  None if pd.isna(last.get("don_20")) else float(last["don_20"]),
-                                  snap.orderbook.spread_bps if snap.orderbook else None,
-                                  None if pd.isna(last.get("vol_ratio")) else float(last["vol_ratio"]))
-                self.advisor.open_signal(symbol, debate.direction, price, atr, stop, size_pct, debate.conviction,
-                                         debate.rationale, regime.label_ar, strat_names, plan.to_dict())
-                action = f"إشارة {'شراء' if debate.direction > 0 else 'بيع على المكشوف'} بحجم {size_pct:.1f}% من رأس المال"
-                if self.level >= AutonomyLevel.PAPER:
-                    self.broker.open(symbol, debate.direction, verdict.size_units, price, stop,
-                                     {"regime": regime.label, "families": self._supporting_families(validated, symbol)})
-                    for e in validated:
-                        if e["results"].get("symbol") == symbol and e["status"] == "validated":
-                            self.registry.set_status(e["id"], Status.PAPER, "first paper deployment")
+        if coach is None and wants and self.level >= AutonomyLevel.SIGNAL:
+            stop = price - debate.direction * 3 * atr
+            if ens and ens.stop and 0.5 * atr <= debate.direction * (price - ens.stop) <= 6 * atr:
+                stop = ens.stop                          # the strategies' own stop, if sane
+            rk = risk_for(debate.direction, stop)
+            proof = (rk.get("extra") or {}).get("proof")
+            if proof and proof["expectancy_R"] <= 0:
+                rk["blocked"] = True
+                rk["top_reasons_ar"] = ["التوقع الرياضي سالب"] + rk["top_reasons_ar"]
+            elif proof and not proof["proven"]:
+                rk["size_multiplier"] = round(rk["size_multiplier"] * 0.5, 3)   # unproven edge -> half size
+            if rk["blocked"]:
+                coach = verdict_card(symbol=symbol, kind="DONT", risk=rk, profile=prof,
+                                     reason_ar="فيه فرصة، بس الخطر أعلى من المسموح ليك")
+                action = f"متعملش: الخطر {rk['score']:.0f}%"
             else:
-                action = "المخاطر رفضت الصفقة"
-        elif debate.direction < 0 and spot and not open_sig:
-            action = "السوق ضعيف: متشتريش دلوقتي"
+                intent = TradeIntent(symbol, debate.direction, debate.conviction, price, atr,
+                                     stop_atr=abs(price - stop) / atr)
+                verdict = self.risk.evaluate(intent, self.broker.p, snap.ohlcv, corr,
+                                             snap.orderbook.spread_bps if snap.orderbook else None, snap.calendar,
+                                             size_mult=rk["size_multiplier"])
+                if verdict.approved and proof:
+                    # Kelly cap: capital lost if the stop is hit must not exceed 1/4 Kelly
+                    risk_frac = verdict.notional / self.broker.p["equity"] * abs(price - stop) / price
+                    cap = proof["quarter_kelly"]
+                    if cap <= 0:
+                        verdict.approved = False
+                        verdict.reasons.append("Kelly <= 0")
+                    elif risk_frac > cap:
+                        scale = cap / risk_frac
+                        verdict.notional *= scale
+                        verdict.size_units *= scale
+                        verdict.reasons.append(f"size capped at 1/4 Kelly ({cap:.2%} of capital at risk)")
+                if verdict.approved:
+                    size_pct = verdict.notional / self.broker.p["equity"] * 100
+                    strat_names = [c["name"] for c in (ens.components if ens else []) if c["position"] == debate.direction]
+                    from ..agents.execution import plan_entry
+                    last = f.iloc[-1]
+                    plan = plan_entry(debate.direction, price, atr, regime.label,
+                                      None if pd.isna(last.get("don_20")) else float(last["don_20"]),
+                                      snap.orderbook.spread_bps if snap.orderbook else None,
+                                      None if pd.isna(last.get("vol_ratio")) else float(last["vol_ratio"]))
+                    coach = verdict_card(symbol=symbol, kind="BUY", risk=rk, profile=prof, size_pct=size_pct,
+                                         reason_ar=f"السوق في حالة «{regime.label_ar}» والاستراتيجيات المُختبرة متفقة")
+                    sig = self.advisor.open_signal(symbol, debate.direction, price, atr, stop, size_pct,
+                                                   debate.conviction, debate.rationale, regime.label_ar,
+                                                   strat_names, plan.to_dict())
+                    sig["risk"], sig["coach"] = rk, coach
+                    self.advisor.book["outbox"][-1].update({"risk": rk, "coach": coach})
+                    action = f"إشارة {'شراء' if debate.direction > 0 else 'بيع على المكشوف'} بحجم {size_pct:.1f}% (خطر {rk['score']:.0f}%)"
+                    if self.level >= AutonomyLevel.PAPER:
+                        self.broker.open(symbol, debate.direction, verdict.size_units, price, stop,
+                                         {"regime": regime.label, "families": self._supporting_families(validated, symbol)})
+                        for e in validated:
+                            if e["results"].get("symbol") == symbol and e["status"] == "validated":
+                                self.registry.set_status(e["id"], Status.PAPER, "first paper deployment")
+                else:
+                    coach = verdict_card(symbol=symbol, kind="DONT", risk=rk, profile=prof,
+                                         reason_ar="مدير المخاطر رفض: " + "; ".join(verdict.reasons[:1]))
+                    action = "المخاطر رفضت الصفقة"
+        if coach is None:
+            rk = risk_for(1, None)
+            if debate.direction < 0 or regime.label in ("panic_selling", "strong_trend_down", "distribution"):
+                coach = verdict_card(symbol=symbol, kind="AVOID", risk=rk, profile=prof,
+                                     reason_ar=f"السوق ضعيف ({regime.label_ar}). متشتريش دلوقتي")
+                action = "متشتريش دلوقتي"
+            else:
+                coach = verdict_card(symbol=symbol, kind="WAIT", risk=rk, profile=prof,
+                                     reason_ar=_wait_reason(debate.stand_aside_reason))
 
         decision = {
             "symbol": symbol, "bar": str(snap.ohlcv.index[-1]), "price": price, "level": int(self.level),
             "regime": regime.to_dict(), "debate": debate.to_dict(),
-            "risk": verdict.to_dict() if verdict else None, "action": action,
+            "risk": verdict.to_dict() if verdict else None, "action": action, "coach": coach,
             "explanation_ar": explain_ar(symbol, regime.to_dict(), debate.to_dict(),
                                          verdict.to_dict() if verdict else None, action),
         }
@@ -325,6 +413,7 @@ class Orchestrator:
             "markets": {s: {"price": d["price"], "regime": d["regime"], "direction": d["debate"]["direction"],
                             "conviction": d["debate"]["conviction"], "action": d["action"],
                             "explanation_ar": d["explanation_ar"], "opinions": d["debate"]["opinions"],
+                            "coach": d.get("coach"),
                             "transcript": d["debate"]["transcript"], "risk": d["risk"],
                             "forecast": forecasts.get(s)} for s, d in decisions.items()},
             "lab": {
@@ -346,6 +435,9 @@ class Orchestrator:
                         "track_record": self.advisor.track_record(),
                         "market_type": settings.market_type},
             "sentiment": None if self._sentiment is None else float(self._sentiment.iloc[-1]),
+            "profile": self.profile,
+            "guidance": general_guidance(p, {s: (d.get("coach") or {}).get("risk") for s, d in decisions.items()},
+                                         self.profile, len(self.advisor.book["open"])),
             "agents": self.auditor.report(),
             "research": {"backlog": [{k: b[k] for k in ("title", "kind", "priority")}
                                      for b in self.researcher.data["backlog"][:15]],

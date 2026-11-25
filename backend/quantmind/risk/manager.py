@@ -74,7 +74,7 @@ class RiskManager:
 
     def evaluate(self, t: TradeIntent, portfolio: dict, ohlcv: pd.DataFrame,
                  corr: pd.DataFrame | None = None, spread_bps: float | None = None,
-                 calendar: list[dict] | None = None) -> RiskVerdict:
+                 calendar: list[dict] | None = None, size_mult: float = 1.0) -> RiskVerdict:
         v = RiskVerdict(False)
         L, eq = self.L, portfolio["equity"]
         now = datetime.now(timezone.utc)
@@ -111,7 +111,8 @@ class RiskManager:
 
         # ---- sizing: risk-based, then capped by every exposure limit
         stop_dist = t.stop_atr * t.atr
-        units = (eq * L.risk_per_trade_pct * min(1.0, 0.5 + t.conviction)) / stop_dist
+        # size_mult comes from the dynamic risk engine + the user's risk profile
+        units = (eq * L.risk_per_trade_pct * min(1.0, 0.5 + t.conviction) * size_mult) / stop_dist
         caps = {"per_trade_risk": units * t.price}
         caps["max_position"] = eq * L.max_position_pct
         gross = sum(abs(p["qty"] * p["last_price"]) for p in portfolio.get("positions", {}).values())
