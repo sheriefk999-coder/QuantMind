@@ -1,0 +1,27 @@
+{
+ "cash": 10000.0,
+ "equity": 10000.0,
+ "peak_equity": 10000.0,
+ "start_equity": 10000.0,
+ "positions": {},
+ "day": "2026-11-25",
+ "day_start_equity": 10000.0,
+ "day_pnl": 0.0,
+ "consecutive_losses": 0,
+ "last_loss_ts": null,
+ "halted": false,
+ "halt_reason": null,
+ "equity_curve": [
+  {
+   "ts": "2026-11-25T13:28:26+00:00",
+   "equity": 10000.0
+  },
+  {
+   "ts": "2026-11-25T13:29:42+00:00",
+   "equity": 10000.0
+  }
+ ],
+ "realized_pnl": 0.0,
+ "n_trades": 0,
+ "wins": 0
+}

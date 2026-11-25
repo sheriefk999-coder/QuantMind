@@ -1,0 +1,14 @@
+{"ts": "2026-11-25T13:29:28+00:00", "strategy": "aae15328b9cf", "name": "GA-52a614", "status": "rejected", "reason": "deflated Sharpe 0.56 < 0.95 after 1 holdout tests (could be luck)"}
+{"ts": "2026-11-25T13:29:28+00:00", "strategy": "9dc405055064", "name": "GA-7fda9d", "status": "rejected", "reason": "validation failed (Sharpe -1.21, 12 trades)"}
+{"ts": "2026-11-25T13:29:28+00:00", "strategy": "36fef104d68a", "name": "GA-fd6f51", "status": "rejected", "reason": "validation failed (Sharpe -1.18, 19 trades)"}
+{"ts": "2026-11-25T13:29:28+00:00", "strategy": "9517ee03b9d5", "name": "GA-6b421a", "status": "rejected", "reason": "deflated Sharpe 0.36 < 0.95 after 2 holdout tests (could be luck)"}
+{"ts": "2026-11-25T13:29:28+00:00", "strategy": "bb47e919eed4", "name": "GA-a8c543", "status": "rejected", "reason": "validation failed (Sharpe -1.64, 37 trades)"}
+{"ts": "2026-11-25T13:29:28+00:00", "strategy": "62c161fb6c24", "name": "GA-30e298", "status": "rejected", "reason": "validation failed (Sharpe -2.99, 8 trades)"}
+{"ts": "2026-11-25T13:29:28+00:00", "strategy": "c72272522031", "name": "GA-7a5d01", "status": "rejected", "reason": "validation failed (Sharpe -2.88, 66 trades)"}
+{"ts": "2026-11-25T13:29:28+00:00", "strategy": "34f1599b135f", "name": "GA-8eecfe", "status": "rejected", "reason": "validation failed (Sharpe -1.69, 35 trades)"}
+{"ts": "2026-11-25T13:29:28+00:00", "strategy": "03f1b2b612d5", "name": "GA-c47f8b", "status": "rejected", "reason": "validation failed (Sharpe -2.63, 33 trades)"}
+{"ts": "2026-11-25T13:29:28+00:00", "strategy": "dd6a9bd06d2e", "name": "GA-98f938", "status": "rejected", "reason": "validation failed (Sharpe -2.20, 36 trades)"}
+{"ts": "2026-11-25T13:29:29+00:00", "strategy": "571281c9160f", "name": "GA-52a614 (BO)", "status": "rejected", "reason": "fragile: nearby parameters give Sharpe -0.04 vs 1.66 (knife-edge fit)"}
+{"ts": "2026-11-25T13:29:29+00:00", "strategy": "c826d5dc2def", "name": "GA-7fda9d (BO)", "status": "rejected", "reason": "validation failed (Sharpe -0.31, 11 trades)"}
+{"ts": "2026-11-25T13:29:29+00:00", "strategy": "bdc326472ca2", "name": "GA-fd6f51 (BO)", "status": "rejected", "reason": "validation failed (Sharpe -1.18, 19 trades)"}
+{"ts": "2026-11-25T13:29:29+00:00", "strategy": "6c04f99b4932", "name": "ML-all-48h", "status": "rejected", "reason": "validation failed (Sharpe -2.54, 105 trades)"}
