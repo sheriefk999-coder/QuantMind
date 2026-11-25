@@ -1,7 +1,7 @@
 {
- "generated": "2026-11-25T13:29:42+00:00",
- "cycle_started": "2026-11-25T13:28:06+00:00",
- "cycle": 1,
+ "generated": "2026-11-25T13:33:11+00:00",
+ "cycle_started": "2026-11-25T13:32:01+00:00",
+ "cycle": 2,
  "data_source": "market",
  "level": 3,
  "level_ar": "تداول وهمي (Paper)",
@@ -24,11 +24,795 @@
    {
     "ts": "2026-11-25T13:29:42+00:00",
     "equity": 10000.0
+   },
+   {
+    "ts": "2026-11-25T13:32:16+00:00",
+    "equity": 10000.0
+   },
+   {
+    "ts": "2026-11-25T13:33:11+00:00",
+    "equity": 10000.0
    }
   ],
   "halted": false
  },
  "markets": {
+  "BTCUSDT": {
+   "price": 58749.22,
+   "regime": {
+    "label": "weak_trend",
+    "label_ar": "اتجاه ضعيف",
+    "confidence": 0.5,
+    "cluster": 5,
+    "novelty": 0.031,
+    "evidence": {
+     "er": 0.139,
+     "adx": 27.773,
+     "mom_168": -0.798,
+     "vol_pct": 0.8,
+     "ret_1": 0.221,
+     "volume_z": -0.301,
+     "z200": -1.319
+    },
+    "family_weights": {
+     "momentum": 0.6,
+     "breakout": 0.5,
+     "mean_reversion": 0.5,
+     "volatility": 0.5
+    }
+   },
+   "direction": 0,
+   "conviction": 0.0185,
+   "action": "لا شيء",
+   "explanation_ar": "🔎 BTCUSDT: السوق دلوقتي في حالة «اتجاه ضعيف».\n🧠 نتيجة نقاش الوكلاء: انتظار بدون صفقة، قوة الإشارة 2%، والاختلاف بينهم 48%.\n✋ السبب: لسه مفيش استراتيجية نجحت في كل الاختبارات على العملة دي.\n🥊 المحلل المعاكس اعترض: 1 اعتراض.\n✅ الإجراء: لا شيء",
+   "opinions": [
+    {
+     "agent": "market_intelligence",
+     "score": 0.0,
+     "confidence": 0.49225,
+     "style": "context",
+     "evidence": [
+      "regime=weak_trend (conf 0.50)",
+      "novelty=0.03",
+      "cluster=5"
+     ],
+     "invalidation": "regime label flips on next bars",
+     "abstain": false,
+     "adjusted_confidence": 0.49225,
+     "challenges": []
+    },
+    {
+     "agent": "quant_research",
+     "score": 0.0,
+     "confidence": 0.0,
+     "style": "evidence",
+     "evidence": [
+      "no validated strategy for this symbol yet"
+     ],
+     "invalidation": "",
+     "abstain": true,
+     "adjusted_confidence": null,
+     "challenges": []
+    },
+    {
+     "agent": "technical",
+     "score": -0.40518997937937773,
+     "confidence": 0.6943352996501447,
+     "style": "trend",
+     "evidence": [
+      "momentum(168)=-0.80",
+      "MACD hist/ATR=-0.05",
+      "RSI=39",
+      "ADX=28"
+     ],
+     "invalidation": "momentum turns negative / ADX collapses below 15",
+     "abstain": false,
+     "adjusted_confidence": 0.5554682397201158,
+     "challenges": [
+      "contrarian challenges cut confidence x0.80"
+     ]
+    },
+    {
+     "agent": "price_action",
+     "score": -0.8484815838995686,
+     "confidence": 0.7,
+     "style": "trend",
+     "evidence": [
+      "swing structure=-1.0 (HH/HL=+1, LH/LL=-1)",
+      "position in 100-bar range=0.19"
+     ],
+     "invalidation": "break of the last confirmed swing low/high",
+     "abstain": false,
+     "adjusted_confidence": 0.5599999999999999,
+     "challenges": [
+      "contrarian challenges cut confidence x0.80"
+     ]
+    },
+    {
+     "agent": "mean_reversion",
+     "score": 0.46823604198104163,
+     "confidence": 0.6033741420491854,
+     "style": "reversion",
+     "evidence": [
+      "z-score vs 50-bar mean=-1.40",
+      "RSI(3)=37",
+      "efficiency ratio=0.14"
+     ],
+     "invalidation": "price keeps extending with rising efficiency ratio (a real trend)",
+     "abstain": false,
+     "adjusted_confidence": 0.5128680207418076,
+     "challenges": [
+      "its camp's best argument was weaker than the other side's"
+     ]
+    },
+    {
+     "agent": "liquidity_flow",
+     "score": 0.07120327538004052,
+     "confidence": 0.5,
+     "style": "flow",
+     "evidence": [
+      "order-book imbalance (±25bps)=+0.04",
+      "spread=0.0bps",
+      "funding=-0.0088% (positive = longs crowded)",
+      "volume z-score=-0.30"
+     ],
+     "invalidation": "imbalance flips / funding normalises",
+     "abstain": false,
+     "adjusted_confidence": 0.5,
+     "challenges": []
+    },
+    {
+     "agent": "stat_arb",
+     "score": 0.2912923564342649,
+     "confidence": 0.22659110379093683,
+     "style": "relative",
+     "evidence": [
+      "pair vs BNBUSDT: corr=0.93, beta=0.99, spread z=-0.73"
+     ],
+     "invalidation": "correlation breaks down (corr < 0.5) or spread keeps widening",
+     "abstain": false,
+     "adjusted_confidence": 0.22659110379093683,
+     "challenges": []
+    },
+    {
+     "agent": "sentiment",
+     "score": 0.5666666666666667,
+     "confidence": 0.4266666666666667,
+     "style": "flow",
+     "evidence": [
+      "Fear & Greed = 13 (extreme fear), 7-day change +2"
+     ],
+     "invalidation": "sentiment keeps getting more extreme in the same direction",
+     "abstain": false,
+     "adjusted_confidence": 0.4266666666666667,
+     "challenges": []
+    },
+    {
+     "agent": "fundamental",
+     "score": 0.0,
+     "confidence": 0.0,
+     "style": "context",
+     "evidence": [
+      "no macro calendar / fundamental feed configured"
+     ],
+     "invalidation": "",
+     "abstain": true,
+     "adjusted_confidence": null,
+     "challenges": []
+    }
+   ],
+   "coach": {
+    "symbol": "BTCUSDT",
+    "kind": "WAIT",
+    "icon": "⏸️",
+    "title_ar": "استنى في BTC",
+    "lines_ar": [
+     "مفيش فرصة مؤكدة دلوقتي: لسه مفيش استراتيجية نجحت في كل الاختبارات على العملة دي.",
+     "نسبة الخطر: 38% (متوسط 🟡). أهم الأسباب: ضعف الإشارة (95%), اختلاف الوكلاء (80%), التذبذب (48%)"
+    ],
+    "risk": {
+     "score": 38.5,
+     "level_ar": "متوسط 🟡",
+     "factors": {
+      "volatility": 0.48,
+      "regime": 0.4,
+      "novelty": 0.0,
+      "disagreement": 0.804,
+      "uncertainty": 0.954,
+      "stop_distance": 0.185,
+      "crowding": 0.0,
+      "portfolio_heat": 0.0,
+      "events": 0.0,
+      "track_record": 0.5
+     },
+     "top_reasons_ar": [
+      "ضعف الإشارة (95%)",
+      "اختلاف الوكلاء (80%)",
+      "التذبذب (48%)"
+     ],
+     "size_multiplier": 0.75,
+     "blocked": false,
+     "loss_if_stopped_pct": null,
+     "loss_probability": null,
+     "loss_probability_basis": null,
+     "extra": {
+      "stop_pct": 2.67
+     }
+    }
+   },
+   "transcript": [
+    "ROUND 1 - independent opinions",
+    "  market_intelligence: score +0.00, conf 0.49 | regime=weak_trend (conf 0.50); novelty=0.03",
+    "  quant_research: ABSTAINS - no validated strategy for this symbol yet",
+    "  technical: score -0.41, conf 0.69 | momentum(168)=-0.80; MACD hist/ATR=-0.05",
+    "  price_action: score -0.85, conf 0.70 | swing structure=-1.0 (HH/HL=+1, LH/LL=-1); position in 100-bar range=0.19",
+    "  mean_reversion: score +0.47, conf 0.60 | z-score vs 50-bar mean=-1.40; RSI(3)=37",
+    "  liquidity_flow: score +0.07, conf 0.50 | order-book imbalance (±25bps)=+0.04; spread=0.0bps",
+    "  stat_arb: score +0.29, conf 0.23 | pair vs BNBUSDT: corr=0.93, beta=0.99, spread z=-0.73",
+    "  sentiment: score +0.57, conf 0.43 | Fear & Greed = 13 (extreme fear), 7-day change +2",
+    "  fundamental: ABSTAINS - no macro calendar / fundamental feed configured",
+    "ROUND 2 - cross-examination",
+    "  strongest bull (mean_reversion): z-score vs 50-bar mean=-1.40",
+    "  strongest bear (price_action): swing structure=-1.0 (HH/HL=+1, LH/LL=-1)",
+    "  contrarian: price path is mostly noise (efficiency ratio low) (severity 0.2)",
+    "ROUND 3 - synthesis: edge -0.036, disagreement 0.48, conviction 0.018",
+    "DECISION: stand aside - no validated strategy has an opinion - discretionary views alone may not open trades"
+   ],
+   "risk": null,
+   "forecast": {
+    "scenarios": {
+     "horizon_bars": 24,
+     "basis": "7781 past bars in regime 'weak_trend'",
+     "kind": "historical frequency, not a guarantee",
+     "bullish": {
+      "move": 0.012959970455991732,
+      "freq": 0.24649787944994217
+     },
+     "neutral": {
+      "range": [
+       -0.006195402972067665,
+       0.005731890161640774
+      ],
+      "freq": 0.4750032129546331
+     },
+     "bearish": {
+      "move": -0.01610885115260352,
+      "freq": 0.2784989075954247
+     },
+     "unexpected_event": {
+      "down_tail": -0.054641804203930874,
+      "up_tail": 0.059592077576138845,
+      "freq": 0.02
+     }
+    },
+    "model": {
+     "status": "uncalibrated",
+     "p_up": null,
+     "oos_ece": 0.0437,
+     "oos_brier": 0.2544,
+     "base_brier": 0.2499,
+     "horizon_bars": 24,
+     "note": "model is not reliably better than a coin flip out-of-sample; no probability shown"
+    }
+   }
+  },
+  "ETHUSDT": {
+   "price": 1647.88,
+   "regime": {
+    "label": "weak_trend",
+    "label_ar": "اتجاه ضعيف",
+    "confidence": 0.5,
+    "cluster": 5,
+    "novelty": 0.064,
+    "evidence": {
+     "er": 0.135,
+     "adx": 31.882,
+     "mom_168": -0.694,
+     "vol_pct": 0.578,
+     "ret_1": 0.578,
+     "volume_z": 0.278,
+     "z200": -1.248
+    },
+    "family_weights": {
+     "momentum": 0.6,
+     "breakout": 0.5,
+     "mean_reversion": 0.5,
+     "volatility": 0.5
+    }
+   },
+   "direction": 0,
+   "conviction": 0.0678,
+   "action": "لا شيء",
+   "explanation_ar": "🔎 ETHUSDT: السوق دلوقتي في حالة «اتجاه ضعيف».\n🧠 نتيجة نقاش الوكلاء: انتظار بدون صفقة، قوة الإشارة 7%، والاختلاف بينهم 46%.\n✋ السبب: لسه مفيش استراتيجية نجحت في كل الاختبارات على العملة دي.\n🥊 المحلل المعاكس اعترض: 1 اعتراض.\n✅ الإجراء: لا شيء",
+   "opinions": [
+    {
+     "agent": "market_intelligence",
+     "score": 0.0,
+     "confidence": 0.484,
+     "style": "context",
+     "evidence": [
+      "regime=weak_trend (conf 0.50)",
+      "novelty=0.06",
+      "cluster=5"
+     ],
+     "invalidation": "regime label flips on next bars",
+     "abstain": false,
+     "adjusted_confidence": 0.484,
+     "challenges": []
+    },
+    {
+     "agent": "quant_research",
+     "score": 0.0,
+     "confidence": 0.0,
+     "style": "evidence",
+     "evidence": [
+      "no validated strategy for this symbol yet"
+     ],
+     "invalidation": "",
+     "abstain": true,
+     "adjusted_confidence": null,
+     "challenges": []
+    },
+    {
+     "agent": "technical",
+     "score": -0.3586960934987571,
+     "confidence": 0.7970586258924484,
+     "style": "trend",
+     "evidence": [
+      "momentum(168)=-0.69",
+      "MACD hist/ATR=-0.03",
+      "RSI=40",
+      "ADX=32"
+     ],
+     "invalidation": "momentum turns negative / ADX collapses below 15",
+     "abstain": false,
+     "adjusted_confidence": 0.6376469007139587,
+     "challenges": [
+      "contrarian challenges cut confidence x0.80"
+     ]
+    },
+    {
+     "agent": "price_action",
+     "score": -0.894728497820055,
+     "confidence": 0.7,
+     "style": "trend",
+     "evidence": [
+      "swing structure=-1.0 (HH/HL=+1, LH/LL=-1)",
+      "position in 100-bar range=0.13"
+     ],
+     "invalidation": "break of the last confirmed swing low/high",
+     "abstain": false,
+     "adjusted_confidence": 0.5599999999999999,
+     "challenges": [
+      "contrarian challenges cut confidence x0.80"
+     ]
+    },
+    {
+     "agent": "mean_reversion",
+     "score": 0.31210937625179014,
+     "confidence": 0.5415754799058089,
+     "style": "reversion",
+     "evidence": [
+      "z-score vs 50-bar mean=-1.25",
+      "RSI(3)=53",
+      "efficiency ratio=0.14"
+     ],
+     "invalidation": "price keeps extending with rising efficiency ratio (a real trend)",
+     "abstain": false,
+     "adjusted_confidence": 0.5415754799058089,
+     "challenges": []
+    },
+    {
+     "agent": "liquidity_flow",
+     "score": -0.033670497674841114,
+     "confidence": 0.5,
+     "style": "flow",
+     "evidence": [
+      "order-book imbalance (±25bps)=-0.15",
+      "spread=0.1bps",
+      "funding=-0.0068% (positive = longs crowded)",
+      "volume z-score=0.28"
+     ],
+     "invalidation": "imbalance flips / funding normalises",
+     "abstain": false,
+     "adjusted_confidence": 0.4,
+     "challenges": [
+      "contrarian challenges cut confidence x0.80"
+     ]
+    },
+    {
+     "agent": "stat_arb",
+     "score": -0.1800697324059281,
+     "confidence": 0.13974405459621508,
+     "style": "relative",
+     "evidence": [
+      "pair vs BTCUSDT: corr=0.93, beta=1.14, spread z=+0.45"
+     ],
+     "invalidation": "correlation breaks down (corr < 0.5) or spread keeps widening",
+     "abstain": false,
+     "adjusted_confidence": 0.11179524367697208,
+     "challenges": [
+      "contrarian challenges cut confidence x0.80"
+     ]
+    },
+    {
+     "agent": "sentiment",
+     "score": 0.5666666666666667,
+     "confidence": 0.4266666666666667,
+     "style": "flow",
+     "evidence": [
+      "Fear & Greed = 13 (extreme fear), 7-day change +2"
+     ],
+     "invalidation": "sentiment keeps getting more extreme in the same direction",
+     "abstain": false,
+     "adjusted_confidence": 0.3626666666666667,
+     "challenges": [
+      "its camp's best argument was weaker than the other side's"
+     ]
+    },
+    {
+     "agent": "fundamental",
+     "score": 0.0,
+     "confidence": 0.0,
+     "style": "context",
+     "evidence": [
+      "no macro calendar / fundamental feed configured"
+     ],
+     "invalidation": "",
+     "abstain": true,
+     "adjusted_confidence": null,
+     "challenges": []
+    }
+   ],
+   "coach": {
+    "symbol": "ETHUSDT",
+    "kind": "WAIT",
+    "icon": "⏸️",
+    "title_ar": "استنى في ETH",
+    "lines_ar": [
+     "مفيش فرصة مؤكدة دلوقتي: لسه مفيش استراتيجية نجحت في كل الاختبارات على العملة دي.",
+     "نسبة الخطر: 35% (متوسط 🟡). أهم الأسباب: ضعف الإشارة (83%), اختلاف الوكلاء (77%), حالة السوق (40%)"
+    ],
+    "risk": {
+     "score": 35.1,
+     "level_ar": "متوسط 🟡",
+     "factors": {
+      "volatility": 0.347,
+      "regime": 0.4,
+      "novelty": 0.0,
+      "disagreement": 0.766,
+      "uncertainty": 0.831,
+      "stop_distance": 0.215,
+      "crowding": 0.0,
+      "portfolio_heat": 0.0,
+      "events": 0.0,
+      "track_record": 0.5
+     },
+     "top_reasons_ar": [
+      "ضعف الإشارة (83%)",
+      "اختلاف الوكلاء (77%)",
+      "حالة السوق (40%)"
+     ],
+     "size_multiplier": 0.799,
+     "blocked": false,
+     "loss_if_stopped_pct": null,
+     "loss_probability": null,
+     "loss_probability_basis": null,
+     "extra": {
+      "stop_pct": 2.94
+     }
+    }
+   },
+   "transcript": [
+    "ROUND 1 - independent opinions",
+    "  market_intelligence: score +0.00, conf 0.48 | regime=weak_trend (conf 0.50); novelty=0.06",
+    "  quant_research: ABSTAINS - no validated strategy for this symbol yet",
+    "  technical: score -0.36, conf 0.80 | momentum(168)=-0.69; MACD hist/ATR=-0.03",
+    "  price_action: score -0.89, conf 0.70 | swing structure=-1.0 (HH/HL=+1, LH/LL=-1); position in 100-bar range=0.13",
+    "  mean_reversion: score +0.31, conf 0.54 | z-score vs 50-bar mean=-1.25; RSI(3)=53",
+    "  liquidity_flow: score -0.03, conf 0.50 | order-book imbalance (±25bps)=-0.15; spread=0.1bps",
+    "  stat_arb: score -0.18, conf 0.14 | pair vs BTCUSDT: corr=0.93, beta=1.14, spread z=+0.45",
+    "  sentiment: score +0.57, conf 0.43 | Fear & Greed = 13 (extreme fear), 7-day change +2",
+    "  fundamental: ABSTAINS - no macro calendar / fundamental feed configured",
+    "ROUND 2 - cross-examination",
+    "  strongest bull (sentiment): Fear & Greed = 13 (extreme fear), 7-day change +2",
+    "  strongest bear (price_action): swing structure=-1.0 (HH/HL=+1, LH/LL=-1)",
+    "  contrarian: price path is mostly noise (efficiency ratio low) (severity 0.2)",
+    "ROUND 3 - synthesis: edge -0.126, disagreement 0.46, conviction 0.068",
+    "DECISION: stand aside - no validated strategy has an opinion - discretionary views alone may not open trades"
+   ],
+   "risk": null,
+   "forecast": {
+    "scenarios": {
+     "horizon_bars": 24,
+     "basis": "7852 past bars in regime 'weak_trend'",
+     "kind": "historical frequency, not a guarantee",
+     "bullish": {
+      "move": 0.017820841199558003,
+      "freq": 0.20797249108507387
+     },
+     "neutral": {
+      "range": [
+       -0.012502111734675391,
+       0.00638967805927831
+      ],
+      "freq": 0.4988537952114111
+     },
+     "bearish": {
+      "move": -0.027012573083807355,
+      "freq": 0.293173713703515
+     },
+     "unexpected_event": {
+      "down_tail": -0.09312215395919636,
+      "up_tail": 0.0881380276604135,
+      "freq": 0.02
+     }
+    },
+    "model": {
+     "status": "uncalibrated",
+     "p_up": null,
+     "oos_ece": 0.0363,
+     "oos_brier": 0.2541,
+     "base_brier": 0.25,
+     "horizon_bars": 24,
+     "note": "model is not reliably better than a coin flip out-of-sample; no probability shown"
+    }
+   }
+  },
+  "SOLUSDT": {
+   "price": 67.9,
+   "regime": {
+    "label": "weak_trend",
+    "label_ar": "اتجاه ضعيف",
+    "confidence": 0.5,
+    "cluster": 4,
+    "novelty": 0.051,
+    "evidence": {
+     "er": 0.17,
+     "adx": 31.775,
+     "mom_168": -0.642,
+     "vol_pct": 0.586,
+     "ret_1": 0.478,
+     "volume_z": -0.222,
+     "z200": -1.617
+    },
+    "family_weights": {
+     "momentum": 0.6,
+     "breakout": 0.5,
+     "mean_reversion": 0.5,
+     "volatility": 0.5
+    }
+   },
+   "direction": 0,
+   "conviction": 0.0851,
+   "action": "لا شيء",
+   "explanation_ar": "🔎 SOLUSDT: السوق دلوقتي في حالة «اتجاه ضعيف».\n🧠 نتيجة نقاش الوكلاء: انتظار بدون صفقة، قوة الإشارة 9%، والاختلاف بينهم 48%.\n✋ السبب: لسه مفيش استراتيجية نجحت في كل الاختبارات على العملة دي.\n✅ الإجراء: لا شيء",
+   "opinions": [
+    {
+     "agent": "market_intelligence",
+     "score": 0.0,
+     "confidence": 0.48725,
+     "style": "context",
+     "evidence": [
+      "regime=weak_trend (conf 0.50)",
+      "novelty=0.05",
+      "cluster=4"
+     ],
+     "invalidation": "regime label flips on next bars",
+     "abstain": false,
+     "adjusted_confidence": 0.48725,
+     "challenges": []
+    },
+    {
+     "agent": "quant_research",
+     "score": 0.0,
+     "confidence": 0.0,
+     "style": "evidence",
+     "evidence": [
+      "no validated strategy for this symbol yet"
+     ],
+     "invalidation": "",
+     "abstain": true,
+     "adjusted_confidence": null,
+     "challenges": []
+    },
+    {
+     "agent": "technical",
+     "score": -0.37148549495977085,
+     "confidence": 0.7943690425191627,
+     "style": "trend",
+     "evidence": [
+      "momentum(168)=-0.64",
+      "MACD hist/ATR=-0.06",
+      "RSI=37",
+      "ADX=32"
+     ],
+     "invalidation": "momentum turns negative / ADX collapses below 15",
+     "abstain": false,
+     "adjusted_confidence": 0.7943690425191627,
+     "challenges": []
+    },
+    {
+     "agent": "price_action",
+     "score": -0.9185059422750422,
+     "confidence": 0.7,
+     "style": "trend",
+     "evidence": [
+      "swing structure=-1.0 (HH/HL=+1, LH/LL=-1)",
+      "position in 100-bar range=0.10"
+     ],
+     "invalidation": "break of the last confirmed swing low/high",
+     "abstain": false,
+     "adjusted_confidence": 0.7,
+     "challenges": []
+    },
+    {
+     "agent": "mean_reversion",
+     "score": 0.3401731168312086,
+     "confidence": 0.5377525078540022,
+     "style": "reversion",
+     "evidence": [
+      "z-score vs 50-bar mean=-1.30",
+      "RSI(3)=50",
+      "efficiency ratio=0.17"
+     ],
+     "invalidation": "price keeps extending with rising efficiency ratio (a real trend)",
+     "abstain": false,
+     "adjusted_confidence": 0.5377525078540022,
+     "challenges": []
+    },
+    {
+     "agent": "liquidity_flow",
+     "score": -0.012856704052641776,
+     "confidence": 0.5,
+     "style": "flow",
+     "evidence": [
+      "order-book imbalance (±25bps)=+0.08",
+      "spread=1.5bps",
+      "funding=0.0092% (positive = longs crowded)",
+      "volume z-score=-0.22"
+     ],
+     "invalidation": "imbalance flips / funding normalises",
+     "abstain": false,
+     "adjusted_confidence": 0.5,
+     "challenges": []
+    },
+    {
+     "agent": "stat_arb",
+     "score": -0.09189084617075777,
+     "confidence": 0.06882243545414442,
+     "style": "relative",
+     "evidence": [
+      "pair vs ETHUSDT: corr=0.90, beta=0.94, spread z=+0.23"
+     ],
+     "invalidation": "correlation breaks down (corr < 0.5) or spread keeps widening",
+     "abstain": false,
+     "adjusted_confidence": 0.06882243545414442,
+     "challenges": []
+    },
+    {
+     "agent": "sentiment",
+     "score": 0.5666666666666667,
+     "confidence": 0.4266666666666667,
+     "style": "flow",
+     "evidence": [
+      "Fear & Greed = 13 (extreme fear), 7-day change +2"
+     ],
+     "invalidation": "sentiment keeps getting more extreme in the same direction",
+     "abstain": false,
+     "adjusted_confidence": 0.3626666666666667,
+     "challenges": [
+      "its camp's best argument was weaker than the other side's"
+     ]
+    },
+    {
+     "agent": "fundamental",
+     "score": 0.0,
+     "confidence": 0.0,
+     "style": "context",
+     "evidence": [
+      "no macro calendar / fundamental feed configured"
+     ],
+     "invalidation": "",
+     "abstain": true,
+     "adjusted_confidence": null,
+     "challenges": []
+    }
+   ],
+   "coach": {
+    "symbol": "SOLUSDT",
+    "kind": "WAIT",
+    "icon": "⏸️",
+    "title_ar": "استنى في SOL",
+    "lines_ar": [
+     "مفيش فرصة مؤكدة دلوقتي: لسه مفيش استراتيجية نجحت في كل الاختبارات على العملة دي.",
+     "نسبة الخطر: 35% (متوسط 🟡). أهم الأسباب: اختلاف الوكلاء (80%), ضعف الإشارة (79%), حالة السوق (40%)"
+    ],
+    "risk": {
+     "score": 35.4,
+     "level_ar": "متوسط 🟡",
+     "factors": {
+      "volatility": 0.352,
+      "regime": 0.4,
+      "novelty": 0.0,
+      "disagreement": 0.796,
+      "uncertainty": 0.787,
+      "stop_distance": 0.256,
+      "crowding": 0.0,
+      "portfolio_heat": 0.0,
+      "events": 0.0,
+      "track_record": 0.5
+     },
+     "top_reasons_ar": [
+      "اختلاف الوكلاء (80%)",
+      "ضعف الإشارة (79%)",
+      "حالة السوق (40%)"
+     ],
+     "size_multiplier": 0.794,
+     "blocked": false,
+     "loss_if_stopped_pct": null,
+     "loss_probability": null,
+     "loss_probability_basis": null,
+     "extra": {
+      "stop_pct": 3.31
+     }
+    }
+   },
+   "transcript": [
+    "ROUND 1 - independent opinions",
+    "  market_intelligence: score +0.00, conf 0.49 | regime=weak_trend (conf 0.50); novelty=0.05",
+    "  quant_research: ABSTAINS - no validated strategy for this symbol yet",
+    "  technical: score -0.37, conf 0.79 | momentum(168)=-0.64; MACD hist/ATR=-0.06",
+    "  price_action: score -0.92, conf 0.70 | swing structure=-1.0 (HH/HL=+1, LH/LL=-1); position in 100-bar range=0.10",
+    "  mean_reversion: score +0.34, conf 0.54 | z-score vs 50-bar mean=-1.30; RSI(3)=50",
+    "  liquidity_flow: score -0.01, conf 0.50 | order-book imbalance (±25bps)=+0.08; spread=1.5bps",
+    "  stat_arb: score -0.09, conf 0.07 | pair vs ETHUSDT: corr=0.90, beta=0.94, spread z=+0.23",
+    "  sentiment: score +0.57, conf 0.43 | Fear & Greed = 13 (extreme fear), 7-day change +2",
+    "  fundamental: ABSTAINS - no macro calendar / fundamental feed configured",
+    "ROUND 2 - cross-examination",
+    "  strongest bull (sentiment): Fear & Greed = 13 (extreme fear), 7-day change +2",
+    "  strongest bear (price_action): swing structure=-1.0 (HH/HL=+1, LH/LL=-1)",
+    "ROUND 3 - synthesis: edge -0.163, disagreement 0.48, conviction 0.085",
+    "DECISION: stand aside - no validated strategy has an opinion - discretionary views alone may not open trades"
+   ],
+   "risk": null,
+   "forecast": {
+    "scenarios": {
+     "horizon_bars": 24,
+     "basis": "7443 past bars in regime 'weak_trend'",
+     "kind": "historical frequency, not a guarantee",
+     "bullish": {
+      "move": 0.024403329156126457,
+      "freq": 0.23941958887545345
+     },
+     "neutral": {
+      "range": [
+       -0.014457398341313136,
+       0.009520135401974605
+      ],
+      "freq": 0.45734246943436785
+     },
+     "bearish": {
+      "move": -0.030593664290405553,
+      "freq": 0.3032379416901787
+     },
+     "unexpected_event": {
+      "down_tail": -0.09795903295386606,
+      "up_tail": 0.10619059537181512,
+      "freq": 0.02
+     }
+    },
+    "model": {
+     "status": "uncalibrated",
+     "p_up": null,
+     "oos_ece": 0.0483,
+     "oos_brier": 0.2536,
+     "base_brier": 0.2499,
+     "horizon_bars": 24,
+     "note": "model is not reliably better than a coin flip out-of-sample; no probability shown"
+    }
+   }
+  },
   "BNBUSDT": {
    "price": 540.39,
    "regime": {
@@ -54,7 +838,7 @@
     }
    },
    "direction": 0,
-   "conviction": 0.0267,
+   "conviction": 0.0338,
    "action": "لا شيء",
    "explanation_ar": "🔎 BNBUSDT: السوق دلوقتي في حالة «اتجاه ضعيف».\n🧠 نتيجة نقاش الوكلاء: انتظار بدون صفقة، قوة الإشارة 3%، والاختلاف بينهم 44%.\n✋ السبب: لسه مفيش استراتيجية نجحت في كل الاختبارات على العملة دي.\n🥊 المحلل المعاكس اعترض: 1 اعتراض.\n✅ الإجراء: لا شيء",
    "opinions": [
@@ -137,11 +921,11 @@
     },
     {
      "agent": "liquidity_flow",
-     "score": -0.049875518271895215,
+     "score": -0.15424826738695668,
      "confidence": 0.5,
      "style": "flow",
      "evidence": [
-      "order-book imbalance (±25bps)=-0.03",
+      "order-book imbalance (±25bps)=-0.24",
       "spread=0.2bps",
       "funding=0.0058% (positive = longs crowded)",
       "volume z-score=-0.02"
@@ -155,15 +939,15 @@
     },
     {
      "agent": "stat_arb",
-     "score": 0.3535294948080813,
-     "confidence": 0.2750042583739847,
+     "score": 0.35352949480805534,
+     "confidence": 0.27500425837396447,
      "style": "relative",
      "evidence": [
       "pair vs BTCUSDT: corr=0.93, beta=0.88, spread z=-0.88"
      ],
      "invalidation": "correlation breaks down (corr < 0.5) or spread keeps widening",
      "abstain": false,
-     "adjusted_confidence": 0.2750042583739847,
+     "adjusted_confidence": 0.27500425837396447,
      "challenges": []
     },
     {
@@ -202,17 +986,17 @@
     "title_ar": "استنى في BNB",
     "lines_ar": [
      "مفيش فرصة مؤكدة دلوقتي: لسه مفيش استراتيجية نجحت في كل الاختبارات على العملة دي.",
-     "نسبة الخطر: 36% (متوسط 🟡). أهم الأسباب: ضعف الإشارة (93%), اختلاف الوكلاء (74%), حالة السوق (40%)"
+     "نسبة الخطر: 36% (متوسط 🟡). أهم الأسباب: ضعف الإشارة (92%), اختلاف الوكلاء (74%), حالة السوق (40%)"
     ],
     "risk": {
-     "score": 35.8,
+     "score": 35.6,
      "level_ar": "متوسط 🟡",
      "factors": {
       "volatility": 0.386,
       "regime": 0.4,
       "novelty": 0.0,
-      "disagreement": 0.738,
-      "uncertainty": 0.933,
+      "disagreement": 0.741,
+      "uncertainty": 0.915,
       "stop_distance": 0.149,
       "crowding": 0.0,
       "portfolio_heat": 0.0,
@@ -220,11 +1004,11 @@
       "track_record": 0.5
      },
      "top_reasons_ar": [
-      "ضعف الإشارة (93%)",
+      "ضعف الإشارة (92%)",
       "اختلاف الوكلاء (74%)",
       "حالة السوق (40%)"
      ],
-     "size_multiplier": 0.789,
+     "size_multiplier": 0.791,
      "blocked": false,
      "loss_if_stopped_pct": null,
      "loss_probability": null,
@@ -241,7 +1025,7 @@
     "  technical: score -0.41, conf 0.72 | momentum(168)=-0.89; MACD hist/ATR=-0.02",
     "  price_action: score -0.75, conf 0.70 | swing structure=-1.0 (HH/HL=+1, LH/LL=-1); position in 100-bar range=0.31",
     "  mean_reversion: score +0.38, conf 0.58 | z-score vs 50-bar mean=-1.30; RSI(3)=46",
-    "  liquidity_flow: score -0.05, conf 0.50 | order-book imbalance (±25bps)=-0.03; spread=0.2bps",
+    "  liquidity_flow: score -0.15, conf 0.50 | order-book imbalance (±25bps)=-0.24; spread=0.2bps",
     "  stat_arb: score +0.35, conf 0.28 | pair vs BTCUSDT: corr=0.93, beta=0.88, spread z=-0.88",
     "  sentiment: score +0.57, conf 0.43 | Fear & Greed = 13 (extreme fear), 7-day change +2",
     "  fundamental: ABSTAINS - no macro calendar / fundamental feed configured",
@@ -249,7 +1033,7 @@
     "  strongest bull (sentiment): Fear & Greed = 13 (extreme fear), 7-day change +2",
     "  strongest bear (price_action): swing structure=-1.0 (HH/HL=+1, LH/LL=-1)",
     "  contrarian: price path is mostly noise (efficiency ratio low) (severity 0.2)",
-    "ROUND 3 - synthesis: edge -0.048, disagreement 0.44, conviction 0.027",
+    "ROUND 3 - synthesis: edge -0.061, disagreement 0.44, conviction 0.034",
     "DECISION: stand aside - no validated strategy has an opinion - discretionary views alone may not open trades"
    ],
    "risk": null,
@@ -282,9 +1066,268 @@
     "model": {
      "status": "uncalibrated",
      "p_up": null,
-     "oos_ece": 0.0434,
+     "oos_ece": 0.0428,
      "oos_brier": 0.2543,
      "base_brier": 0.2494,
+     "horizon_bars": 24,
+     "note": "model is not reliably better than a coin flip out-of-sample; no probability shown"
+    }
+   }
+  },
+  "XRPUSDT": {
+   "price": 0.9081,
+   "regime": {
+    "label": "weak_trend",
+    "label_ar": "اتجاه ضعيف",
+    "confidence": 0.5,
+    "cluster": 0,
+    "novelty": 0.073,
+    "evidence": {
+     "er": 0.037,
+     "adx": 21.729,
+     "mom_168": -0.623,
+     "vol_pct": 0.604,
+     "ret_1": -0.101,
+     "volume_z": -0.741,
+     "z200": -1.284
+    },
+    "family_weights": {
+     "momentum": 0.6,
+     "breakout": 0.5,
+     "mean_reversion": 0.5,
+     "volatility": 0.5
+    }
+   },
+   "direction": 0,
+   "conviction": 0.0045,
+   "action": "لا شيء",
+   "explanation_ar": "🔎 XRPUSDT: السوق دلوقتي في حالة «اتجاه ضعيف».\n🧠 نتيجة نقاش الوكلاء: انتظار بدون صفقة، قوة الإشارة 0%، والاختلاف بينهم 51%.\n✋ السبب: لسه مفيش استراتيجية نجحت في كل الاختبارات على العملة دي.\n🥊 المحلل المعاكس اعترض: 1 اعتراض.\n✅ الإجراء: لا شيء",
+   "opinions": [
+    {
+     "agent": "market_intelligence",
+     "score": 0.0,
+     "confidence": 0.48175,
+     "style": "context",
+     "evidence": [
+      "regime=weak_trend (conf 0.50)",
+      "novelty=0.07",
+      "cluster=0"
+     ],
+     "invalidation": "regime label flips on next bars",
+     "abstain": false,
+     "adjusted_confidence": 0.48175,
+     "challenges": []
+    },
+    {
+     "agent": "quant_research",
+     "score": 0.0,
+     "confidence": 0.0,
+     "style": "evidence",
+     "evidence": [
+      "no validated strategy for this symbol yet"
+     ],
+     "invalidation": "",
+     "abstain": true,
+     "adjusted_confidence": null,
+     "challenges": []
+    },
+    {
+     "agent": "technical",
+     "score": -0.3448729032253319,
+     "confidence": 0.5432370604380552,
+     "style": "trend",
+     "evidence": [
+      "momentum(168)=-0.62",
+      "MACD hist/ATR=-0.04",
+      "RSI=38",
+      "ADX=22"
+     ],
+     "invalidation": "momentum turns negative / ADX collapses below 15",
+     "abstain": false,
+     "adjusted_confidence": 0.43458964835044417,
+     "challenges": [
+      "contrarian challenges cut confidence x0.80"
+     ]
+    },
+    {
+     "agent": "price_action",
+     "score": -0.8473575840768701,
+     "confidence": 0.7,
+     "style": "trend",
+     "evidence": [
+      "swing structure=-1.0 (HH/HL=+1, LH/LL=-1)",
+      "position in 100-bar range=0.19"
+     ],
+     "invalidation": "break of the last confirmed swing low/high",
+     "abstain": false,
+     "adjusted_confidence": 0.5599999999999999,
+     "challenges": [
+      "contrarian challenges cut confidence x0.80"
+     ]
+    },
+    {
+     "agent": "mean_reversion",
+     "score": 0.5812004527211689,
+     "confidence": 0.6189543940404684,
+     "style": "reversion",
+     "evidence": [
+      "z-score vs 50-bar mean=-1.29",
+      "RSI(3)=20",
+      "efficiency ratio=0.04"
+     ],
+     "invalidation": "price keeps extending with rising efficiency ratio (a real trend)",
+     "abstain": false,
+     "adjusted_confidence": 0.5261112349343982,
+     "challenges": [
+      "its camp's best argument was weaker than the other side's"
+     ]
+    },
+    {
+     "agent": "liquidity_flow",
+     "score": 0.0916714218899962,
+     "confidence": 0.5,
+     "style": "flow",
+     "evidence": [
+      "order-book imbalance (±25bps)=+0.07",
+      "spread=1.1bps",
+      "funding=-0.0095% (positive = longs crowded)",
+      "volume z-score=-0.74"
+     ],
+     "invalidation": "imbalance flips / funding normalises",
+     "abstain": false,
+     "adjusted_confidence": 0.5,
+     "challenges": []
+    },
+    {
+     "agent": "stat_arb",
+     "score": 0.071761109088089,
+     "confidence": 0.051899822437627446,
+     "style": "relative",
+     "evidence": [
+      "pair vs SOLUSDT: corr=0.87, beta=0.82, spread z=-0.18"
+     ],
+     "invalidation": "correlation breaks down (corr < 0.5) or spread keeps widening",
+     "abstain": false,
+     "adjusted_confidence": 0.051899822437627446,
+     "challenges": []
+    },
+    {
+     "agent": "sentiment",
+     "score": 0.5666666666666667,
+     "confidence": 0.4266666666666667,
+     "style": "flow",
+     "evidence": [
+      "Fear & Greed = 13 (extreme fear), 7-day change +2"
+     ],
+     "invalidation": "sentiment keeps getting more extreme in the same direction",
+     "abstain": false,
+     "adjusted_confidence": 0.4266666666666667,
+     "challenges": []
+    },
+    {
+     "agent": "fundamental",
+     "score": 0.0,
+     "confidence": 0.0,
+     "style": "context",
+     "evidence": [
+      "no macro calendar / fundamental feed configured"
+     ],
+     "invalidation": "",
+     "abstain": true,
+     "adjusted_confidence": null,
+     "challenges": []
+    }
+   ],
+   "coach": {
+    "symbol": "XRPUSDT",
+    "kind": "WAIT",
+    "icon": "⏸️",
+    "title_ar": "استنى في XRP",
+    "lines_ar": [
+     "مفيش فرصة مؤكدة دلوقتي: لسه مفيش استراتيجية نجحت في كل الاختبارات على العملة دي.",
+     "نسبة الخطر: 38% (متوسط 🟡). أهم الأسباب: ضعف الإشارة (99%), اختلاف الوكلاء (85%), حالة السوق (40%)"
+    ],
+    "risk": {
+     "score": 37.8,
+     "level_ar": "متوسط 🟡",
+     "factors": {
+      "volatility": 0.362,
+      "regime": 0.4,
+      "novelty": 0.0,
+      "disagreement": 0.849,
+      "uncertainty": 0.989,
+      "stop_distance": 0.221,
+      "crowding": 0.0,
+      "portfolio_heat": 0.0,
+      "events": 0.0,
+      "track_record": 0.5
+     },
+     "top_reasons_ar": [
+      "ضعف الإشارة (99%)",
+      "اختلاف الوكلاء (85%)",
+      "حالة السوق (40%)"
+     ],
+     "size_multiplier": 0.76,
+     "blocked": false,
+     "loss_if_stopped_pct": null,
+     "loss_probability": null,
+     "loss_probability_basis": null,
+     "extra": {
+      "stop_pct": 2.99
+     }
+    }
+   },
+   "transcript": [
+    "ROUND 1 - independent opinions",
+    "  market_intelligence: score +0.00, conf 0.48 | regime=weak_trend (conf 0.50); novelty=0.07",
+    "  quant_research: ABSTAINS - no validated strategy for this symbol yet",
+    "  technical: score -0.34, conf 0.54 | momentum(168)=-0.62; MACD hist/ATR=-0.04",
+    "  price_action: score -0.85, conf 0.70 | swing structure=-1.0 (HH/HL=+1, LH/LL=-1); position in 100-bar range=0.19",
+    "  mean_reversion: score +0.58, conf 0.62 | z-score vs 50-bar mean=-1.29; RSI(3)=20",
+    "  liquidity_flow: score +0.09, conf 0.50 | order-book imbalance (±25bps)=+0.07; spread=1.1bps",
+    "  stat_arb: score +0.07, conf 0.05 | pair vs SOLUSDT: corr=0.87, beta=0.82, spread z=-0.18",
+    "  sentiment: score +0.57, conf 0.43 | Fear & Greed = 13 (extreme fear), 7-day change +2",
+    "  fundamental: ABSTAINS - no macro calendar / fundamental feed configured",
+    "ROUND 2 - cross-examination",
+    "  strongest bull (mean_reversion): z-score vs 50-bar mean=-1.29",
+    "  strongest bear (price_action): swing structure=-1.0 (HH/HL=+1, LH/LL=-1)",
+    "  contrarian: price path is mostly noise (efficiency ratio low) (severity 0.2)",
+    "ROUND 3 - synthesis: edge -0.009, disagreement 0.51, conviction 0.004",
+    "DECISION: stand aside - no validated strategy has an opinion - discretionary views alone may not open trades"
+   ],
+   "risk": null,
+   "forecast": {
+    "scenarios": {
+     "horizon_bars": 24,
+     "basis": "7638 past bars in regime 'weak_trend'",
+     "kind": "historical frequency, not a guarantee",
+     "bullish": {
+      "move": 0.0203638213602897,
+      "freq": 0.22322597538622677
+     },
+     "neutral": {
+      "range": [
+       -0.012178915072032311,
+       0.0072843433127809725
+      ],
+      "freq": 0.48939512961508247
+     },
+     "bearish": {
+      "move": -0.026576918600766185,
+      "freq": 0.28737889499869074
+     },
+     "unexpected_event": {
+      "down_tail": -0.09284888205679895,
+      "up_tail": 0.10022921021835095,
+      "freq": 0.02
+     }
+    },
+    "model": {
+     "status": "uncalibrated",
+     "p_up": null,
+     "oos_ece": 0.0452,
+     "oos_brier": 0.2519,
+     "base_brier": 0.2486,
      "horizon_bars": 24,
      "note": "model is not reliably better than a coin flip out-of-sample; no probability shown"
     }
@@ -292,12 +1335,22 @@
   }
  },
  "lab": {
-  "strategies_total": 14,
-  "variants_tested": 675,
+  "strategies_total": 68,
+  "variants_tested": 3326,
   "validated": 0,
-  "rejected": 14,
+  "rejected": 68,
   "inactive": 0,
   "leaderboard": [
+   {
+    "id": "2c760ab58f41",
+    "name": "GA-329c6d",
+    "family": "momentum",
+    "status": "rejected",
+    "valid_sharpe": 0.8161,
+    "holdout_sharpe": 1.6652,
+    "dsr": 0.5676,
+    "p_value": null
+   },
    {
     "id": "aae15328b9cf",
     "name": "GA-52a614",
@@ -319,6 +1372,36 @@
     "p_value": null
    },
    {
+    "id": "f63dc78fd8a0",
+    "name": "GA-645263",
+    "family": "momentum",
+    "status": "rejected",
+    "valid_sharpe": 1.2894,
+    "holdout_sharpe": -0.4018,
+    "dsr": 0.0963,
+    "p_value": null
+   },
+   {
+    "id": "6b30d2bb2d7e",
+    "name": "GA-25aa4f",
+    "family": "volatility",
+    "status": "rejected",
+    "valid_sharpe": 0.855,
+    "holdout_sharpe": -0.727,
+    "dsr": 0.0513,
+    "p_value": null
+   },
+   {
+    "id": "be2ba9831c28",
+    "name": "GA-584e8f",
+    "family": "momentum",
+    "status": "rejected",
+    "valid_sharpe": 1.8245,
+    "holdout_sharpe": null,
+    "dsr": null,
+    "p_value": null
+   },
+   {
     "id": "571281c9160f",
     "name": "GA-52a614 (BO)",
     "family": "momentum",
@@ -329,192 +1412,386 @@
     "p_value": null
    },
    {
-    "id": "c826d5dc2def",
-    "name": "GA-7fda9d (BO)",
-    "family": "momentum",
-    "status": "rejected",
-    "valid_sharpe": -0.3094,
-    "holdout_sharpe": null,
-    "dsr": null,
-    "p_value": null
-   },
-   {
-    "id": "36fef104d68a",
-    "name": "GA-fd6f51",
-    "family": "volatility",
-    "status": "rejected",
-    "valid_sharpe": -1.1833,
-    "holdout_sharpe": null,
-    "dsr": null,
-    "p_value": null
-   },
-   {
-    "id": "bdc326472ca2",
-    "name": "GA-fd6f51 (BO)",
-    "family": "volatility",
-    "status": "rejected",
-    "valid_sharpe": -1.1833,
-    "holdout_sharpe": null,
-    "dsr": null,
-    "p_value": null
-   },
-   {
-    "id": "9dc405055064",
-    "name": "GA-7fda9d",
-    "family": "momentum",
-    "status": "rejected",
-    "valid_sharpe": -1.2124,
-    "holdout_sharpe": null,
-    "dsr": null,
-    "p_value": null
-   },
-   {
-    "id": "bb47e919eed4",
-    "name": "GA-a8c543",
+    "id": "224355167e27",
+    "name": "GA-798041",
     "family": "mean_reversion",
     "status": "rejected",
-    "valid_sharpe": -1.6388,
+    "valid_sharpe": 1.3701,
     "holdout_sharpe": null,
     "dsr": null,
     "p_value": null
    },
    {
-    "id": "34f1599b135f",
-    "name": "GA-8eecfe",
-    "family": "mean_reversion",
-    "status": "rejected",
-    "valid_sharpe": -1.6928,
-    "holdout_sharpe": null,
-    "dsr": null,
-    "p_value": null
-   },
-   {
-    "id": "dd6a9bd06d2e",
-    "name": "GA-98f938",
-    "family": "mean_reversion",
-    "status": "rejected",
-    "valid_sharpe": -2.2031,
-    "holdout_sharpe": null,
-    "dsr": null,
-    "p_value": null
-   },
-   {
-    "id": "6c04f99b4932",
-    "name": "ML-all-48h",
-    "family": "ml",
-    "status": "rejected",
-    "valid_sharpe": -2.5428,
-    "holdout_sharpe": null,
-    "dsr": null,
-    "p_value": null
-   },
-   {
-    "id": "03f1b2b612d5",
-    "name": "GA-c47f8b",
+    "id": "3542e3325631",
+    "name": "GA-c5da0a",
     "family": "volatility",
     "status": "rejected",
-    "valid_sharpe": -2.6255,
+    "valid_sharpe": 0.5478,
     "holdout_sharpe": null,
     "dsr": null,
     "p_value": null
    },
    {
-    "id": "c72272522031",
-    "name": "GA-7a5d01",
-    "family": "momentum",
+    "id": "da2ed83c2a4a",
+    "name": "GA-196ee3",
+    "family": "mean_reversion",
     "status": "rejected",
-    "valid_sharpe": -2.8801,
+    "valid_sharpe": 0.3072,
     "holdout_sharpe": null,
     "dsr": null,
     "p_value": null
    },
    {
-    "id": "62c161fb6c24",
-    "name": "GA-30e298",
-    "family": "momentum",
+    "id": "af172c113ce4",
+    "name": "GA-169c7f",
+    "family": "mean_reversion",
     "status": "rejected",
-    "valid_sharpe": -2.995,
+    "valid_sharpe": 0.3072,
+    "holdout_sharpe": null,
+    "dsr": null,
+    "p_value": null
+   },
+   {
+    "id": "e599bb2b31d5",
+    "name": "GA-ae86bb",
+    "family": "volatility",
+    "status": "rejected",
+    "valid_sharpe": 0.1374,
+    "holdout_sharpe": null,
+    "dsr": null,
+    "p_value": null
+   },
+   {
+    "id": "d47f6b309c36",
+    "name": "GA-9af450",
+    "family": "mean_reversion",
+    "status": "rejected",
+    "valid_sharpe": 0.1054,
+    "holdout_sharpe": null,
+    "dsr": null,
+    "p_value": null
+   },
+   {
+    "id": "62f06a0434d5",
+    "name": "GA-8ca024",
+    "family": "volatility",
+    "status": "rejected",
+    "valid_sharpe": -0.0265,
+    "holdout_sharpe": null,
+    "dsr": null,
+    "p_value": null
+   },
+   {
+    "id": "a9ad3095771d",
+    "name": "GA-decd7d",
+    "family": "mean_reversion",
+    "status": "rejected",
+    "valid_sharpe": -0.0609,
     "holdout_sharpe": null,
     "dsr": null,
     "p_value": null
    }
   ],
   "this_cycle": {
-   "BNBUSDT": {
-    "symbol": "BNBUSDT",
+   "BTCUSDT": {
+    "symbol": "BTCUSDT",
     "source": "market",
-    "screened": 675,
+    "screened": 672,
     "validated": [],
     "rejected": [
      {
-      "id": "aae15328b9cf",
-      "name": "GA-52a614",
-      "reason": "deflated Sharpe 0.56 < 0.95 after 1 holdout tests (could be luck)"
+      "id": "b4cc48058608",
+      "name": "GA-92be6a",
+      "reason": "validation failed (Sharpe -0.84, 37 trades)"
      },
      {
-      "id": "9dc405055064",
-      "name": "GA-7fda9d",
-      "reason": "validation failed (Sharpe -1.21, 12 trades)"
+      "id": "97c4eb893395",
+      "name": "GA-9961ff",
+      "reason": "validation failed (Sharpe -0.21, 12 trades)"
      },
      {
-      "id": "36fef104d68a",
-      "name": "GA-fd6f51",
-      "reason": "validation failed (Sharpe -1.18, 19 trades)"
+      "id": "922d36d1bdfc",
+      "name": "GA-42c422",
+      "reason": "validation failed (Sharpe -0.51, 23 trades)"
      },
      {
-      "id": "9517ee03b9d5",
-      "name": "GA-6b421a",
-      "reason": "deflated Sharpe 0.36 < 0.95 after 2 holdout tests (could be luck)"
+      "id": "224355167e27",
+      "name": "GA-798041",
+      "reason": "validation failed (Sharpe 1.37, 9 trades)"
      },
      {
-      "id": "bb47e919eed4",
-      "name": "GA-a8c543",
-      "reason": "validation failed (Sharpe -1.64, 37 trades)"
+      "id": "33257aa482e1",
+      "name": "GA-7b2bdb",
+      "reason": "validation failed (Sharpe -1.21, 39 trades)"
      },
      {
-      "id": "62c161fb6c24",
-      "name": "GA-30e298",
-      "reason": "validation failed (Sharpe -2.99, 8 trades)"
+      "id": "2c760ab58f41",
+      "name": "GA-329c6d",
+      "reason": "deflated Sharpe 0.57 < 0.95 after 3 holdout tests (could be luck)"
      },
      {
-      "id": "c72272522031",
-      "name": "GA-7a5d01",
-      "reason": "validation failed (Sharpe -2.88, 66 trades)"
+      "id": "5af64a1df0ca",
+      "name": "GA-e47458",
+      "reason": "validation failed (Sharpe -0.40, 15 trades)"
      },
      {
-      "id": "34f1599b135f",
-      "name": "GA-8eecfe",
-      "reason": "validation failed (Sharpe -1.69, 35 trades)"
+      "id": "4f3ccacad310",
+      "name": "GA-bb7229",
+      "reason": "validation failed (Sharpe -0.40, 15 trades)"
      },
      {
-      "id": "03f1b2b612d5",
-      "name": "GA-c47f8b",
-      "reason": "validation failed (Sharpe -2.63, 33 trades)"
+      "id": "f63dc78fd8a0",
+      "name": "GA-645263",
+      "reason": "holdout Sharpe -0.40 <= 0"
      },
      {
-      "id": "dd6a9bd06d2e",
-      "name": "GA-98f938",
-      "reason": "validation failed (Sharpe -2.20, 36 trades)"
+      "id": "be2ba9831c28",
+      "name": "GA-584e8f",
+      "reason": "fragile: nearby parameters give Sharpe -0.38 vs 1.82 (knife-edge fit)"
      },
      {
-      "id": "571281c9160f",
-      "name": "GA-52a614 (BO)",
-      "reason": "fragile: nearby parameters give Sharpe -0.04 vs 1.66 (knife-edge fit)"
+      "id": "cafe11c5031c",
+      "name": "GA-92be6a (BO)",
+      "reason": "validation failed (Sharpe -0.84, 37 trades)"
      },
      {
-      "id": "c826d5dc2def",
-      "name": "GA-7fda9d (BO)",
-      "reason": "validation failed (Sharpe -0.31, 11 trades)"
+      "id": "d52ef57913c9",
+      "name": "GA-9961ff (BO)",
+      "reason": "validation failed (Sharpe -0.32, 12 trades)"
      },
      {
-      "id": "bdc326472ca2",
-      "name": "GA-fd6f51 (BO)",
-      "reason": "validation failed (Sharpe -1.18, 19 trades)"
+      "id": "c71cd3a8bdcd",
+      "name": "GA-42c422 (BO)",
+      "reason": "validation failed (Sharpe -0.51, 23 trades)"
      },
      {
-      "id": "6c04f99b4932",
-      "name": "ML-all-48h",
-      "reason": "validation failed (Sharpe -2.54, 105 trades)"
+      "id": "9f75e155a09c",
+      "name": "ML-reversion-24h",
+      "reason": "validation failed (Sharpe -5.06, 139 trades)"
+     }
+    ]
+   },
+   "ETHUSDT": {
+    "symbol": "ETHUSDT",
+    "source": "market",
+    "screened": 661,
+    "validated": [],
+    "rejected": [
+     {
+      "id": "6b30d2bb2d7e",
+      "name": "GA-25aa4f",
+      "reason": "holdout Sharpe -0.73 <= 0"
+     },
+     {
+      "id": "3542e3325631",
+      "name": "GA-c5da0a",
+      "reason": "fragile: nearby parameters give Sharpe -0.75 vs 0.55 (knife-edge fit)"
+     },
+     {
+      "id": "62f06a0434d5",
+      "name": "GA-8ca024",
+      "reason": "validation failed (Sharpe -0.03, 22 trades)"
+     },
+     {
+      "id": "45899590b007",
+      "name": "GA-4b83be",
+      "reason": "validation failed (Sharpe -0.47, 23 trades)"
+     },
+     {
+      "id": "a9ad3095771d",
+      "name": "GA-decd7d",
+      "reason": "validation failed (Sharpe -0.06, 27 trades)"
+     },
+     {
+      "id": "c3388fda42fa",
+      "name": "GA-c7a1f9",
+      "reason": "validation failed (Sharpe -0.47, 23 trades)"
+     },
+     {
+      "id": "36dcf3c278f7",
+      "name": "GA-deae29",
+      "reason": "validation failed (Sharpe -0.47, 23 trades)"
+     },
+     {
+      "id": "640b1887d13c",
+      "name": "GA-ab3741",
+      "reason": "validation failed (Sharpe -0.47, 23 trades)"
+     },
+     {
+      "id": "1b8f17b14c4c",
+      "name": "GA-e37af1",
+      "reason": "validation failed (Sharpe -0.47, 23 trades)"
+     },
+     {
+      "id": "cc18145a00b4",
+      "name": "GA-9af450",
+      "reason": "validation failed (Sharpe -0.47, 23 trades)"
+     },
+     {
+      "id": "bc80a8de952a",
+      "name": "GA-c5da0a (BO)",
+      "reason": "validation failed (Sharpe -2.25, 22 trades)"
+     },
+     {
+      "id": "60b5178395f8",
+      "name": "GA-8ca024 (BO)",
+      "reason": "validation failed (Sharpe -0.12, 21 trades)"
+     },
+     {
+      "id": "85fe9555142d",
+      "name": "ML-reversion-12h",
+      "reason": "validation failed (Sharpe -3.25, 192 trades)"
+     }
+    ]
+   },
+   "SOLUSDT": {
+    "symbol": "SOLUSDT",
+    "source": "market",
+    "screened": 664,
+    "validated": [],
+    "rejected": [
+     {
+      "id": "d66926bca8ce",
+      "name": "GA-a2cc8c",
+      "reason": "validation failed (Sharpe -1.63, 14 trades)"
+     },
+     {
+      "id": "ef5cd3e1e63f",
+      "name": "GA-fd24b2",
+      "reason": "validation failed (Sharpe -1.63, 14 trades)"
+     },
+     {
+      "id": "6823414bc465",
+      "name": "GA-7fe1ca",
+      "reason": "validation failed (Sharpe -0.50, 29 trades)"
+     },
+     {
+      "id": "e599bb2b31d5",
+      "name": "GA-ae86bb",
+      "reason": "edge disappears when trading costs double"
+     },
+     {
+      "id": "ed8e56a4a29d",
+      "name": "GA-95b3de",
+      "reason": "validation failed (Sharpe -2.10, 24 trades)"
+     },
+     {
+      "id": "d83c8d8ba38d",
+      "name": "GA-deae29",
+      "reason": "validation failed (Sharpe -0.50, 29 trades)"
+     },
+     {
+      "id": "48357357a544",
+      "name": "GA-ab3741",
+      "reason": "validation failed (Sharpe -0.50, 29 trades)"
+     },
+     {
+      "id": "4ed76c952e2e",
+      "name": "GA-34dd64",
+      "reason": "validation failed (Sharpe -1.02, 17 trades)"
+     },
+     {
+      "id": "736971f9979f",
+      "name": "GA-0ccc5c",
+      "reason": "validation failed (Sharpe -0.87, 29 trades)"
+     },
+     {
+      "id": "ee658e7661e8",
+      "name": "Vol-squeeze expansion",
+      "reason": "validation failed (Sharpe -0.61, 35 trades)"
+     },
+     {
+      "id": "4cf91f5508b3",
+      "name": "GA-a2cc8c (BO)",
+      "reason": "validation failed (Sharpe -1.63, 14 trades)"
+     },
+     {
+      "id": "44e8ac2a8611",
+      "name": "GA-fd24b2 (BO)",
+      "reason": "validation failed (Sharpe -1.63, 14 trades)"
+     },
+     {
+      "id": "f05b0bf87681",
+      "name": "GA-7fe1ca (BO)",
+      "reason": "validation failed (Sharpe -0.50, 29 trades)"
+     },
+     {
+      "id": "fa8def159a3e",
+      "name": "ML-reversion-48h",
+      "reason": "validation failed (Sharpe -1.06, 121 trades)"
+     }
+    ]
+   },
+   "XRPUSDT": {
+    "symbol": "XRPUSDT",
+    "source": "market",
+    "screened": 654,
+    "validated": [],
+    "rejected": [
+     {
+      "id": "3e6535314d03",
+      "name": "GA-709836",
+      "reason": "validation failed (Sharpe -2.14, 12 trades)"
+     },
+     {
+      "id": "eefa67d7ab85",
+      "name": "GA-e47458",
+      "reason": "validation failed (Sharpe -2.75, 71 trades)"
+     },
+     {
+      "id": "5fc338d56b62",
+      "name": "GA-6c75c7",
+      "reason": "validation failed (Sharpe -1.56, 10 trades)"
+     },
+     {
+      "id": "da2ed83c2a4a",
+      "name": "GA-196ee3",
+      "reason": "unstable: profitable in only 3/6 time periods"
+     },
+     {
+      "id": "566ffceb0ba6",
+      "name": "GA-b90ac6",
+      "reason": "validation failed (Sharpe -5.43, 21 trades)"
+     },
+     {
+      "id": "af172c113ce4",
+      "name": "GA-169c7f",
+      "reason": "unstable: profitable in only 3/6 time periods"
+     },
+     {
+      "id": "cbff27f79f05",
+      "name": "GA-f33a06",
+      "reason": "validation failed (Sharpe -1.86, 29 trades)"
+     },
+     {
+      "id": "646276658858",
+      "name": "GA-062304",
+      "reason": "validation failed (Sharpe -2.45, 90 trades)"
+     },
+     {
+      "id": "f4878e328d70",
+      "name": "GA-b33f74",
+      "reason": "validation failed (Sharpe -1.69, 5 trades)"
+     },
+     {
+      "id": "d47f6b309c36",
+      "name": "GA-9af450",
+      "reason": "unstable: profitable in only 3/6 time periods"
+     },
+     {
+      "id": "16596a83ea8b",
+      "name": "GA-709836 (BO)",
+      "reason": "validation failed (Sharpe -4.37, 11 trades)"
+     },
+     {
+      "id": "ef13edea96e6",
+      "name": "GA-e47458 (BO)",
+      "reason": "validation failed (Sharpe -1.75, 71 trades)"
+     },
+     {
+      "id": "095bfe052bfc",
+      "name": "GA-6c75c7 (BO)",
+      "reason": "validation failed (Sharpe -0.99, 22 trades)"
      }
     ]
    }
@@ -536,7 +1813,7 @@
   "risk": "balanced"
  },
  "guidance": {
-  "market_risk": 35.8,
+  "market_risk": 36.5,
   "market_risk_ar": "متوسط",
   "do_ar": [
    "السوق هادي نسبيًا. نفّذ الإشارات بالحجم المكتوب بس.",
@@ -554,31 +1831,6 @@
  "research": {
   "backlog": [
    {
-    "title": "SOLUSDT: mom_168 x h4_adx_14 predicts 24-bar return",
-    "kind": "interaction",
-    "priority": 0.9494
-   },
-   {
-    "title": "SOLUSDT: don_100 x vol_pct_500 predicts 24-bar return",
-    "kind": "interaction",
-    "priority": 0.9081
-   },
-   {
-    "title": "SOLUSDT: z_close_50 x vol_pct_500 predicts 24-bar return",
-    "kind": "interaction",
-    "priority": 0.8926
-   },
-   {
-    "title": "SOLUSDT: z_close_200 x h4_adx_14 predicts 24-bar return",
-    "kind": "interaction",
-    "priority": 0.8896
-   },
-   {
-    "title": "SOLUSDT: h4_mom_42 x h4_adx_14 predicts 24-bar return",
-    "kind": "interaction",
-    "priority": 0.8743
-   },
-   {
     "title": "SOLUSDT: mom_24 x vol_pct_500 predicts 24-bar return",
     "kind": "interaction",
     "priority": 0.8477
@@ -594,19 +1846,9 @@
     "priority": 0.8299
    },
    {
-    "title": "XRPUSDT: z_close_200 x don_20 predicts 24-bar return",
-    "kind": "interaction",
-    "priority": 0.8188
-   },
-   {
     "title": "SOLUSDT: vwap_dev_24 x h4_adx_14 predicts 24-bar return",
     "kind": "interaction",
     "priority": 0.817
-   },
-   {
-    "title": "XRPUSDT: z_close_200 x vwap_dev_24 predicts 24-bar return",
-    "kind": "interaction",
-    "priority": 0.8095
    },
    {
     "title": "SOLUSDT: pctb_20 x h4_adx_14 predicts 24-bar return",
@@ -614,146 +1856,362 @@
     "priority": 0.8006
    },
    {
-    "title": "XRPUSDT: z_close_200 x pctb_20 predicts 24-bar return",
-    "kind": "interaction",
-    "priority": 0.7859
-   },
-   {
-    "title": "XRPUSDT: z_close_50 x vwap_dev_24 predicts 24-bar return",
-    "kind": "interaction",
-    "priority": 0.7855
-   },
-   {
     "title": "SOLUSDT: vol_pct_500 x h4_rsi_14 predicts 24-bar return",
     "kind": "interaction",
     "priority": 0.77
+   },
+   {
+    "title": "XRPUSDT: don_20 x don_100 predicts 24-bar return",
+    "kind": "interaction",
+    "priority": 0.7578
+   },
+   {
+    "title": "XRPUSDT: mom_24 x h4_rsi_14 predicts 24-bar return",
+    "kind": "interaction",
+    "priority": 0.7576
+   },
+   {
+    "title": "SOLUSDT: z_close_200 x vol_pct_500 predicts 24-bar return",
+    "kind": "interaction",
+    "priority": 0.744
+   },
+   {
+    "title": "XRPUSDT: z_close_200 x macdh_norm predicts 24-bar return",
+    "kind": "interaction",
+    "priority": 0.7426
+   },
+   {
+    "title": "SOLUSDT: don_20 x vol_pct_500 predicts 24-bar return",
+    "kind": "interaction",
+    "priority": 0.7301
+   },
+   {
+    "title": "XRPUSDT: macdh_norm x h4_rsi_14 predicts 24-bar return",
+    "kind": "interaction",
+    "priority": 0.7252
+   },
+   {
+    "title": "XRPUSDT: rsi_14 x vwap_dev_24 predicts 24-bar return",
+    "kind": "interaction",
+    "priority": 0.7219
+   },
+   {
+    "title": "XRPUSDT: mom_24 x vwap_dev_24 predicts 24-bar return",
+    "kind": "interaction",
+    "priority": 0.706
+   },
+   {
+    "title": "SOLUSDT: vol_pct_500 x vwap_dev_24 predicts 24-bar return",
+    "kind": "interaction",
+    "priority": 0.7025
    }
   ],
   "insights": [
    {
     "ts": "2026-11-25T13:29:29+00:00",
     "text": "BNBUSDT: tested 675 strategy variants; 0 passed every gate, 14 finalists rejected."
+   },
+   {
+    "ts": "2026-11-25T13:32:32+00:00",
+    "text": "BTCUSDT: tested 672 strategy variants; 0 passed every gate, 14 finalists rejected."
+   },
+   {
+    "ts": "2026-11-25T13:32:45+00:00",
+    "text": "ETHUSDT: tested 661 strategy variants; 0 passed every gate, 13 finalists rejected."
+   },
+   {
+    "ts": "2026-11-25T13:32:57+00:00",
+    "text": "SOLUSDT: tested 664 strategy variants; 0 passed every gate, 14 finalists rejected."
+   },
+   {
+    "ts": "2026-11-25T13:33:10+00:00",
+    "text": "XRPUSDT: tested 654 strategy variants; 0 passed every gate, 13 finalists rejected."
    }
   ]
  },
  "learning_history": [
   {
-   "ts": "2026-11-25T13:29:28+00:00",
-   "strategy": "aae15328b9cf",
-   "name": "GA-52a614",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "6b30d2bb2d7e",
+   "name": "GA-25aa4f",
    "status": "rejected",
-   "reason": "deflated Sharpe 0.56 < 0.95 after 1 holdout tests (could be luck)"
+   "reason": "holdout Sharpe -0.73 <= 0"
   },
   {
-   "ts": "2026-11-25T13:29:28+00:00",
-   "strategy": "9dc405055064",
-   "name": "GA-7fda9d",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "3542e3325631",
+   "name": "GA-c5da0a",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -1.21, 12 trades)"
+   "reason": "fragile: nearby parameters give Sharpe -0.75 vs 0.55 (knife-edge fit)"
   },
   {
-   "ts": "2026-11-25T13:29:28+00:00",
-   "strategy": "36fef104d68a",
-   "name": "GA-fd6f51",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "62f06a0434d5",
+   "name": "GA-8ca024",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -1.18, 19 trades)"
+   "reason": "validation failed (Sharpe -0.03, 22 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:28+00:00",
-   "strategy": "9517ee03b9d5",
-   "name": "GA-6b421a",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "45899590b007",
+   "name": "GA-4b83be",
    "status": "rejected",
-   "reason": "deflated Sharpe 0.36 < 0.95 after 2 holdout tests (could be luck)"
+   "reason": "validation failed (Sharpe -0.47, 23 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:28+00:00",
-   "strategy": "bb47e919eed4",
-   "name": "GA-a8c543",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "a9ad3095771d",
+   "name": "GA-decd7d",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -1.64, 37 trades)"
+   "reason": "validation failed (Sharpe -0.06, 27 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:28+00:00",
-   "strategy": "62c161fb6c24",
-   "name": "GA-30e298",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "c3388fda42fa",
+   "name": "GA-c7a1f9",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -2.99, 8 trades)"
+   "reason": "validation failed (Sharpe -0.47, 23 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:28+00:00",
-   "strategy": "c72272522031",
-   "name": "GA-7a5d01",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "36dcf3c278f7",
+   "name": "GA-deae29",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -2.88, 66 trades)"
+   "reason": "validation failed (Sharpe -0.47, 23 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:28+00:00",
-   "strategy": "34f1599b135f",
-   "name": "GA-8eecfe",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "640b1887d13c",
+   "name": "GA-ab3741",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -1.69, 35 trades)"
+   "reason": "validation failed (Sharpe -0.47, 23 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:28+00:00",
-   "strategy": "03f1b2b612d5",
-   "name": "GA-c47f8b",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "1b8f17b14c4c",
+   "name": "GA-e37af1",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -2.63, 33 trades)"
+   "reason": "validation failed (Sharpe -0.47, 23 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:28+00:00",
-   "strategy": "dd6a9bd06d2e",
-   "name": "GA-98f938",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "cc18145a00b4",
+   "name": "GA-9af450",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -2.20, 36 trades)"
+   "reason": "validation failed (Sharpe -0.47, 23 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:29+00:00",
-   "strategy": "571281c9160f",
-   "name": "GA-52a614 (BO)",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "bc80a8de952a",
+   "name": "GA-c5da0a (BO)",
    "status": "rejected",
-   "reason": "fragile: nearby parameters give Sharpe -0.04 vs 1.66 (knife-edge fit)"
+   "reason": "validation failed (Sharpe -2.25, 22 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:29+00:00",
-   "strategy": "c826d5dc2def",
-   "name": "GA-7fda9d (BO)",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "60b5178395f8",
+   "name": "GA-8ca024 (BO)",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -0.31, 11 trades)"
+   "reason": "validation failed (Sharpe -0.12, 21 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:29+00:00",
-   "strategy": "bdc326472ca2",
-   "name": "GA-fd6f51 (BO)",
+   "ts": "2026-11-25T13:32:45+00:00",
+   "strategy": "85fe9555142d",
+   "name": "ML-reversion-12h",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -1.18, 19 trades)"
+   "reason": "validation failed (Sharpe -3.25, 192 trades)"
   },
   {
-   "ts": "2026-11-25T13:29:29+00:00",
-   "strategy": "6c04f99b4932",
-   "name": "ML-all-48h",
+   "ts": "2026-11-25T13:32:56+00:00",
+   "strategy": "d66926bca8ce",
+   "name": "GA-a2cc8c",
    "status": "rejected",
-   "reason": "validation failed (Sharpe -2.54, 105 trades)"
+   "reason": "validation failed (Sharpe -1.63, 14 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:56+00:00",
+   "strategy": "ef5cd3e1e63f",
+   "name": "GA-fd24b2",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -1.63, 14 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:56+00:00",
+   "strategy": "6823414bc465",
+   "name": "GA-7fe1ca",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -0.50, 29 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:56+00:00",
+   "strategy": "e599bb2b31d5",
+   "name": "GA-ae86bb",
+   "status": "rejected",
+   "reason": "edge disappears when trading costs double"
+  },
+  {
+   "ts": "2026-11-25T13:32:56+00:00",
+   "strategy": "ed8e56a4a29d",
+   "name": "GA-95b3de",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -2.10, 24 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:56+00:00",
+   "strategy": "d83c8d8ba38d",
+   "name": "GA-deae29",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -0.50, 29 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:56+00:00",
+   "strategy": "48357357a544",
+   "name": "GA-ab3741",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -0.50, 29 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:56+00:00",
+   "strategy": "4ed76c952e2e",
+   "name": "GA-34dd64",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -1.02, 17 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:56+00:00",
+   "strategy": "736971f9979f",
+   "name": "GA-0ccc5c",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -0.87, 29 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:57+00:00",
+   "strategy": "ee658e7661e8",
+   "name": "Vol-squeeze expansion",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -0.61, 35 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:57+00:00",
+   "strategy": "4cf91f5508b3",
+   "name": "GA-a2cc8c (BO)",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -1.63, 14 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:57+00:00",
+   "strategy": "44e8ac2a8611",
+   "name": "GA-fd24b2 (BO)",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -1.63, 14 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:57+00:00",
+   "strategy": "f05b0bf87681",
+   "name": "GA-7fe1ca (BO)",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -0.50, 29 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:32:57+00:00",
+   "strategy": "fa8def159a3e",
+   "name": "ML-reversion-48h",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -1.06, 121 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:33:09+00:00",
+   "strategy": "3e6535314d03",
+   "name": "GA-709836",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -2.14, 12 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:33:09+00:00",
+   "strategy": "eefa67d7ab85",
+   "name": "GA-e47458",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -2.75, 71 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:33:09+00:00",
+   "strategy": "5fc338d56b62",
+   "name": "GA-6c75c7",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -1.56, 10 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "strategy": "da2ed83c2a4a",
+   "name": "GA-196ee3",
+   "status": "rejected",
+   "reason": "unstable: profitable in only 3/6 time periods"
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "strategy": "566ffceb0ba6",
+   "name": "GA-b90ac6",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -5.43, 21 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "strategy": "af172c113ce4",
+   "name": "GA-169c7f",
+   "status": "rejected",
+   "reason": "unstable: profitable in only 3/6 time periods"
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "strategy": "cbff27f79f05",
+   "name": "GA-f33a06",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -1.86, 29 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "strategy": "646276658858",
+   "name": "GA-062304",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -2.45, 90 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "strategy": "f4878e328d70",
+   "name": "GA-b33f74",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -1.69, 5 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "strategy": "d47f6b309c36",
+   "name": "GA-9af450",
+   "status": "rejected",
+   "reason": "unstable: profitable in only 3/6 time periods"
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "strategy": "16596a83ea8b",
+   "name": "GA-709836 (BO)",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -4.37, 11 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "strategy": "ef13edea96e6",
+   "name": "GA-e47458 (BO)",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -1.75, 71 trades)"
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "strategy": "095bfe052bfc",
+   "name": "GA-6c75c7 (BO)",
+   "status": "rejected",
+   "reason": "validation failed (Sharpe -0.99, 22 trades)"
   }
  ],
  "recent_trades": [],
- "alerts": [
-  {
-   "level": "warning",
-   "text": "BTCUSDT: window shape cannot be larger than input array shape"
-  },
-  {
-   "level": "warning",
-   "text": "ETHUSDT: window shape cannot be larger than input array shape"
-  },
-  {
-   "level": "warning",
-   "text": "SOLUSDT: window shape cannot be larger than input array shape"
-  },
-  {
-   "level": "warning",
-   "text": "XRPUSDT: window shape cannot be larger than input array shape"
-  }
- ],
+ "alerts": [],
  "new_signals": []
 }

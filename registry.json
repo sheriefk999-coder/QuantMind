@@ -1378,9 +1378,5242 @@
      "reason": "validation failed (Sharpe -2.54, 105 trades)"
     }
    ]
+  },
+  "b4cc48058608": {
+   "id": "b4cc48058608",
+   "name": "GA-92be6a",
+   "family": "momentum",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "74749a134fa9",
+    "6a7538b15531"
+   ],
+   "fingerprint": "44a72d43bc82c8a0",
+   "definition": {
+    "name": "GA-92be6a",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "adx_14",
+      "op": "<",
+      "threshold": 22.899,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": "<",
+      "threshold": -0.10397982988352023,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "rsi_3",
+      "op": ">",
+      "threshold": 76.709,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "74749a134fa9",
+     "6a7538b15531"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "b4cc48058608"
+   },
+   "math": "LONG  at close t  if  adx_14 < 22.9 AND d1_mom_20 < -0.104\nSHORT at close t  if  rsi_3 > 76.71\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 3.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "adx_14",
+    "d1_mom_20",
+    "rsi_3"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.84, 37 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1551,
+     "cagr": -0.3604,
+     "sharpe": -0.844,
+     "sortino": -1.0922,
+     "max_drawdown": -0.3131,
+     "calmar": -1.1513,
+     "n_trades": 37,
+     "win_rate": 0.2703,
+     "profit_factor": 0.7708,
+     "avg_trade": -0.0039,
+     "skew": 0.1228,
+     "kurtosis": 12.783,
+     "n_bars": 3304,
+     "exposure": 0.9283,
+     "turnover_per_year": 193.5472,
+     "benchmark_return": -0.12
+    },
+    "train_score": 0.974,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:31+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:31+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.84, 37 trades)"
+    }
+   ]
+  },
+  "97c4eb893395": {
+   "id": "97c4eb893395",
+   "name": "GA-9961ff",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "5af64a1df0ca",
+    "5c794d0ad9e2"
+   ],
+   "fingerprint": "6ff771b9044390cb",
+   "definition": {
+    "name": "GA-9961ff",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "h4_rsi_14",
+      "op": "xa",
+      "threshold": 0.0,
+      "ref": "rsi_14"
+     },
+     {
+      "feature": "mom_24",
+      "op": "<",
+      "threshold": -2.981,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.353,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 2.88,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "5af64a1df0ca",
+     "5c794d0ad9e2"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "97c4eb893395"
+   },
+   "math": "LONG  at close t  if  h4_rsi_14 crosses above rsi_14 AND mom_24 < -2.981\nSHORT at close t  if  h4_adx_14 crosses above 27.35\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 2.88*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "h4_rsi_14",
+    "mom_24",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.21, 12 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0337,
+     "cagr": -0.0869,
+     "sharpe": -0.2096,
+     "sortino": -0.1507,
+     "max_drawdown": -0.2117,
+     "calmar": -0.4107,
+     "n_trades": 12,
+     "win_rate": 0.25,
+     "profit_factor": 0.918,
+     "avg_trade": -0.0015,
+     "skew": -0.2834,
+     "kurtosis": 31.0084,
+     "n_bars": 3304,
+     "exposure": 0.299,
+     "turnover_per_year": 60.9806,
+     "benchmark_return": -0.12
+    },
+    "train_score": 0.713,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:31+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:31+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.21, 12 trades)"
+    }
+   ]
+  },
+  "922d36d1bdfc": {
+   "id": "922d36d1bdfc",
+   "name": "GA-42c422",
+   "family": "momentum",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "be2ba9831c28"
+   ],
+   "fingerprint": "794b6a042ff532bd",
+   "definition": {
+    "name": "GA-42c422",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "mom_168",
+      "op": "xb",
+      "threshold": -0.221,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "don_20",
+      "op": "xa",
+      "threshold": -0.209,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 4,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "be2ba9831c28"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "922d36d1bdfc"
+   },
+   "math": "LONG  at close t  if  mom_168 crosses below -0.221\nSHORT at close t  if  don_20 crosses above -0.209\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 4.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "don_20",
+    "mom_168"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.51, 23 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0915,
+     "cagr": -0.2246,
+     "sharpe": -0.5108,
+     "sortino": -0.5939,
+     "max_drawdown": -0.2177,
+     "calmar": -1.0318,
+     "n_trades": 23,
+     "win_rate": 0.4348,
+     "profit_factor": 0.8234,
+     "avg_trade": -0.0033,
+     "skew": 0.6485,
+     "kurtosis": 17.9035,
+     "n_bars": 3304,
+     "exposure": 0.6746,
+     "turnover_per_year": 119.3099,
+     "benchmark_return": -0.12
+    },
+    "train_score": 0.435,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:31+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:31+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.51, 23 trades)"
+    }
+   ]
+  },
+  "224355167e27": {
+   "id": "224355167e27",
+   "name": "GA-798041",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "3fed5b17772b",
+    "ec9ecf15635b"
+   ],
+   "fingerprint": "8baffbaac118a313",
+   "definition": {
+    "name": "GA-798041",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": ">",
+      "threshold": 69.26,
+      "ref": null
+     },
+     {
+      "feature": "mom_24",
+      "op": "<",
+      "threshold": -2.981,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": -0.115,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 1.99,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility"
+    ],
+    "version": 1,
+    "parent_ids": [
+     "3fed5b17772b",
+     "ec9ecf15635b"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "224355167e27"
+   },
+   "math": "LONG  at close t  if  rsi_14 > 69.26 AND mom_24 < -2.981  AND regime in {sideways, low_volatility}\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < -0.115  AND regime in {sideways, low_volatility}\nEXIT  if  vol_ratio > 2  OR bars_held >= 48  OR price touches stop 1.99*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "mom_24",
+    "pctb_20",
+    "rsi_14",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe 1.37, 9 trades)",
+   "results": {
+    "valid": {
+     "total_return": 0.0691,
+     "cagr": 0.1938,
+     "sharpe": 1.3701,
+     "sortino": 0.4667,
+     "max_drawdown": -0.0878,
+     "calmar": 2.2085,
+     "n_trades": 9,
+     "win_rate": 0.3333,
+     "profit_factor": 1.8655,
+     "avg_trade": 0.008,
+     "skew": 1.6077,
+     "kurtosis": 241.7891,
+     "n_bars": 3304,
+     "exposure": 0.056,
+     "turnover_per_year": 47.724,
+     "benchmark_return": -0.12
+    },
+    "train_score": 0.416,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:31+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:31+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe 1.37, 9 trades)"
+    }
+   ]
+  },
+  "33257aa482e1": {
+   "id": "33257aa482e1",
+   "name": "GA-7b2bdb",
+   "family": "momentum",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "b4cc48058608"
+   ],
+   "fingerprint": "cea944a5e9a91b7f",
+   "definition": {
+    "name": "GA-7b2bdb",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "adx_14",
+      "op": "<",
+      "threshold": 22.899,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": "<",
+      "threshold": -0.10397982988352023,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "rsi_3",
+      "op": "xa",
+      "threshold": 76.709,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "b4cc48058608"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "33257aa482e1"
+   },
+   "math": "LONG  at close t  if  adx_14 < 22.9 AND d1_mom_20 < -0.104\nSHORT at close t  if  rsi_3 crosses above 76.71\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 3.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "adx_14",
+    "d1_mom_20",
+    "rsi_3"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.21, 39 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1948,
+     "cagr": -0.4369,
+     "sharpe": -1.2117,
+     "sortino": -1.5481,
+     "max_drawdown": -0.3744,
+     "calmar": -1.1671,
+     "n_trades": 39,
+     "win_rate": 0.2564,
+     "profit_factor": 0.7369,
+     "avg_trade": -0.0048,
+     "skew": 0.3301,
+     "kurtosis": 14.3379,
+     "n_bars": 3304,
+     "exposure": 0.8614,
+     "turnover_per_year": 204.1525,
+     "benchmark_return": -0.12
+    },
+    "train_score": 0.41,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:31+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:31+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.21, 39 trades)"
+    }
+   ]
+  },
+  "2c760ab58f41": {
+   "id": "2c760ab58f41",
+   "name": "GA-329c6d",
+   "family": "momentum",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "f17d860928a4",
+    "d1c5b2369360"
+   ],
+   "fingerprint": "1e4ff979b0e5a01a",
+   "definition": {
+    "name": "GA-329c6d",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "mom_24",
+      "op": "<",
+      "threshold": -2.981,
+      "ref": null
+     },
+     {
+      "feature": "h4_rsi_14",
+      "op": "<",
+      "threshold": 12.222,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "z_close_200",
+      "op": ">",
+      "threshold": -1.562,
+      "ref": null
+     },
+     {
+      "feature": "h4_rsi_14",
+      "op": "<",
+      "threshold": 78.734,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": "xa",
+      "threshold": 0.0,
+      "ref": "mom_168"
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 96,
+    "stop_atr": 2.81,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "f17d860928a4",
+     "d1c5b2369360"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "2c760ab58f41"
+   },
+   "math": "LONG  at close t  if  mom_24 < -2.981 AND h4_rsi_14 < 12.22\nSHORT at close t  if  z_close_200 > -1.562 AND h4_rsi_14 < 78.73 AND d1_mom_20 crosses above mom_168\nEXIT  if  no rule  OR bars_held >= 96  OR price touches stop 2.81*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_mom_20",
+    "h4_rsi_14",
+    "mom_168",
+    "mom_24",
+    "z_close_200"
+   ],
+   "status": "rejected",
+   "status_reason": "deflated Sharpe 0.57 < 0.95 after 3 holdout tests (could be luck)",
+   "results": {
+    "valid": {
+     "total_return": 0.078,
+     "cagr": 0.2202,
+     "sharpe": 0.8161,
+     "sortino": 0.6988,
+     "max_drawdown": -0.1677,
+     "calmar": 1.313,
+     "n_trades": 20,
+     "win_rate": 0.45,
+     "profit_factor": 1.404,
+     "avg_trade": 0.0045,
+     "skew": 1.1395,
+     "kurtosis": 39.7277,
+     "n_bars": 3304,
+     "exposure": 0.3823,
+     "turnover_per_year": 103.4019,
+     "benchmark_return": -0.12
+    },
+    "stability": [
+     1.36,
+     -1.63,
+     -1.21,
+     1.04,
+     1.81,
+     1.49
+    ],
+    "neighbour_sharpe_median": 1.735,
+    "valid_sharpe_2x_costs": 0.251,
+    "holdout": {
+     "total_return": 0.1622,
+     "cagr": 0.4895,
+     "sharpe": 1.6652,
+     "sortino": 1.5613,
+     "max_drawdown": -0.1378,
+     "calmar": 3.5521,
+     "n_trades": 27,
+     "win_rate": 0.3704,
+     "profit_factor": 1.664,
+     "avg_trade": 0.0062,
+     "skew": 0.4777,
+     "kurtosis": 35.2283,
+     "n_bars": 3304,
+     "exposure": 0.4485,
+     "turnover_per_year": 143.1719,
+     "benchmark_return": -0.0822
+    },
+    "benchmark_holdout_sharpe": -0.388,
+    "dsr": 0.5676,
+    "n_trials_accounted": 3,
+    "search_trials_total": 1322,
+    "train_score": 0.386,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:31+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:31+00:00",
+     "status": "rejected",
+     "reason": "deflated Sharpe 0.57 < 0.95 after 3 holdout tests (could be luck)"
+    }
+   ]
+  },
+  "5af64a1df0ca": {
+   "id": "5af64a1df0ca",
+   "name": "GA-e47458",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "03fea89459ed",
+    "2f147844ef63"
+   ],
+   "fingerprint": "0ec0f598a0049e04",
+   "definition": {
+    "name": "GA-e47458",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "h4_rsi_14",
+      "op": "xa",
+      "threshold": 0.0,
+      "ref": "rsi_14"
+     },
+     {
+      "feature": "mom_24",
+      "op": "<",
+      "threshold": -2.981,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "z_close_200",
+      "op": ">",
+      "threshold": -0.835,
+      "ref": null
+     },
+     {
+      "feature": "h4_rsi_14",
+      "op": "<",
+      "threshold": 78.734,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": "xa",
+      "threshold": 0.0,
+      "ref": "mom_168"
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 2.88,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "03fea89459ed",
+     "2f147844ef63"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "5af64a1df0ca"
+   },
+   "math": "LONG  at close t  if  h4_rsi_14 crosses above rsi_14 AND mom_24 < -2.981\nSHORT at close t  if  z_close_200 > -0.835 AND h4_rsi_14 < 78.73 AND d1_mom_20 crosses above mom_168\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 2.88*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_mom_20",
+    "h4_rsi_14",
+    "mom_168",
+    "mom_24",
+    "rsi_14",
+    "z_close_200"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.40, 15 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0555,
+     "cagr": -0.1405,
+     "sharpe": -0.4021,
+     "sortino": -0.3363,
+     "max_drawdown": -0.1654,
+     "calmar": -0.8493,
+     "n_trades": 15,
+     "win_rate": 0.2667,
+     "profit_factor": 0.7766,
+     "avg_trade": -0.0034,
+     "skew": 0.2471,
+     "kurtosis": 29.0296,
+     "n_bars": 3304,
+     "exposure": 0.3829,
+     "turnover_per_year": 76.8886,
+     "benchmark_return": -0.12
+    },
+    "train_score": 0.336,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:31+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:31+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.40, 15 trades)"
+    }
+   ]
+  },
+  "4f3ccacad310": {
+   "id": "4f3ccacad310",
+   "name": "GA-bb7229",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "5af64a1df0ca"
+   ],
+   "fingerprint": "9474110a2f614b8d",
+   "definition": {
+    "name": "GA-bb7229",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "h4_rsi_14",
+      "op": "xa",
+      "threshold": 0.0,
+      "ref": "rsi_14"
+     },
+     {
+      "feature": "mom_24",
+      "op": "xb",
+      "threshold": -2.981,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "z_close_200",
+      "op": ">",
+      "threshold": -0.835,
+      "ref": null
+     },
+     {
+      "feature": "h4_rsi_14",
+      "op": "<",
+      "threshold": 78.734,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": "xa",
+      "threshold": 0.0,
+      "ref": "mom_168"
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 2.88,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "5af64a1df0ca"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "4f3ccacad310"
+   },
+   "math": "LONG  at close t  if  h4_rsi_14 crosses above rsi_14 AND mom_24 crosses below -2.981\nSHORT at close t  if  z_close_200 > -0.835 AND h4_rsi_14 < 78.73 AND d1_mom_20 crosses above mom_168\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 2.88*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_mom_20",
+    "h4_rsi_14",
+    "mom_168",
+    "mom_24",
+    "rsi_14",
+    "z_close_200"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.40, 15 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0555,
+     "cagr": -0.1405,
+     "sharpe": -0.4021,
+     "sortino": -0.3363,
+     "max_drawdown": -0.1654,
+     "calmar": -0.8493,
+     "n_trades": 15,
+     "win_rate": 0.2667,
+     "profit_factor": 0.7766,
+     "avg_trade": -0.0034,
+     "skew": 0.2471,
+     "kurtosis": 29.0296,
+     "n_bars": 3304,
+     "exposure": 0.3829,
+     "turnover_per_year": 76.8886,
+     "benchmark_return": -0.12
+    },
+    "train_score": 0.336,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:31+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:31+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.40, 15 trades)"
+    }
+   ]
+  },
+  "f63dc78fd8a0": {
+   "id": "f63dc78fd8a0",
+   "name": "GA-645263",
+   "family": "momentum",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "dc712138aa48",
+    "63ac12fedff6"
+   ],
+   "fingerprint": "84fca41fadba6c9f",
+   "definition": {
+    "name": "GA-645263",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "mom_24",
+      "op": "<",
+      "threshold": -1.979,
+      "ref": null
+     },
+     {
+      "feature": "adx_14",
+      "op": "<",
+      "threshold": 16.416,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "z_close_200",
+      "op": ">",
+      "threshold": -1.24,
+      "ref": null
+     },
+     {
+      "feature": "h4_rsi_14",
+      "op": "<",
+      "threshold": 78.734,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": "xa",
+      "threshold": 0.0,
+      "ref": "mom_168"
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 2.77,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "dc712138aa48",
+     "63ac12fedff6"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "f63dc78fd8a0"
+   },
+   "math": "LONG  at close t  if  mom_24 < -1.979 AND adx_14 < 16.42\nSHORT at close t  if  z_close_200 > -1.24 AND h4_rsi_14 < 78.73 AND d1_mom_20 crosses above mom_168\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 2.77*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "adx_14",
+    "d1_mom_20",
+    "h4_rsi_14",
+    "mom_168",
+    "mom_24",
+    "z_close_200"
+   ],
+   "status": "rejected",
+   "status_reason": "holdout Sharpe -0.40 <= 0",
+   "results": {
+    "valid": {
+     "total_return": 0.1581,
+     "cagr": 0.4759,
+     "sharpe": 1.2894,
+     "sortino": 1.2129,
+     "max_drawdown": -0.1609,
+     "calmar": 2.958,
+     "n_trades": 18,
+     "win_rate": 0.3333,
+     "profit_factor": 1.7169,
+     "avg_trade": 0.0093,
+     "skew": 0.6613,
+     "kurtosis": 25.491,
+     "n_bars": 3304,
+     "exposure": 0.4791,
+     "turnover_per_year": 95.4479,
+     "benchmark_return": -0.12
+    },
+    "stability": [
+     0.51,
+     -1.65,
+     -0.46,
+     3.22,
+     1.18,
+     2.03
+    ],
+    "neighbour_sharpe_median": 1.067,
+    "valid_sharpe_2x_costs": 0.838,
+    "holdout": {
+     "total_return": -0.0588,
+     "cagr": -0.1485,
+     "sharpe": -0.4018,
+     "sortino": -0.3391,
+     "max_drawdown": -0.2059,
+     "calmar": -0.7216,
+     "n_trades": 21,
+     "win_rate": 0.1905,
+     "profit_factor": 0.8309,
+     "avg_trade": -0.0022,
+     "skew": -1.4764,
+     "kurtosis": 44.5005,
+     "n_bars": 3304,
+     "exposure": 0.5148,
+     "turnover_per_year": 111.3559,
+     "benchmark_return": -0.0822
+    },
+    "benchmark_holdout_sharpe": -0.388,
+    "dsr": 0.0963,
+    "n_trials_accounted": 4,
+    "search_trials_total": 1333,
+    "train_score": 0.299,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:31+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:31+00:00",
+     "status": "rejected",
+     "reason": "holdout Sharpe -0.40 <= 0"
+    }
+   ]
+  },
+  "be2ba9831c28": {
+   "id": "be2ba9831c28",
+   "name": "GA-584e8f",
+   "family": "momentum",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "2356478ff297"
+   ],
+   "fingerprint": "a10c88ddd0fa1dd0",
+   "definition": {
+    "name": "GA-584e8f",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "mom_168",
+      "op": "xb",
+      "threshold": 0.5,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "don_20",
+      "op": "xa",
+      "threshold": -0.209,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 4,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "2356478ff297"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "be2ba9831c28"
+   },
+   "math": "LONG  at close t  if  mom_168 crosses below 0.5\nSHORT at close t  if  don_20 crosses above -0.209\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 4.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "don_20",
+    "mom_168"
+   ],
+   "status": "rejected",
+   "status_reason": "fragile: nearby parameters give Sharpe -0.38 vs 1.82 (knife-edge fit)",
+   "results": {
+    "valid": {
+     "total_return": 0.2628,
+     "cagr": 0.8563,
+     "sharpe": 1.8245,
+     "sortino": 2.3815,
+     "max_drawdown": -0.1079,
+     "calmar": 7.9323,
+     "n_trades": 20,
+     "win_rate": 0.55,
+     "profit_factor": 2.103,
+     "avg_trade": 0.0126,
+     "skew": 1.0317,
+     "kurtosis": 17.6954,
+     "n_bars": 3304,
+     "exposure": 0.7645,
+     "turnover_per_year": 106.0533,
+     "benchmark_return": -0.12
+    },
+    "stability": [
+     -3.15,
+     2.05,
+     -2.61,
+     1.74,
+     2.84,
+     1.94
+    ],
+    "neighbour_sharpe_median": -0.383,
+    "train_score": 0.257,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:32+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:32+00:00",
+     "status": "rejected",
+     "reason": "fragile: nearby parameters give Sharpe -0.38 vs 1.82 (knife-edge fit)"
+    }
+   ]
+  },
+  "cafe11c5031c": {
+   "id": "cafe11c5031c",
+   "name": "GA-92be6a (BO)",
+   "family": "momentum",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "b4cc48058608"
+   ],
+   "fingerprint": "07e39436c219e92f",
+   "definition": {
+    "name": "GA-92be6a (BO)",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "adx_14",
+      "op": "<",
+      "threshold": 22.899,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": "<",
+      "threshold": -0.104,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "rsi_3",
+      "op": ">",
+      "threshold": 76.709,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 2,
+    "parent_ids": [
+     "b4cc48058608"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "cafe11c5031c"
+   },
+   "math": "LONG  at close t  if  adx_14 < 22.9 AND d1_mom_20 < -0.104\nSHORT at close t  if  rsi_3 > 76.71\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 3.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "adx_14",
+    "d1_mom_20",
+    "rsi_3"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.84, 37 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1551,
+     "cagr": -0.3604,
+     "sharpe": -0.844,
+     "sortino": -1.0922,
+     "max_drawdown": -0.3131,
+     "calmar": -1.1513,
+     "n_trades": 37,
+     "win_rate": 0.2703,
+     "profit_factor": 0.7708,
+     "avg_trade": -0.0039,
+     "skew": 0.1228,
+     "kurtosis": 12.783,
+     "n_bars": 3304,
+     "exposure": 0.9283,
+     "turnover_per_year": 193.5472,
+     "benchmark_return": -0.12
+    },
+    "train_score": 0.974,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:32+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:32+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.84, 37 trades)"
+    }
+   ]
+  },
+  "d52ef57913c9": {
+   "id": "d52ef57913c9",
+   "name": "GA-9961ff (BO)",
+   "family": "mean_reversion",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "97c4eb893395"
+   ],
+   "fingerprint": "777a669621c354c2",
+   "definition": {
+    "name": "GA-9961ff (BO)",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "h4_rsi_14",
+      "op": "xa",
+      "threshold": 0.0,
+      "ref": "rsi_14"
+     },
+     {
+      "feature": "mom_24",
+      "op": "<",
+      "threshold": -2.9717,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.4968,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 3.17,
+    "trail": false,
+    "regimes": null,
+    "version": 2,
+    "parent_ids": [
+     "97c4eb893395"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "d52ef57913c9"
+   },
+   "math": "LONG  at close t  if  h4_rsi_14 crosses above rsi_14 AND mom_24 < -2.972\nSHORT at close t  if  h4_adx_14 crosses above 27.5\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 3.17*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "h4_rsi_14",
+    "mom_24",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.32, 12 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0444,
+     "cagr": -0.1134,
+     "sharpe": -0.3178,
+     "sortino": -0.227,
+     "max_drawdown": -0.2193,
+     "calmar": -0.5171,
+     "n_trades": 12,
+     "win_rate": 0.25,
+     "profit_factor": 0.8769,
+     "avg_trade": -0.0024,
+     "skew": -0.3557,
+     "kurtosis": 31.0937,
+     "n_bars": 3304,
+     "exposure": 0.2999,
+     "turnover_per_year": 60.9806,
+     "benchmark_return": -0.12
+    },
+    "train_score": 0.81,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:32+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:32+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.32, 12 trades)"
+    }
+   ]
+  },
+  "c71cd3a8bdcd": {
+   "id": "c71cd3a8bdcd",
+   "name": "GA-42c422 (BO)",
+   "family": "momentum",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "922d36d1bdfc"
+   ],
+   "fingerprint": "3225c67c2a46f80a",
+   "definition": {
+    "name": "GA-42c422 (BO)",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "mom_168",
+      "op": "xb",
+      "threshold": -0.221,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "don_20",
+      "op": "xa",
+      "threshold": -0.209,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 4.0,
+    "trail": false,
+    "regimes": null,
+    "version": 2,
+    "parent_ids": [
+     "922d36d1bdfc"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "c71cd3a8bdcd"
+   },
+   "math": "LONG  at close t  if  mom_168 crosses below -0.221\nSHORT at close t  if  don_20 crosses above -0.209\nEXIT  if  no rule  OR bars_held >= 168  OR price touches stop 4.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "don_20",
+    "mom_168"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.51, 23 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0915,
+     "cagr": -0.2246,
+     "sharpe": -0.5108,
+     "sortino": -0.5939,
+     "max_drawdown": -0.2177,
+     "calmar": -1.0318,
+     "n_trades": 23,
+     "win_rate": 0.4348,
+     "profit_factor": 0.8234,
+     "avg_trade": -0.0033,
+     "skew": 0.6485,
+     "kurtosis": 17.9035,
+     "n_bars": 3304,
+     "exposure": 0.6746,
+     "turnover_per_year": 119.3099,
+     "benchmark_return": -0.12
+    },
+    "train_score": 0.435,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:32+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:32+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.51, 23 trades)"
+    }
+   ]
+  },
+  "9f75e155a09c": {
+   "id": "9f75e155a09c",
+   "name": "ML-reversion-24h",
+   "family": "ml",
+   "version": 1,
+   "origin": "ml",
+   "parents": [],
+   "fingerprint": "4eb2db753afa25c0",
+   "definition": {
+    "name": "ML-reversion-24h",
+    "feature_set": "reversion",
+    "horizon": 24,
+    "margin": 0.08,
+    "retrain_every": 720,
+    "min_train": 3000,
+    "max_depth": 3,
+    "learning_rate": 0.05,
+    "max_iter": 150,
+    "stop_atr": 3.0,
+    "family": "ml",
+    "kind": "model",
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "ml",
+    "id": "9f75e155a09c"
+   },
+   "math": "P_t = GradientBoosting(depth=3, lr=0.05, trees=150)(features[reversion] at close t)\n  trained walk-forward: refit every 720 bars on rows i with i+24 < refit bar\n  target: sign of 24-bar forward return (tiny moves excluded)\nLONG if P_t > 0.580; SHORT if P_t < 0.420; EXIT when |P_t-0.5| < 0.020 OR bars_held >= 48 OR stop 3.0*ATR14 (intrabar)",
+   "required_data": [
+    "d1_z_20",
+    "er_20",
+    "h4_rsi_14",
+    "pctb_20",
+    "ret_1",
+    "rsi_14",
+    "rsi_3",
+    "vol_ratio",
+    "vwap_dev_24",
+    "z_close_200",
+    "z_close_50"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -5.06, 139 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.4727,
+     "cagr": -0.8167,
+     "sharpe": -5.0557,
+     "sortino": -5.1861,
+     "max_drawdown": -0.5127,
+     "calmar": -1.5931,
+     "n_trades": 139,
+     "win_rate": 0.3957,
+     "profit_factor": 0.461,
+     "avg_trade": -0.0045,
+     "skew": 0.6529,
+     "kurtosis": 26.7195,
+     "n_bars": 3304,
+     "exposure": 0.4997,
+     "turnover_per_year": 734.4189,
+     "benchmark_return": -0.12
+    },
+    "train_score": -2.417,
+    "symbol": "BTCUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:32+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:32+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -5.06, 139 trades)"
+    }
+   ]
+  },
+  "6b30d2bb2d7e": {
+   "id": "6b30d2bb2d7e",
+   "name": "GA-25aa4f",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "2598e735cc11",
+    "5d9ccf25ccf2"
+   ],
+   "fingerprint": "f68f60317825a246",
+   "definition": {
+    "name": "GA-25aa4f",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.305,
+      "ref": null
+     },
+     {
+      "feature": "rsi_14",
+      "op": "xa",
+      "threshold": 41.412,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.353,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": "xb",
+      "threshold": 2.778,
+      "ref": null
+     }
+    ],
+    "max_hold": 168,
+    "stop_atr": 4.71,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "2598e735cc11",
+     "5d9ccf25ccf2"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "6b30d2bb2d7e"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.305 AND rsi_14 crosses above 41.41\nSHORT at close t  if  h4_adx_14 crosses above 27.35\nEXIT  if  vol_ratio crosses below 2.778  OR bars_held >= 168  OR price touches stop 4.71*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "rsi_14",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "holdout Sharpe -0.73 <= 0",
+   "results": {
+    "valid": {
+     "total_return": 0.1182,
+     "cagr": 0.3448,
+     "sharpe": 0.855,
+     "sortino": 0.8883,
+     "max_drawdown": -0.1734,
+     "calmar": 1.9884,
+     "n_trades": 22,
+     "win_rate": 0.4545,
+     "profit_factor": 1.3128,
+     "avg_trade": 0.007,
+     "skew": -0.0227,
+     "kurtosis": 23.7604,
+     "n_bars": 3304,
+     "exposure": 0.6671,
+     "turnover_per_year": 116.6586,
+     "benchmark_return": -0.2028
+    },
+    "stability": [
+     -1.82,
+     4.17,
+     4.55,
+     0.89,
+     2.34,
+     2.37
+    ],
+    "neighbour_sharpe_median": 0.842,
+    "valid_sharpe_2x_costs": 0.443,
+    "holdout": {
+     "total_return": -0.1059,
+     "cagr": -0.2568,
+     "sharpe": -0.727,
+     "sortino": -0.7331,
+     "max_drawdown": -0.2391,
+     "calmar": -1.074,
+     "n_trades": 16,
+     "win_rate": 0.4375,
+     "profit_factor": 0.679,
+     "avg_trade": -0.0063,
+     "skew": 0.9701,
+     "kurtosis": 34.675,
+     "n_bars": 3304,
+     "exposure": 0.5406,
+     "turnover_per_year": 84.8426,
+     "benchmark_return": -0.0816
+    },
+    "benchmark_holdout_sharpe": -0.182,
+    "dsr": 0.0513,
+    "n_trials_accounted": 5,
+    "search_trials_total": 1987,
+    "train_score": 1.99,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "holdout Sharpe -0.73 <= 0"
+    }
+   ]
+  },
+  "3542e3325631": {
+   "id": "3542e3325631",
+   "name": "GA-c5da0a",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "55739f533bfa"
+   ],
+   "fingerprint": "9d2eeb319d44a4ca",
+   "definition": {
+    "name": "GA-c5da0a",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.305,
+      "ref": null
+     },
+     {
+      "feature": "z_close_200",
+      "op": "xa",
+      "threshold": 0.0,
+      "ref": "d1_z_20"
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "structure",
+      "op": "<",
+      "threshold": -0.289,
+      "ref": null
+     },
+     {
+      "feature": "z_close_50",
+      "op": "xb",
+      "threshold": 1.53,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 1.9,
+    "trail": true,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "55739f533bfa"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "3542e3325631"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.305 AND z_close_200 crosses above d1_z_20\nSHORT at close t  if  structure < -0.289 AND z_close_50 crosses below 1.53\nEXIT  if  no rule  OR bars_held >= 168  OR price touches trailing stop 1.90*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_z_20",
+    "structure",
+    "vol_pct_500",
+    "z_close_200",
+    "z_close_50"
+   ],
+   "status": "rejected",
+   "status_reason": "fragile: nearby parameters give Sharpe -0.75 vs 0.55 (knife-edge fit)",
+   "results": {
+    "valid": {
+     "total_return": 0.0338,
+     "cagr": 0.092,
+     "sharpe": 0.5478,
+     "sortino": 0.3581,
+     "max_drawdown": -0.106,
+     "calmar": 0.8676,
+     "n_trades": 28,
+     "win_rate": 0.3929,
+     "profit_factor": 1.1908,
+     "avg_trade": 0.0015,
+     "skew": 2.6477,
+     "kurtosis": 57.281,
+     "n_bars": 3304,
+     "exposure": 0.1471,
+     "turnover_per_year": 148.4746,
+     "benchmark_return": -0.2028
+    },
+    "stability": [
+     2.67,
+     3.75,
+     0.74,
+     0.83,
+     -0.42,
+     0.93
+    ],
+    "neighbour_sharpe_median": -0.747,
+    "train_score": 1.653,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "fragile: nearby parameters give Sharpe -0.75 vs 0.55 (knife-edge fit)"
+    }
+   ]
+  },
+  "62f06a0434d5": {
+   "id": "62f06a0434d5",
+   "name": "GA-8ca024",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "9e9018a4534f",
+    "da09ee71bd70"
+   ],
+   "fingerprint": "aba2ad17da943f55",
+   "definition": {
+    "name": "GA-8ca024",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.353,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 48,
+    "stop_atr": 4.75,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility",
+     "accumulation",
+     "distribution"
+    ],
+    "version": 1,
+    "parent_ids": [
+     "9e9018a4534f",
+     "da09ee71bd70"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "62f06a0434d5"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2  AND regime in {sideways, low_volatility, accumulation, distribution}\nSHORT at close t  if  h4_adx_14 crosses above 27.35  AND regime in {sideways, low_volatility, accumulation, distribution}\nEXIT  if  no rule  OR bars_held >= 48  OR price touches stop 4.75*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "vol_pct_500"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.03, 22 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.023,
+     "cagr": -0.0598,
+     "sharpe": -0.0265,
+     "sortino": -0.0223,
+     "max_drawdown": -0.2097,
+     "calmar": -0.2849,
+     "n_trades": 22,
+     "win_rate": 0.4545,
+     "profit_factor": 0.9764,
+     "avg_trade": -0.0004,
+     "skew": 0.6552,
+     "kurtosis": 28.2831,
+     "n_bars": 3304,
+     "exposure": 0.3623,
+     "turnover_per_year": 116.6586,
+     "benchmark_return": -0.2028
+    },
+    "train_score": 1.373,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.03, 22 trades)"
+    }
+   ]
+  },
+  "45899590b007": {
+   "id": "45899590b007",
+   "name": "GA-4b83be",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [],
+   "fingerprint": "0b8f5c6e6c6ba743",
+   "definition": {
+    "name": "GA-4b83be",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xa",
+      "threshold": 41.412,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.353,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 96,
+    "stop_atr": 4.53,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility"
+    ],
+    "version": 1,
+    "parent_ids": [],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "45899590b007"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses above 41.41  AND regime in {sideways, low_volatility}\nSHORT at close t  if  h4_adx_14 crosses above 27.35  AND regime in {sideways, low_volatility}\nEXIT  if  no rule  OR bars_held >= 96  OR price touches stop 4.53*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.47, 23 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0813,
+     "cagr": -0.2012,
+     "sharpe": -0.4699,
+     "sortino": -0.4018,
+     "max_drawdown": -0.1959,
+     "calmar": -1.0273,
+     "n_trades": 23,
+     "win_rate": 0.3913,
+     "profit_factor": 0.8542,
+     "avg_trade": -0.0028,
+     "skew": 0.4658,
+     "kurtosis": 28.5303,
+     "n_bars": 3304,
+     "exposure": 0.3947,
+     "turnover_per_year": 119.3099,
+     "benchmark_return": -0.2028
+    },
+    "train_score": 1.339,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.47, 23 trades)"
+    }
+   ]
+  },
+  "a9ad3095771d": {
+   "id": "a9ad3095771d",
+   "name": "GA-decd7d",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "c3388fda42fa"
+   ],
+   "fingerprint": "6f784257420aa246",
+   "definition": {
+    "name": "GA-decd7d",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xa",
+      "threshold": 41.412,
+      "ref": null
+     },
+     {
+      "feature": "rsi_14",
+      "op": "xa",
+      "threshold": 41.412,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.353,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 96,
+    "stop_atr": 4.53,
+    "trail": true,
+    "regimes": [
+     "sideways",
+     "low_volatility"
+    ],
+    "version": 1,
+    "parent_ids": [
+     "c3388fda42fa"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "a9ad3095771d"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses above 41.41 AND rsi_14 crosses above 41.41  AND regime in {sideways, low_volatility}\nSHORT at close t  if  h4_adx_14 crosses above 27.35  AND regime in {sideways, low_volatility}\nEXIT  if  no rule  OR bars_held >= 96  OR price touches trailing stop 4.53*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.06, 27 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.027,
+     "cagr": -0.0699,
+     "sharpe": -0.0609,
+     "sortino": -0.0522,
+     "max_drawdown": -0.1619,
+     "calmar": -0.4319,
+     "n_trades": 27,
+     "win_rate": 0.4074,
+     "profit_factor": 0.9602,
+     "avg_trade": -0.0005,
+     "skew": 1.2593,
+     "kurtosis": 31.4874,
+     "n_bars": 3304,
+     "exposure": 0.3484,
+     "turnover_per_year": 140.5206,
+     "benchmark_return": -0.2028
+    },
+    "train_score": 1.306,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.06, 27 trades)"
+    }
+   ]
+  },
+  "c3388fda42fa": {
+   "id": "c3388fda42fa",
+   "name": "GA-c7a1f9",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "45899590b007",
+    "45899590b007"
+   ],
+   "fingerprint": "ad9dbbbb61acdf4d",
+   "definition": {
+    "name": "GA-c7a1f9",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xa",
+      "threshold": 41.412,
+      "ref": null
+     },
+     {
+      "feature": "rsi_14",
+      "op": "xa",
+      "threshold": 41.412,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.353,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 96,
+    "stop_atr": 4.53,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility"
+    ],
+    "version": 1,
+    "parent_ids": [
+     "45899590b007",
+     "45899590b007"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "c3388fda42fa"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses above 41.41 AND rsi_14 crosses above 41.41  AND regime in {sideways, low_volatility}\nSHORT at close t  if  h4_adx_14 crosses above 27.35  AND regime in {sideways, low_volatility}\nEXIT  if  no rule  OR bars_held >= 96  OR price touches stop 4.53*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.47, 23 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0813,
+     "cagr": -0.2012,
+     "sharpe": -0.4699,
+     "sortino": -0.4018,
+     "max_drawdown": -0.1959,
+     "calmar": -1.0273,
+     "n_trades": 23,
+     "win_rate": 0.3913,
+     "profit_factor": 0.8542,
+     "avg_trade": -0.0028,
+     "skew": 0.4658,
+     "kurtosis": 28.5303,
+     "n_bars": 3304,
+     "exposure": 0.3947,
+     "turnover_per_year": 119.3099,
+     "benchmark_return": -0.2028
+    },
+    "train_score": 1.259,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.47, 23 trades)"
+    }
+   ]
+  },
+  "36dcf3c278f7": {
+   "id": "36dcf3c278f7",
+   "name": "GA-deae29",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "45899590b007"
+   ],
+   "fingerprint": "e61e5f32c1f5da7f",
+   "definition": {
+    "name": "GA-deae29",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xa",
+      "threshold": 41.412,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.353,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": "xb",
+      "threshold": 2.778,
+      "ref": null
+     }
+    ],
+    "max_hold": 96,
+    "stop_atr": 4.53,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility"
+    ],
+    "version": 1,
+    "parent_ids": [
+     "45899590b007"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "36dcf3c278f7"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses above 41.41  AND regime in {sideways, low_volatility}\nSHORT at close t  if  h4_adx_14 crosses above 27.35  AND regime in {sideways, low_volatility}\nEXIT  if  vol_ratio crosses below 2.778  OR bars_held >= 96  OR price touches stop 4.53*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "rsi_14",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.47, 23 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0813,
+     "cagr": -0.2012,
+     "sharpe": -0.4699,
+     "sortino": -0.4018,
+     "max_drawdown": -0.1959,
+     "calmar": -1.0273,
+     "n_trades": 23,
+     "win_rate": 0.3913,
+     "profit_factor": 0.8542,
+     "avg_trade": -0.0028,
+     "skew": 0.4658,
+     "kurtosis": 28.5303,
+     "n_bars": 3304,
+     "exposure": 0.3947,
+     "turnover_per_year": 119.3099,
+     "benchmark_return": -0.2028
+    },
+    "train_score": 1.259,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.47, 23 trades)"
+    }
+   ]
+  },
+  "640b1887d13c": {
+   "id": "640b1887d13c",
+   "name": "GA-ab3741",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "45899590b007"
+   ],
+   "fingerprint": "30ac3cb548f9c571",
+   "definition": {
+    "name": "GA-ab3741",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xa",
+      "threshold": 41.412,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.353,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "h4_mom_42",
+      "op": "xa",
+      "threshold": -2.927,
+      "ref": null
+     }
+    ],
+    "max_hold": 96,
+    "stop_atr": 4.53,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility"
+    ],
+    "version": 1,
+    "parent_ids": [
+     "45899590b007"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "640b1887d13c"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses above 41.41  AND regime in {sideways, low_volatility}\nSHORT at close t  if  h4_adx_14 crosses above 27.35  AND regime in {sideways, low_volatility}\nEXIT  if  h4_mom_42 crosses above -2.927  OR bars_held >= 96  OR price touches stop 4.53*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "h4_mom_42",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.47, 23 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0813,
+     "cagr": -0.2012,
+     "sharpe": -0.4699,
+     "sortino": -0.4018,
+     "max_drawdown": -0.1959,
+     "calmar": -1.0273,
+     "n_trades": 23,
+     "win_rate": 0.3913,
+     "profit_factor": 0.8542,
+     "avg_trade": -0.0028,
+     "skew": 0.4658,
+     "kurtosis": 28.5303,
+     "n_bars": 3304,
+     "exposure": 0.3947,
+     "turnover_per_year": 119.3099,
+     "benchmark_return": -0.2028
+    },
+    "train_score": 1.259,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.47, 23 trades)"
+    }
+   ]
+  },
+  "1b8f17b14c4c": {
+   "id": "1b8f17b14c4c",
+   "name": "GA-e37af1",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "36dcf3c278f7"
+   ],
+   "fingerprint": "fe8b733ecd1ce890",
+   "definition": {
+    "name": "GA-e37af1",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xa",
+      "threshold": 41.412,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.353,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": "xb",
+      "threshold": 2.485,
+      "ref": null
+     }
+    ],
+    "max_hold": 96,
+    "stop_atr": 4.53,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility"
+    ],
+    "version": 1,
+    "parent_ids": [
+     "36dcf3c278f7"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "1b8f17b14c4c"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses above 41.41  AND regime in {sideways, low_volatility}\nSHORT at close t  if  h4_adx_14 crosses above 27.35  AND regime in {sideways, low_volatility}\nEXIT  if  vol_ratio crosses below 2.485  OR bars_held >= 96  OR price touches stop 4.53*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "rsi_14",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.47, 23 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0813,
+     "cagr": -0.2012,
+     "sharpe": -0.4699,
+     "sortino": -0.4018,
+     "max_drawdown": -0.1959,
+     "calmar": -1.0273,
+     "n_trades": 23,
+     "win_rate": 0.3913,
+     "profit_factor": 0.8542,
+     "avg_trade": -0.0028,
+     "skew": 0.4658,
+     "kurtosis": 28.5303,
+     "n_bars": 3304,
+     "exposure": 0.3947,
+     "turnover_per_year": 119.3099,
+     "benchmark_return": -0.2028
+    },
+    "train_score": 1.259,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.47, 23 trades)"
+    }
+   ]
+  },
+  "cc18145a00b4": {
+   "id": "cc18145a00b4",
+   "name": "GA-9af450",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "36dcf3c278f7"
+   ],
+   "fingerprint": "be6edb80633e37b0",
+   "definition": {
+    "name": "GA-9af450",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xa",
+      "threshold": 41.412,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 27.353,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": "xb",
+      "threshold": 2.515,
+      "ref": null
+     }
+    ],
+    "max_hold": 96,
+    "stop_atr": 4.53,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility"
+    ],
+    "version": 1,
+    "parent_ids": [
+     "36dcf3c278f7"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "cc18145a00b4"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses above 41.41  AND regime in {sideways, low_volatility}\nSHORT at close t  if  h4_adx_14 crosses above 27.35  AND regime in {sideways, low_volatility}\nEXIT  if  vol_ratio crosses below 2.515  OR bars_held >= 96  OR price touches stop 4.53*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "rsi_14",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.47, 23 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0813,
+     "cagr": -0.2012,
+     "sharpe": -0.4699,
+     "sortino": -0.4018,
+     "max_drawdown": -0.1959,
+     "calmar": -1.0273,
+     "n_trades": 23,
+     "win_rate": 0.3913,
+     "profit_factor": 0.8542,
+     "avg_trade": -0.0028,
+     "skew": 0.4658,
+     "kurtosis": 28.5303,
+     "n_bars": 3304,
+     "exposure": 0.3947,
+     "turnover_per_year": 119.3099,
+     "benchmark_return": -0.2028
+    },
+    "train_score": 1.259,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.47, 23 trades)"
+    }
+   ]
+  },
+  "bc80a8de952a": {
+   "id": "bc80a8de952a",
+   "name": "GA-c5da0a (BO)",
+   "family": "volatility",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "3542e3325631"
+   ],
+   "fingerprint": "841c5a1e9146e216",
+   "definition": {
+    "name": "GA-c5da0a (BO)",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.5527,
+      "ref": null
+     },
+     {
+      "feature": "z_close_200",
+      "op": "xa",
+      "threshold": 0.0,
+      "ref": "d1_z_20"
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "structure",
+      "op": "<",
+      "threshold": -0.6323,
+      "ref": null
+     },
+     {
+      "feature": "z_close_50",
+      "op": "xb",
+      "threshold": -2.5545,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 168,
+    "stop_atr": 5.58,
+    "trail": true,
+    "regimes": null,
+    "version": 2,
+    "parent_ids": [
+     "3542e3325631"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "bc80a8de952a"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.5527 AND z_close_200 crosses above d1_z_20\nSHORT at close t  if  structure < -0.6323 AND z_close_50 crosses below -2.554\nEXIT  if  no rule  OR bars_held >= 168  OR price touches trailing stop 5.58*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_z_20",
+    "structure",
+    "vol_pct_500",
+    "z_close_200",
+    "z_close_50"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -2.25, 22 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.2763,
+     "cagr": -0.5758,
+     "sharpe": -2.2521,
+     "sortino": -1.8248,
+     "max_drawdown": -0.2772,
+     "calmar": -2.0769,
+     "n_trades": 22,
+     "win_rate": 0.2727,
+     "profit_factor": 0.4437,
+     "avg_trade": -0.0137,
+     "skew": -0.5184,
+     "kurtosis": 19.8546,
+     "n_bars": 3304,
+     "exposure": 0.3892,
+     "turnover_per_year": 116.6586,
+     "benchmark_return": -0.2028
+    },
+    "train_score": 1.938,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -2.25, 22 trades)"
+    }
+   ]
+  },
+  "60b5178395f8": {
+   "id": "60b5178395f8",
+   "name": "GA-8ca024 (BO)",
+   "family": "volatility",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "62f06a0434d5"
+   ],
+   "fingerprint": "6d3025184b3afaf7",
+   "definition": {
+    "name": "GA-8ca024 (BO)",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2222,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_adx_14",
+      "op": "xa",
+      "threshold": 18.2498,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 48,
+    "stop_atr": 5.82,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility",
+     "accumulation",
+     "distribution"
+    ],
+    "version": 2,
+    "parent_ids": [
+     "62f06a0434d5"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "60b5178395f8"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2222  AND regime in {sideways, low_volatility, accumulation, distribution}\nSHORT at close t  if  h4_adx_14 crosses above 18.25  AND regime in {sideways, low_volatility, accumulation, distribution}\nEXIT  if  no rule  OR bars_held >= 48  OR price touches stop 5.82*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_adx_14",
+    "vol_pct_500"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.12, 21 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0341,
+     "cagr": -0.0879,
+     "sharpe": -0.1155,
+     "sortino": -0.0958,
+     "max_drawdown": -0.2294,
+     "calmar": -0.3832,
+     "n_trades": 21,
+     "win_rate": 0.4762,
+     "profit_factor": 0.9566,
+     "avg_trade": -0.0008,
+     "skew": 0.5872,
+     "kurtosis": 28.0199,
+     "n_bars": 3304,
+     "exposure": 0.3593,
+     "turnover_per_year": 111.3559,
+     "benchmark_return": -0.2028
+    },
+    "train_score": 1.634,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.12, 21 trades)"
+    }
+   ]
+  },
+  "85fe9555142d": {
+   "id": "85fe9555142d",
+   "name": "ML-reversion-12h",
+   "family": "ml",
+   "version": 1,
+   "origin": "ml",
+   "parents": [],
+   "fingerprint": "4eab88874a1b2dba",
+   "definition": {
+    "name": "ML-reversion-12h",
+    "feature_set": "reversion",
+    "horizon": 12,
+    "margin": 0.04,
+    "retrain_every": 720,
+    "min_train": 3000,
+    "max_depth": 3,
+    "learning_rate": 0.05,
+    "max_iter": 150,
+    "stop_atr": 3.0,
+    "family": "ml",
+    "kind": "model",
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "ml",
+    "id": "85fe9555142d"
+   },
+   "math": "P_t = GradientBoosting(depth=3, lr=0.05, trees=150)(features[reversion] at close t)\n  trained walk-forward: refit every 720 bars on rows i with i+12 < refit bar\n  target: sign of 12-bar forward return (tiny moves excluded)\nLONG if P_t > 0.540; SHORT if P_t < 0.460; EXIT when |P_t-0.5| < 0.010 OR bars_held >= 24 OR stop 3.0*ATR14 (intrabar)",
+   "required_data": [
+    "d1_z_20",
+    "er_20",
+    "h4_rsi_14",
+    "pctb_20",
+    "ret_1",
+    "rsi_14",
+    "rsi_3",
+    "vol_ratio",
+    "vwap_dev_24",
+    "z_close_200",
+    "z_close_50"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -3.25, 192 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.504,
+     "cagr": -0.8442,
+     "sharpe": -3.2531,
+     "sortino": -4.2039,
+     "max_drawdown": -0.582,
+     "calmar": -1.4504,
+     "n_trades": 192,
+     "win_rate": 0.4531,
+     "profit_factor": 0.6793,
+     "avg_trade": -0.0034,
+     "skew": 0.4212,
+     "kurtosis": 13.6416,
+     "n_bars": 3304,
+     "exposure": 0.842,
+     "turnover_per_year": 1018.1114,
+     "benchmark_return": -0.2028
+    },
+    "train_score": -1.303,
+    "symbol": "ETHUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:45+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:45+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -3.25, 192 trades)"
+    }
+   ]
+  },
+  "d66926bca8ce": {
+   "id": "d66926bca8ce",
+   "name": "GA-a2cc8c",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "d83c8d8ba38d"
+   ],
+   "fingerprint": "14139cc2e0d5e662",
+   "definition": {
+    "name": "GA-a2cc8c",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     },
+     {
+      "feature": "h4_adx_14",
+      "op": "xb",
+      "threshold": 28.51,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.065,
+      "ref": null
+     },
+     {
+      "feature": "er_20",
+      "op": ">",
+      "threshold": 0.0,
+      "ref": "d1_er_10"
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     },
+     {
+      "feature": "vol_ratio",
+      "op": "xb",
+      "threshold": 2.778,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "d83c8d8ba38d"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "d66926bca8ce"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1 AND h4_adx_14 crosses below 28.51\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.065 AND er_20 > d1_er_10\nEXIT  if  vol_ratio > 2 OR vol_ratio crosses below 2.778  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_er_10",
+    "er_20",
+    "h4_adx_14",
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.63, 14 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1108,
+     "cagr": -0.2676,
+     "sharpe": -1.6293,
+     "sortino": -0.8165,
+     "max_drawdown": -0.1645,
+     "calmar": -1.6269,
+     "n_trades": 14,
+     "win_rate": 0.2857,
+     "profit_factor": 0.3971,
+     "avg_trade": -0.0081,
+     "skew": 2.729,
+     "kurtosis": 111.936,
+     "n_bars": 3304,
+     "exposure": 0.1065,
+     "turnover_per_year": 74.2373,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.781,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:56+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:56+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.63, 14 trades)"
+    }
+   ]
+  },
+  "ef5cd3e1e63f": {
+   "id": "ef5cd3e1e63f",
+   "name": "GA-fd24b2",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "d83c8d8ba38d"
+   ],
+   "fingerprint": "7260a457a167f017",
+   "definition": {
+    "name": "GA-fd24b2",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "xb",
+      "threshold": -0.242,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.065,
+      "ref": null
+     },
+     {
+      "feature": "er_20",
+      "op": ">",
+      "threshold": 0.0,
+      "ref": "d1_er_10"
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     },
+     {
+      "feature": "vol_ratio",
+      "op": "xb",
+      "threshold": 2.778,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "d83c8d8ba38d"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "ef5cd3e1e63f"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1 AND pctb_20 crosses below -0.242\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.065 AND er_20 > d1_er_10\nEXIT  if  vol_ratio > 2 OR vol_ratio crosses below 2.778  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_er_10",
+    "er_20",
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.63, 14 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1108,
+     "cagr": -0.2676,
+     "sharpe": -1.6293,
+     "sortino": -0.8165,
+     "max_drawdown": -0.1645,
+     "calmar": -1.6269,
+     "n_trades": 14,
+     "win_rate": 0.2857,
+     "profit_factor": 0.3971,
+     "avg_trade": -0.0081,
+     "skew": 2.729,
+     "kurtosis": 111.936,
+     "n_bars": 3304,
+     "exposure": 0.1065,
+     "turnover_per_year": 74.2373,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.781,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:56+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:56+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.63, 14 trades)"
+    }
+   ]
+  },
+  "6823414bc465": {
+   "id": "6823414bc465",
+   "name": "GA-7fe1ca",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "e599bb2b31d5"
+   ],
+   "fingerprint": "321d42e291e1f81e",
+   "definition": {
+    "name": "GA-7fe1ca",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.065,
+      "ref": null
+     },
+     {
+      "feature": "er_20",
+      "op": ">",
+      "threshold": 0.0,
+      "ref": "d1_er_10"
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "e599bb2b31d5"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "6823414bc465"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.065 AND er_20 > d1_er_10\nEXIT  if  vol_ratio > 2  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_er_10",
+    "er_20",
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.50, 29 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0661,
+     "cagr": -0.1659,
+     "sharpe": -0.505,
+     "sortino": -0.4068,
+     "max_drawdown": -0.2565,
+     "calmar": -0.6465,
+     "n_trades": 29,
+     "win_rate": 0.2759,
+     "profit_factor": 0.8542,
+     "avg_trade": -0.0019,
+     "skew": 2.0424,
+     "kurtosis": 40.0987,
+     "n_bars": 3304,
+     "exposure": 0.2337,
+     "turnover_per_year": 151.1259,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.66,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:56+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:56+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.50, 29 trades)"
+    }
+   ]
+  },
+  "e599bb2b31d5": {
+   "id": "e599bb2b31d5",
+   "name": "GA-ae86bb",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "ee658e7661e8"
+   ],
+   "fingerprint": "7b1f02a391f98f18",
+   "definition": {
+    "name": "GA-ae86bb",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.065,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "ee658e7661e8"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "e599bb2b31d5"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.065\nEXIT  if  vol_ratio > 2  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "edge disappears when trading costs double",
+   "results": {
+    "valid": {
+     "total_return": -0.0019,
+     "cagr": -0.0051,
+     "sharpe": 0.1374,
+     "sortino": 0.1228,
+     "max_drawdown": -0.3025,
+     "calmar": -0.0169,
+     "n_trades": 35,
+     "win_rate": 0.3143,
+     "profit_factor": 1.0386,
+     "avg_trade": 0.0005,
+     "skew": 1.9009,
+     "kurtosis": 31.1938,
+     "n_bars": 3304,
+     "exposure": 0.2772,
+     "turnover_per_year": 182.9419,
+     "benchmark_return": -0.0756
+    },
+    "stability": [
+     5.57,
+     0.44,
+     3.82,
+     -2.06,
+     0.8,
+     -0.72
+    ],
+    "neighbour_sharpe_median": 0.287,
+    "valid_sharpe_2x_costs": -0.862,
+    "train_score": 1.638,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:56+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:56+00:00",
+     "status": "rejected",
+     "reason": "edge disappears when trading costs double"
+    }
+   ]
+  },
+  "ed8e56a4a29d": {
+   "id": "ed8e56a4a29d",
+   "name": "GA-95b3de",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "48357357a544"
+   ],
+   "fingerprint": "640b036161a07139",
+   "definition": {
+    "name": "GA-95b3de",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     },
+     {
+      "feature": "h4_rsi_14",
+      "op": "<",
+      "threshold": 51.183,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.065,
+      "ref": null
+     },
+     {
+      "feature": "er_20",
+      "op": ">",
+      "threshold": 0.0,
+      "ref": "d1_er_10"
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     },
+     {
+      "feature": "h4_mom_42",
+      "op": "xa",
+      "threshold": -2.927,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "48357357a544"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "ed8e56a4a29d"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1 AND h4_rsi_14 < 51.18\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.065 AND er_20 > d1_er_10\nEXIT  if  vol_ratio > 2 OR h4_mom_42 crosses above -2.927  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_er_10",
+    "er_20",
+    "h4_mom_42",
+    "h4_rsi_14",
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -2.10, 24 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1864,
+     "cagr": -0.4213,
+     "sharpe": -2.0975,
+     "sortino": -1.4623,
+     "max_drawdown": -0.2852,
+     "calmar": -1.4772,
+     "n_trades": 24,
+     "win_rate": 0.2083,
+     "profit_factor": 0.452,
+     "avg_trade": -0.0082,
+     "skew": 1.9131,
+     "kurtosis": 53.1523,
+     "n_bars": 3304,
+     "exposure": 0.1916,
+     "turnover_per_year": 127.2639,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.589,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:56+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:56+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -2.10, 24 trades)"
+    }
+   ]
+  },
+  "d83c8d8ba38d": {
+   "id": "d83c8d8ba38d",
+   "name": "GA-deae29",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "6823414bc465"
+   ],
+   "fingerprint": "7739ced7ea1a433a",
+   "definition": {
+    "name": "GA-deae29",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.065,
+      "ref": null
+     },
+     {
+      "feature": "er_20",
+      "op": ">",
+      "threshold": 0.0,
+      "ref": "d1_er_10"
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     },
+     {
+      "feature": "vol_ratio",
+      "op": "xb",
+      "threshold": 2.778,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "6823414bc465"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "d83c8d8ba38d"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.065 AND er_20 > d1_er_10\nEXIT  if  vol_ratio > 2 OR vol_ratio crosses below 2.778  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_er_10",
+    "er_20",
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.50, 29 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0661,
+     "cagr": -0.1659,
+     "sharpe": -0.505,
+     "sortino": -0.4068,
+     "max_drawdown": -0.2565,
+     "calmar": -0.6465,
+     "n_trades": 29,
+     "win_rate": 0.2759,
+     "profit_factor": 0.8542,
+     "avg_trade": -0.0019,
+     "skew": 2.0424,
+     "kurtosis": 40.0987,
+     "n_bars": 3304,
+     "exposure": 0.2337,
+     "turnover_per_year": 151.1259,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.58,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:56+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:56+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.50, 29 trades)"
+    }
+   ]
+  },
+  "48357357a544": {
+   "id": "48357357a544",
+   "name": "GA-ab3741",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "6823414bc465"
+   ],
+   "fingerprint": "10e131946f876bdb",
+   "definition": {
+    "name": "GA-ab3741",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.065,
+      "ref": null
+     },
+     {
+      "feature": "er_20",
+      "op": ">",
+      "threshold": 0.0,
+      "ref": "d1_er_10"
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     },
+     {
+      "feature": "h4_mom_42",
+      "op": "xa",
+      "threshold": -2.927,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "6823414bc465"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "48357357a544"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.065 AND er_20 > d1_er_10\nEXIT  if  vol_ratio > 2 OR h4_mom_42 crosses above -2.927  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_er_10",
+    "er_20",
+    "h4_mom_42",
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.50, 29 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0661,
+     "cagr": -0.1659,
+     "sharpe": -0.505,
+     "sortino": -0.4068,
+     "max_drawdown": -0.2565,
+     "calmar": -0.6465,
+     "n_trades": 29,
+     "win_rate": 0.2759,
+     "profit_factor": 0.8542,
+     "avg_trade": -0.0019,
+     "skew": 2.0424,
+     "kurtosis": 40.0987,
+     "n_bars": 3304,
+     "exposure": 0.2337,
+     "turnover_per_year": 151.1259,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.58,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:56+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:56+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.50, 29 trades)"
+    }
+   ]
+  },
+  "4ed76c952e2e": {
+   "id": "4ed76c952e2e",
+   "name": "GA-34dd64",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "7126b010d20b"
+   ],
+   "fingerprint": "a6736b5b250ac2e8",
+   "definition": {
+    "name": "GA-34dd64",
+    "family": "volatility",
+    "long_entry": [],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.005,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 4.75,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "7126b010d20b"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "4ed76c952e2e"
+   },
+   "math": "LONG  at close t  if  never\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.005\nEXIT  if  vol_ratio > 2  OR bars_held >= 48  OR price touches stop 4.75*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.02, 17 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0989,
+     "cagr": -0.2413,
+     "sharpe": -1.016,
+     "sortino": -0.6472,
+     "max_drawdown": -0.2502,
+     "calmar": -0.9642,
+     "n_trades": 17,
+     "win_rate": 0.4118,
+     "profit_factor": 0.6966,
+     "avg_trade": -0.0055,
+     "skew": 0.782,
+     "kurtosis": 57.7136,
+     "n_bars": 3304,
+     "exposure": 0.1904,
+     "turnover_per_year": 90.1453,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.566,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:56+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:56+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.02, 17 trades)"
+    }
+   ]
+  },
+  "736971f9979f": {
+   "id": "736971f9979f",
+   "name": "GA-0ccc5c",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "4ac073ea9f30"
+   ],
+   "fingerprint": "107a763959321206",
+   "definition": {
+    "name": "GA-0ccc5c",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.0,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     }
+    ],
+    "max_hold": 84,
+    "stop_atr": 2,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "4ac073ea9f30"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "736971f9979f"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0\nEXIT  if  vol_ratio > 2  OR bars_held >= 84  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.87, 29 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1212,
+     "cagr": -0.29,
+     "sharpe": -0.8715,
+     "sortino": -0.7139,
+     "max_drawdown": -0.3521,
+     "calmar": -0.8238,
+     "n_trades": 29,
+     "win_rate": 0.2414,
+     "profit_factor": 0.747,
+     "avg_trade": -0.0039,
+     "skew": 0.5058,
+     "kurtosis": 36.0655,
+     "n_bars": 3304,
+     "exposure": 0.3151,
+     "turnover_per_year": 151.1259,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.533,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:56+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:56+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.87, 29 trades)"
+    }
+   ]
+  },
+  "ee658e7661e8": {
+   "id": "ee658e7661e8",
+   "name": "Vol-squeeze expansion",
+   "family": "volatility",
+   "version": 1,
+   "origin": "handcrafted",
+   "parents": [],
+   "fingerprint": "d50b3598ae5ec032",
+   "definition": {
+    "name": "Vol-squeeze expansion",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.0,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "handcrafted",
+    "kind": "rules",
+    "id": "ee658e7661e8"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0\nEXIT  if  vol_ratio > 2  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.61, 35 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0819,
+     "cagr": -0.2027,
+     "sharpe": -0.6063,
+     "sortino": -0.5242,
+     "max_drawdown": -0.3006,
+     "calmar": -0.6742,
+     "n_trades": 35,
+     "win_rate": 0.2857,
+     "profit_factor": 0.8591,
+     "avg_trade": -0.0019,
+     "skew": 1.9223,
+     "kurtosis": 33.8875,
+     "n_bars": 3304,
+     "exposure": 0.2594,
+     "turnover_per_year": 182.9419,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.468,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:57+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:57+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.61, 35 trades)"
+    }
+   ]
+  },
+  "4cf91f5508b3": {
+   "id": "4cf91f5508b3",
+   "name": "GA-a2cc8c (BO)",
+   "family": "volatility",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "d66926bca8ce"
+   ],
+   "fingerprint": "bfdf7f4892e8c1e4",
+   "definition": {
+    "name": "GA-a2cc8c (BO)",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     },
+     {
+      "feature": "h4_adx_14",
+      "op": "xb",
+      "threshold": 28.51,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.065,
+      "ref": null
+     },
+     {
+      "feature": "er_20",
+      "op": ">",
+      "threshold": 0.0,
+      "ref": "d1_er_10"
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     },
+     {
+      "feature": "vol_ratio",
+      "op": "xb",
+      "threshold": 2.778,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2.0,
+    "trail": false,
+    "regimes": null,
+    "version": 2,
+    "parent_ids": [
+     "d66926bca8ce"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "4cf91f5508b3"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1 AND h4_adx_14 crosses below 28.51\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.065 AND er_20 > d1_er_10\nEXIT  if  vol_ratio > 2 OR vol_ratio crosses below 2.778  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_er_10",
+    "er_20",
+    "h4_adx_14",
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.63, 14 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1108,
+     "cagr": -0.2676,
+     "sharpe": -1.6293,
+     "sortino": -0.8165,
+     "max_drawdown": -0.1645,
+     "calmar": -1.6269,
+     "n_trades": 14,
+     "win_rate": 0.2857,
+     "profit_factor": 0.3971,
+     "avg_trade": -0.0081,
+     "skew": 2.729,
+     "kurtosis": 111.936,
+     "n_bars": 3304,
+     "exposure": 0.1065,
+     "turnover_per_year": 74.2373,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.781,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:57+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:57+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.63, 14 trades)"
+    }
+   ]
+  },
+  "44e8ac2a8611": {
+   "id": "44e8ac2a8611",
+   "name": "GA-fd24b2 (BO)",
+   "family": "volatility",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "ef5cd3e1e63f"
+   ],
+   "fingerprint": "dc4a5f4f2227081c",
+   "definition": {
+    "name": "GA-fd24b2 (BO)",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "xb",
+      "threshold": -0.242,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.065,
+      "ref": null
+     },
+     {
+      "feature": "er_20",
+      "op": ">",
+      "threshold": 0.0,
+      "ref": "d1_er_10"
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     },
+     {
+      "feature": "vol_ratio",
+      "op": "xb",
+      "threshold": 2.778,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2.0,
+    "trail": false,
+    "regimes": null,
+    "version": 2,
+    "parent_ids": [
+     "ef5cd3e1e63f"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "44e8ac2a8611"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1 AND pctb_20 crosses below -0.242\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.065 AND er_20 > d1_er_10\nEXIT  if  vol_ratio > 2 OR vol_ratio crosses below 2.778  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_er_10",
+    "er_20",
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.63, 14 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1108,
+     "cagr": -0.2676,
+     "sharpe": -1.6293,
+     "sortino": -0.8165,
+     "max_drawdown": -0.1645,
+     "calmar": -1.6269,
+     "n_trades": 14,
+     "win_rate": 0.2857,
+     "profit_factor": 0.3971,
+     "avg_trade": -0.0081,
+     "skew": 2.729,
+     "kurtosis": 111.936,
+     "n_bars": 3304,
+     "exposure": 0.1065,
+     "turnover_per_year": 74.2373,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.781,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:57+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:57+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.63, 14 trades)"
+    }
+   ]
+  },
+  "f05b0bf87681": {
+   "id": "f05b0bf87681",
+   "name": "GA-7fe1ca (BO)",
+   "family": "volatility",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "6823414bc465"
+   ],
+   "fingerprint": "78595ff307589ed5",
+   "definition": {
+    "name": "GA-7fe1ca (BO)",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": ">",
+      "threshold": 1.0,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "<",
+      "threshold": 0.2,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.065,
+      "ref": null
+     },
+     {
+      "feature": "er_20",
+      "op": ">",
+      "threshold": 0.0,
+      "ref": "d1_er_10"
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 2.0,
+      "ref": null
+     }
+    ],
+    "max_hold": 48,
+    "stop_atr": 2.0,
+    "trail": false,
+    "regimes": null,
+    "version": 2,
+    "parent_ids": [
+     "6823414bc465"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "f05b0bf87681"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 < 0.2 AND pctb_20 > 1\nSHORT at close t  if  vol_pct_500 < 0.2 AND pctb_20 < 0.065 AND er_20 > d1_er_10\nEXIT  if  vol_ratio > 2  OR bars_held >= 48  OR price touches stop 2.00*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "d1_er_10",
+    "er_20",
+    "pctb_20",
+    "vol_pct_500",
+    "vol_ratio"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.50, 29 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0661,
+     "cagr": -0.1659,
+     "sharpe": -0.505,
+     "sortino": -0.4068,
+     "max_drawdown": -0.2565,
+     "calmar": -0.6465,
+     "n_trades": 29,
+     "win_rate": 0.2759,
+     "profit_factor": 0.8542,
+     "avg_trade": -0.0019,
+     "skew": 2.0424,
+     "kurtosis": 40.0987,
+     "n_bars": 3304,
+     "exposure": 0.2337,
+     "turnover_per_year": 151.1259,
+     "benchmark_return": -0.0756
+    },
+    "train_score": 1.66,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:57+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:57+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.50, 29 trades)"
+    }
+   ]
+  },
+  "fa8def159a3e": {
+   "id": "fa8def159a3e",
+   "name": "ML-reversion-48h",
+   "family": "ml",
+   "version": 1,
+   "origin": "ml",
+   "parents": [],
+   "fingerprint": "7332fabfb5d8ca28",
+   "definition": {
+    "name": "ML-reversion-48h",
+    "feature_set": "reversion",
+    "horizon": 48,
+    "margin": 0.04,
+    "retrain_every": 720,
+    "min_train": 3000,
+    "max_depth": 3,
+    "learning_rate": 0.05,
+    "max_iter": 150,
+    "stop_atr": 3.0,
+    "family": "ml",
+    "kind": "model",
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "ml",
+    "id": "fa8def159a3e"
+   },
+   "math": "P_t = GradientBoosting(depth=3, lr=0.05, trees=150)(features[reversion] at close t)\n  trained walk-forward: refit every 720 bars on rows i with i+48 < refit bar\n  target: sign of 48-bar forward return (tiny moves excluded)\nLONG if P_t > 0.540; SHORT if P_t < 0.460; EXIT when |P_t-0.5| < 0.010 OR bars_held >= 96 OR stop 3.0*ATR14 (intrabar)",
+   "required_data": [
+    "d1_z_20",
+    "er_20",
+    "h4_rsi_14",
+    "pctb_20",
+    "ret_1",
+    "rsi_14",
+    "rsi_3",
+    "vol_ratio",
+    "vwap_dev_24",
+    "z_close_200",
+    "z_close_50"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.06, 121 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.2504,
+     "cagr": -0.5343,
+     "sharpe": -1.0644,
+     "sortino": -1.3859,
+     "max_drawdown": -0.3921,
+     "calmar": -1.3625,
+     "n_trades": 121,
+     "win_rate": 0.4628,
+     "profit_factor": 0.843,
+     "avg_trade": -0.0019,
+     "skew": 0.3242,
+     "kurtosis": 10.6589,
+     "n_bars": 3304,
+     "exposure": 0.8018,
+     "turnover_per_year": 641.6223,
+     "benchmark_return": -0.0756
+    },
+    "train_score": -0.432,
+    "symbol": "SOLUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:32:57+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:32:57+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.06, 121 trades)"
+    }
+   ]
+  },
+  "3e6535314d03": {
+   "id": "3e6535314d03",
+   "name": "GA-709836",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "b1a7d884e3d0"
+   ],
+   "fingerprint": "42a471f75208335e",
+   "definition": {
+    "name": "GA-709836",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xb",
+      "threshold": 68.48,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "d1_mom_20",
+      "op": "<",
+      "threshold": 0.0,
+      "ref": "h4_mom_42"
+     },
+     {
+      "feature": "adx_14",
+      "op": "xa",
+      "threshold": 11.59,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 2.69,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility",
+     "accumulation",
+     "distribution"
+    ],
+    "version": 1,
+    "parent_ids": [
+     "b1a7d884e3d0"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "3e6535314d03"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses below 68.48  AND regime in {sideways, low_volatility, accumulation, distribution}\nSHORT at close t  if  d1_mom_20 < h4_mom_42 AND adx_14 crosses above 11.59  AND regime in {sideways, low_volatility, accumulation, distribution}\nEXIT  if  no rule  OR bars_held >= 24  OR price touches stop 2.69*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "adx_14",
+    "d1_mom_20",
+    "h4_mom_42",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -2.14, 12 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0976,
+     "cagr": -0.2383,
+     "sharpe": -2.1444,
+     "sortino": -0.796,
+     "max_drawdown": -0.1188,
+     "calmar": -2.0058,
+     "n_trades": 12,
+     "win_rate": 0.3333,
+     "profit_factor": 0.3657,
+     "avg_trade": -0.0084,
+     "skew": 1.1133,
+     "kurtosis": 135.0201,
+     "n_bars": 3304,
+     "exposure": 0.066,
+     "turnover_per_year": 63.632,
+     "benchmark_return": -0.2703
+    },
+    "train_score": 1.786,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:09+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:09+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -2.14, 12 trades)"
+    }
+   ]
+  },
+  "eefa67d7ab85": {
+   "id": "eefa67d7ab85",
+   "name": "GA-e47458",
+   "family": "momentum",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "c1bd48c0ecda",
+    "c1b9ddab3c19"
+   ],
+   "fingerprint": "2567008c5d7990fa",
+   "definition": {
+    "name": "GA-e47458",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "adx_14",
+      "op": ">",
+      "threshold": 33.498,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "rsi_3",
+      "op": "xa",
+      "threshold": 77.331,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 48,
+    "stop_atr": 4.16,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "c1bd48c0ecda",
+     "c1b9ddab3c19"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "eefa67d7ab85"
+   },
+   "math": "LONG  at close t  if  adx_14 > 33.5\nSHORT at close t  if  rsi_3 crosses above 77.33\nEXIT  if  no rule  OR bars_held >= 48  OR price touches stop 4.16*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "adx_14",
+    "rsi_3"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -2.75, 71 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.4418,
+     "cagr": -0.7869,
+     "sharpe": -2.7474,
+     "sortino": -3.384,
+     "max_drawdown": -0.526,
+     "calmar": -1.496,
+     "n_trades": 71,
+     "win_rate": 0.4085,
+     "profit_factor": 0.5735,
+     "avg_trade": -0.0076,
+     "skew": -0.1663,
+     "kurtosis": 12.4555,
+     "n_bars": 3304,
+     "exposure": 0.8372,
+     "turnover_per_year": 376.4891,
+     "benchmark_return": -0.2703
+    },
+    "train_score": 1.733,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:09+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:09+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -2.75, 71 trades)"
+    }
+   ]
+  },
+  "5fc338d56b62": {
+   "id": "5fc338d56b62",
+   "name": "GA-6c75c7",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "da2ed83c2a4a",
+    "310b362cba21"
+   ],
+   "fingerprint": "f9956231dbcbf81d",
+   "definition": {
+    "name": "GA-6c75c7",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xb",
+      "threshold": 74.661,
+      "ref": null
+     },
+     {
+      "feature": "ret_1",
+      "op": "<",
+      "threshold": -1.24,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 2.35,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "da2ed83c2a4a",
+     "310b362cba21"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "5fc338d56b62"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses below 74.66 AND ret_1 < -1.24\nSHORT at close t  if  never\nEXIT  if  no rule  OR bars_held >= 24  OR price touches stop 2.35*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "ret_1",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.56, 10 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0999,
+     "cagr": -0.2435,
+     "sharpe": -1.564,
+     "sortino": -0.5466,
+     "max_drawdown": -0.106,
+     "calmar": -2.2977,
+     "n_trades": 10,
+     "win_rate": 0.3,
+     "profit_factor": 0.5212,
+     "avg_trade": -0.0099,
+     "skew": -2.2808,
+     "kurtosis": 75.8952,
+     "n_bars": 3304,
+     "exposure": 0.0602,
+     "turnover_per_year": 53.0266,
+     "benchmark_return": -0.2703
+    },
+    "train_score": 1.449,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:09+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:09+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.56, 10 trades)"
+    }
+   ]
+  },
+  "da2ed83c2a4a": {
+   "id": "da2ed83c2a4a",
+   "name": "GA-196ee3",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "cbff27f79f05"
+   ],
+   "fingerprint": "6cbf14e70f979ead",
+   "definition": {
+    "name": "GA-196ee3",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xb",
+      "threshold": 74.661,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 2.35,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "cbff27f79f05"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "da2ed83c2a4a"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses below 74.66\nSHORT at close t  if  never\nEXIT  if  no rule  OR bars_held >= 24  OR price touches stop 2.35*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "unstable: profitable in only 3/6 time periods",
+   "results": {
+    "valid": {
+     "total_return": 0.0161,
+     "cagr": 0.0433,
+     "sharpe": 0.3072,
+     "sortino": 0.1425,
+     "max_drawdown": -0.1251,
+     "calmar": 0.3459,
+     "n_trades": 12,
+     "win_rate": 0.4167,
+     "profit_factor": 1.1319,
+     "avg_trade": 0.0019,
+     "skew": 2.6175,
+     "kurtosis": 95.7487,
+     "n_bars": 3304,
+     "exposure": 0.0811,
+     "turnover_per_year": 63.632,
+     "benchmark_return": -0.2703
+    },
+    "stability": [
+     4.91,
+     -1.7,
+     -0.38,
+     1.83,
+     -0.22,
+     0.83
+    ],
+    "train_score": 1.221,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:10+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:10+00:00",
+     "status": "rejected",
+     "reason": "unstable: profitable in only 3/6 time periods"
+    }
+   ]
+  },
+  "566ffceb0ba6": {
+   "id": "566ffceb0ba6",
+   "name": "GA-b90ac6",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "af172c113ce4"
+   ],
+   "fingerprint": "5f10ead5e5077ad0",
+   "definition": {
+    "name": "GA-b90ac6",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xb",
+      "threshold": 74.661,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [
+     {
+      "feature": "h4_mom_42",
+      "op": ">",
+      "threshold": -2.927,
+      "ref": null
+     }
+    ],
+    "max_hold": 24,
+    "stop_atr": 2.35,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "af172c113ce4"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "566ffceb0ba6"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses below 74.66\nSHORT at close t  if  never\nEXIT  if  h4_mom_42 > -2.927  OR bars_held >= 24  OR price touches stop 2.35*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_mom_42",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -5.43, 21 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.105,
+     "cagr": -0.2549,
+     "sharpe": -5.4314,
+     "sortino": -0.7772,
+     "max_drawdown": -0.105,
+     "calmar": -2.4267,
+     "n_trades": 21,
+     "win_rate": 0.1905,
+     "profit_factor": 0.0692,
+     "avg_trade": -0.0053,
+     "skew": -18.4963,
+     "kurtosis": 500.8026,
+     "n_bars": 3304,
+     "exposure": 0.0064,
+     "turnover_per_year": 111.3559,
+     "benchmark_return": -0.2703
+    },
+    "train_score": 1.181,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:10+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:10+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -5.43, 21 trades)"
+    }
+   ]
+  },
+  "af172c113ce4": {
+   "id": "af172c113ce4",
+   "name": "GA-169c7f",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "da2ed83c2a4a",
+    "fd1e1cbb6166"
+   ],
+   "fingerprint": "6dda8ca8894e66da",
+   "definition": {
+    "name": "GA-169c7f",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xb",
+      "threshold": 74.661,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [
+     {
+      "feature": "h4_mom_42",
+      "op": "xa",
+      "threshold": -2.927,
+      "ref": null
+     }
+    ],
+    "max_hold": 24,
+    "stop_atr": 2.35,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "da2ed83c2a4a",
+     "fd1e1cbb6166"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "af172c113ce4"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses below 74.66\nSHORT at close t  if  never\nEXIT  if  h4_mom_42 crosses above -2.927  OR bars_held >= 24  OR price touches stop 2.35*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_mom_42",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "unstable: profitable in only 3/6 time periods",
+   "results": {
+    "valid": {
+     "total_return": 0.0161,
+     "cagr": 0.0433,
+     "sharpe": 0.3072,
+     "sortino": 0.1425,
+     "max_drawdown": -0.1251,
+     "calmar": 0.3459,
+     "n_trades": 12,
+     "win_rate": 0.4167,
+     "profit_factor": 1.1319,
+     "avg_trade": 0.0019,
+     "skew": 2.6175,
+     "kurtosis": 95.7487,
+     "n_bars": 3304,
+     "exposure": 0.0811,
+     "turnover_per_year": 63.632,
+     "benchmark_return": -0.2703
+    },
+    "stability": [
+     4.91,
+     -1.7,
+     -0.38,
+     1.83,
+     -0.22,
+     0.83
+    ],
+    "train_score": 1.141,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:10+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:10+00:00",
+     "status": "rejected",
+     "reason": "unstable: profitable in only 3/6 time periods"
+    }
+   ]
+  },
+  "cbff27f79f05": {
+   "id": "cbff27f79f05",
+   "name": "GA-f33a06",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "b81152a06b3f",
+    "455d7f6781fb"
+   ],
+   "fingerprint": "59315dc58b47b94c",
+   "definition": {
+    "name": "GA-f33a06",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xb",
+      "threshold": 68.48,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 2.35,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "b81152a06b3f",
+     "455d7f6781fb"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "cbff27f79f05"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses below 68.48\nSHORT at close t  if  never\nEXIT  if  no rule  OR bars_held >= 24  OR price touches stop 2.35*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.86, 29 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1607,
+     "cagr": -0.3715,
+     "sharpe": -1.8565,
+     "sortino": -1.2113,
+     "max_drawdown": -0.1885,
+     "calmar": -1.9711,
+     "n_trades": 29,
+     "win_rate": 0.2759,
+     "profit_factor": 0.6035,
+     "avg_trade": -0.0057,
+     "skew": 1.5591,
+     "kurtosis": 42.5106,
+     "n_bars": 3304,
+     "exposure": 0.161,
+     "turnover_per_year": 153.7772,
+     "benchmark_return": -0.2703
+    },
+    "train_score": 1.13,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:10+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:10+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.86, 29 trades)"
+    }
+   ]
+  },
+  "646276658858": {
+   "id": "646276658858",
+   "name": "GA-062304",
+   "family": "momentum",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "d9afffb98d56"
+   ],
+   "fingerprint": "1612209e711b6b07",
+   "definition": {
+    "name": "GA-062304",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "adx_14",
+      "op": ">",
+      "threshold": 33.498,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "h4_mom_42",
+      "op": ">",
+      "threshold": 0.0,
+      "ref": "mom_168"
+     },
+     {
+      "feature": "vol_ratio",
+      "op": "<",
+      "threshold": 2.935,
+      "ref": null
+     }
+    ],
+    "exit_rules": [
+     {
+      "feature": "z_close_200",
+      "op": "xa",
+      "threshold": 1.887,
+      "ref": null
+     },
+     {
+      "feature": "h4_rsi_14",
+      "op": "xa",
+      "threshold": 45.599,
+      "ref": null
+     }
+    ],
+    "max_hold": 24,
+    "stop_atr": 4.16,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "d9afffb98d56"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "646276658858"
+   },
+   "math": "LONG  at close t  if  adx_14 > 33.5\nSHORT at close t  if  h4_mom_42 > mom_168 AND vol_ratio < 2.935\nEXIT  if  z_close_200 crosses above 1.887 OR h4_rsi_14 crosses above 45.6  OR bars_held >= 24  OR price touches stop 4.16*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "adx_14",
+    "h4_mom_42",
+    "h4_rsi_14",
+    "mom_168",
+    "vol_ratio",
+    "z_close_200"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -2.45, 90 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.3939,
+     "cagr": -0.7349,
+     "sharpe": -2.4481,
+     "sortino": -2.8812,
+     "max_drawdown": -0.4489,
+     "calmar": -1.6369,
+     "n_trades": 90,
+     "win_rate": 0.3778,
+     "profit_factor": 0.6222,
+     "avg_trade": -0.0052,
+     "skew": -0.3692,
+     "kurtosis": 15.5188,
+     "n_bars": 3304,
+     "exposure": 0.7836,
+     "turnover_per_year": 474.5884,
+     "benchmark_return": -0.2703
+    },
+    "train_score": 1.124,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:10+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:10+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -2.45, 90 trades)"
+    }
+   ]
+  },
+  "f4878e328d70": {
+   "id": "f4878e328d70",
+   "name": "GA-b33f74",
+   "family": "volatility",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "9716e539c107"
+   ],
+   "fingerprint": "03ba7194ff1c0409",
+   "definition": {
+    "name": "GA-b33f74",
+    "family": "volatility",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": "xb",
+      "threshold": 0.845,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "don_100",
+      "op": "xb",
+      "threshold": 0.0,
+      "ref": "don_20"
+     },
+     {
+      "feature": "ret_1",
+      "op": "xb",
+      "threshold": 0.82,
+      "ref": null
+     },
+     {
+      "feature": "adx_14",
+      "op": ">",
+      "threshold": 24.922,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 48,
+    "stop_atr": 3.7,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "9716e539c107"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "f4878e328d70"
+   },
+   "math": "LONG  at close t  if  vol_pct_500 crosses below 0.845\nSHORT at close t  if  don_100 crosses below don_20 AND ret_1 crosses below 0.82 AND adx_14 > 24.92\nEXIT  if  no rule  OR bars_held >= 48  OR price touches stop 3.70*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "adx_14",
+    "don_100",
+    "don_20",
+    "ret_1",
+    "vol_pct_500"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.69, 5 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.0616,
+     "cagr": -0.1552,
+     "sharpe": -1.6859,
+     "sortino": -0.5804,
+     "max_drawdown": -0.0861,
+     "calmar": -1.8036,
+     "n_trades": 5,
+     "win_rate": 0.6,
+     "profit_factor": 0.0768,
+     "avg_trade": -0.0125,
+     "skew": -1.1524,
+     "kurtosis": 80.1716,
+     "n_bars": 3304,
+     "exposure": 0.0563,
+     "turnover_per_year": 26.5133,
+     "benchmark_return": -0.2703
+    },
+    "train_score": 1.116,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:10+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:10+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.69, 5 trades)"
+    }
+   ]
+  },
+  "d47f6b309c36": {
+   "id": "d47f6b309c36",
+   "name": "GA-9af450",
+   "family": "mean_reversion",
+   "version": 1,
+   "origin": "genetic",
+   "parents": [
+    "af172c113ce4"
+   ],
+   "fingerprint": "44e183ee91eae001",
+   "definition": {
+    "name": "GA-9af450",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xb",
+      "threshold": 74.883,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [
+     {
+      "feature": "h4_mom_42",
+      "op": "xa",
+      "threshold": -2.927,
+      "ref": null
+     }
+    ],
+    "max_hold": 24,
+    "stop_atr": 2.35,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [
+     "af172c113ce4"
+    ],
+    "origin": "genetic",
+    "kind": "rules",
+    "id": "d47f6b309c36"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses below 74.88\nSHORT at close t  if  never\nEXIT  if  h4_mom_42 crosses above -2.927  OR bars_held >= 24  OR price touches stop 2.35*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "h4_mom_42",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "unstable: profitable in only 3/6 time periods",
+   "results": {
+    "valid": {
+     "total_return": 0.0005,
+     "cagr": 0.0014,
+     "sharpe": 0.1054,
+     "sortino": 0.0431,
+     "max_drawdown": -0.1238,
+     "calmar": 0.0113,
+     "n_trades": 10,
+     "win_rate": 0.5,
+     "profit_factor": 1.039,
+     "avg_trade": 0.0006,
+     "skew": 2.8971,
+     "kurtosis": 115.5719,
+     "n_bars": 3304,
+     "exposure": 0.0593,
+     "turnover_per_year": 53.0266,
+     "benchmark_return": -0.2703
+    },
+    "stability": [
+     4.91,
+     -2.01,
+     -0.28,
+     1.83,
+     0.19,
+     -0.21
+    ],
+    "train_score": 1.116,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:10+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:10+00:00",
+     "status": "rejected",
+     "reason": "unstable: profitable in only 3/6 time periods"
+    }
+   ]
+  },
+  "16596a83ea8b": {
+   "id": "16596a83ea8b",
+   "name": "GA-709836 (BO)",
+   "family": "mean_reversion",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "3e6535314d03"
+   ],
+   "fingerprint": "c83d34be56c53271",
+   "definition": {
+    "name": "GA-709836 (BO)",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xb",
+      "threshold": 69.2272,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "d1_mom_20",
+      "op": "<",
+      "threshold": 0.0,
+      "ref": "h4_mom_42"
+     },
+     {
+      "feature": "adx_14",
+      "op": "xa",
+      "threshold": 11.1299,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 1.58,
+    "trail": false,
+    "regimes": [
+     "sideways",
+     "low_volatility",
+     "accumulation",
+     "distribution"
+    ],
+    "version": 2,
+    "parent_ids": [
+     "3e6535314d03"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "16596a83ea8b"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses below 69.23  AND regime in {sideways, low_volatility, accumulation, distribution}\nSHORT at close t  if  d1_mom_20 < h4_mom_42 AND adx_14 crosses above 11.13  AND regime in {sideways, low_volatility, accumulation, distribution}\nEXIT  if  no rule  OR bars_held >= 24  OR price touches stop 1.58*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "adx_14",
+    "d1_mom_20",
+    "h4_mom_42",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -4.37, 11 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1291,
+     "cagr": -0.3067,
+     "sharpe": -4.3665,
+     "sortino": -1.0625,
+     "max_drawdown": -0.1529,
+     "calmar": -2.0066,
+     "n_trades": 11,
+     "win_rate": 0.0909,
+     "profit_factor": 0.0595,
+     "avg_trade": -0.0124,
+     "skew": -5.4438,
+     "kurtosis": 148.0203,
+     "n_bars": 3304,
+     "exposure": 0.0324,
+     "turnover_per_year": 58.3293,
+     "benchmark_return": -0.2703
+    },
+    "train_score": 2.065,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:10+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:10+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -4.37, 11 trades)"
+    }
+   ]
+  },
+  "ef13edea96e6": {
+   "id": "ef13edea96e6",
+   "name": "GA-e47458 (BO)",
+   "family": "momentum",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "eefa67d7ab85"
+   ],
+   "fingerprint": "a4ae45b7c7b44a4a",
+   "definition": {
+    "name": "GA-e47458 (BO)",
+    "family": "momentum",
+    "long_entry": [
+     {
+      "feature": "adx_14",
+      "op": ">",
+      "threshold": 33.6422,
+      "ref": null
+     }
+    ],
+    "short_entry": [
+     {
+      "feature": "rsi_3",
+      "op": "xa",
+      "threshold": 77.1226,
+      "ref": null
+     }
+    ],
+    "exit_rules": [],
+    "max_hold": 48,
+    "stop_atr": 3.82,
+    "trail": false,
+    "regimes": null,
+    "version": 2,
+    "parent_ids": [
+     "eefa67d7ab85"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "ef13edea96e6"
+   },
+   "math": "LONG  at close t  if  adx_14 > 33.64\nSHORT at close t  if  rsi_3 crosses above 77.12\nEXIT  if  no rule  OR bars_held >= 48  OR price touches stop 3.82*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "adx_14",
+    "rsi_3"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -1.75, 71 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.3201,
+     "cagr": -0.6405,
+     "sharpe": -1.7511,
+     "sortino": -2.1791,
+     "max_drawdown": -0.4267,
+     "calmar": -1.5011,
+     "n_trades": 71,
+     "win_rate": 0.4366,
+     "profit_factor": 0.6931,
+     "avg_trade": -0.0049,
+     "skew": -0.0599,
+     "kurtosis": 12.3537,
+     "n_bars": 3304,
+     "exposure": 0.8396,
+     "turnover_per_year": 376.4891,
+     "benchmark_return": -0.2703
+    },
+    "train_score": 2.043,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:10+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:10+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -1.75, 71 trades)"
+    }
+   ]
+  },
+  "095bfe052bfc": {
+   "id": "095bfe052bfc",
+   "name": "GA-6c75c7 (BO)",
+   "family": "mean_reversion",
+   "version": 2,
+   "origin": "bayesian",
+   "parents": [
+    "5fc338d56b62"
+   ],
+   "fingerprint": "5ad454ca03204dfb",
+   "definition": {
+    "name": "GA-6c75c7 (BO)",
+    "family": "mean_reversion",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "xb",
+      "threshold": 71.2964,
+      "ref": null
+     },
+     {
+      "feature": "ret_1",
+      "op": "<",
+      "threshold": 1.9988,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.85,
+    "trail": false,
+    "regimes": null,
+    "version": 2,
+    "parent_ids": [
+     "5fc338d56b62"
+    ],
+    "origin": "bayesian",
+    "kind": "rules",
+    "id": "095bfe052bfc"
+   },
+   "math": "LONG  at close t  if  rsi_14 crosses below 71.3 AND ret_1 < 1.999\nSHORT at close t  if  never\nEXIT  if  no rule  OR bars_held >= 24  OR price touches stop 3.85*ATR14 (intrabar)\nposition applied from bar t+1; costs charged on every change in position",
+   "required_data": [
+    "ret_1",
+    "rsi_14"
+   ],
+   "status": "rejected",
+   "status_reason": "validation failed (Sharpe -0.99, 22 trades)",
+   "results": {
+    "valid": {
+     "total_return": -0.1041,
+     "cagr": -0.2528,
+     "sharpe": -0.9865,
+     "sortino": -0.6201,
+     "max_drawdown": -0.2351,
+     "calmar": -1.0752,
+     "n_trades": 22,
+     "win_rate": 0.2727,
+     "profit_factor": 0.6734,
+     "avg_trade": -0.0046,
+     "skew": 2.0335,
+     "kurtosis": 54.1417,
+     "n_bars": 3304,
+     "exposure": 0.155,
+     "turnover_per_year": 116.6586,
+     "benchmark_return": -0.2703
+    },
+    "train_score": 1.891,
+    "symbol": "XRPUSDT",
+    "data_source": "market"
+   },
+   "updated": "2026-11-25T13:33:10+00:00",
+   "history": [
+    {
+     "ts": "2026-11-25T13:33:10+00:00",
+     "status": "rejected",
+     "reason": "validation failed (Sharpe -0.99, 22 trades)"
+    }
+   ]
   }
  },
- "trial_count": 675,
+ "trial_count": 3326,
  "fingerprints": [
   "69b2a2bda86f6fa8",
   "b92b054ff967a5b5",
@@ -1395,7 +6628,61 @@
   "e092f4e97b0a0465",
   "5fcc5af1ce1c4686",
   "288339604b0054f5",
-  "bd1c7af9c4c07904"
+  "bd1c7af9c4c07904",
+  "44a72d43bc82c8a0",
+  "6ff771b9044390cb",
+  "794b6a042ff532bd",
+  "8baffbaac118a313",
+  "cea944a5e9a91b7f",
+  "1e4ff979b0e5a01a",
+  "0ec0f598a0049e04",
+  "9474110a2f614b8d",
+  "84fca41fadba6c9f",
+  "a10c88ddd0fa1dd0",
+  "07e39436c219e92f",
+  "777a669621c354c2",
+  "3225c67c2a46f80a",
+  "4eb2db753afa25c0",
+  "f68f60317825a246",
+  "9d2eeb319d44a4ca",
+  "aba2ad17da943f55",
+  "0b8f5c6e6c6ba743",
+  "6f784257420aa246",
+  "ad9dbbbb61acdf4d",
+  "e61e5f32c1f5da7f",
+  "30ac3cb548f9c571",
+  "fe8b733ecd1ce890",
+  "be6edb80633e37b0",
+  "841c5a1e9146e216",
+  "6d3025184b3afaf7",
+  "4eab88874a1b2dba",
+  "14139cc2e0d5e662",
+  "7260a457a167f017",
+  "321d42e291e1f81e",
+  "7b1f02a391f98f18",
+  "640b036161a07139",
+  "7739ced7ea1a433a",
+  "10e131946f876bdb",
+  "a6736b5b250ac2e8",
+  "107a763959321206",
+  "d50b3598ae5ec032",
+  "bfdf7f4892e8c1e4",
+  "dc4a5f4f2227081c",
+  "78595ff307589ed5",
+  "7332fabfb5d8ca28",
+  "42a471f75208335e",
+  "2567008c5d7990fa",
+  "f9956231dbcbf81d",
+  "6cbf14e70f979ead",
+  "5f10ead5e5077ad0",
+  "6dda8ca8894e66da",
+  "59315dc58b47b94c",
+  "1612209e711b6b07",
+  "03ba7194ff1c0409",
+  "44e183ee91eae001",
+  "c83d34be56c53271",
+  "a4ae45b7c7b44a4a",
+  "5ad454ca03204dfb"
  ],
- "holdout_tests": 2
+ "holdout_tests": 5
 }

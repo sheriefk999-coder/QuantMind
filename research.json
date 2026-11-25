@@ -1,236 +1,6 @@
 {
  "backlog": [
   {
-   "key": "57e058a97b",
-   "kind": "interaction",
-   "title": "SOLUSDT: mom_168 x h4_adx_14 predicts 24-bar return",
-   "detail": {
-    "ic": -0.1055,
-    "p": 5.489276385268766e-27,
-    "single_ics": [
-     0.0176,
-     0.0202
-    ],
-    "symbol": "SOLUSDT"
-   },
-   "created": "2026-11-25T13:28:55+00:00",
-   "priority": 0.9494,
-   "spec": {
-    "name": "H:mom_168xh4_adx_14",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "mom_168",
-      "op": "<",
-      "threshold": -0.13144938744884188,
-      "ref": null
-     },
-     {
-      "feature": "h4_adx_14",
-      "op": ">",
-      "threshold": 25.171641320625408,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "1cf95a404b05"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "2ded982262",
-   "kind": "interaction",
-   "title": "SOLUSDT: don_100 x vol_pct_500 predicts 24-bar return",
-   "detail": {
-    "ic": -0.1009,
-    "p": 9.26870248561386e-25,
-    "single_ics": [
-     -0.0199,
-     0.0315
-    ],
-    "symbol": "SOLUSDT"
-   },
-   "created": "2026-11-25T13:28:55+00:00",
-   "priority": 0.9081,
-   "spec": {
-    "name": "H:don_100xvol_pct_500",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "don_100",
-      "op": "<",
-      "threshold": 0.45162998124002707,
-      "ref": null
-     },
-     {
-      "feature": "vol_pct_500",
-      "op": ">",
-      "threshold": 0.5,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "207f7aa3b4aa"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "1c8efd805e",
-   "kind": "interaction",
-   "title": "SOLUSDT: z_close_50 x vol_pct_500 predicts 24-bar return",
-   "detail": {
-    "ic": -0.0992,
-    "p": 5.653593839837284e-24,
-    "single_ics": [
-     0.0012,
-     0.0315
-    ],
-    "symbol": "SOLUSDT"
-   },
-   "created": "2026-11-25T13:28:55+00:00",
-   "priority": 0.8926,
-   "spec": {
-    "name": "H:z_close_50xvol_pct_500",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "z_close_50",
-      "op": "<",
-      "threshold": -0.13442222557521405,
-      "ref": null
-     },
-     {
-      "feature": "vol_pct_500",
-      "op": ">",
-      "threshold": 0.5,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "6ae2d634dc9b"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "1b40ff919b",
-   "kind": "interaction",
-   "title": "SOLUSDT: z_close_200 x h4_adx_14 predicts 24-bar return",
-   "detail": {
-    "ic": -0.0988,
-    "p": 8.185494169646799e-24,
-    "single_ics": [
-     0.0209,
-     0.0202
-    ],
-    "symbol": "SOLUSDT"
-   },
-   "created": "2026-11-25T13:28:55+00:00",
-   "priority": 0.8896,
-   "spec": {
-    "name": "H:z_close_200xh4_adx_14",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "z_close_200",
-      "op": "<",
-      "threshold": -0.2226154504495243,
-      "ref": null
-     },
-     {
-      "feature": "h4_adx_14",
-      "op": ">",
-      "threshold": 25.171641320625408,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "16e01e5520a0"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "8ea615923c",
-   "kind": "interaction",
-   "title": "SOLUSDT: h4_mom_42 x h4_adx_14 predicts 24-bar return",
-   "detail": {
-    "ic": -0.0971,
-    "p": 4.216716756776288e-23,
-    "single_ics": [
-     0.0109,
-     0.0202
-    ],
-    "symbol": "SOLUSDT"
-   },
-   "created": "2026-11-25T13:28:55+00:00",
-   "priority": 0.8743,
-   "spec": {
-    "name": "H:h4_mom_42xh4_adx_14",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "h4_mom_42",
-      "op": "<",
-      "threshold": -0.1307382740371709,
-      "ref": null
-     },
-     {
-      "feature": "h4_adx_14",
-      "op": ">",
-      "threshold": 25.171641320625408,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "4bfcd16790d8"
-   },
-   "status": "queued"
-  },
-  {
    "key": "537798c520",
    "kind": "interaction",
    "title": "SOLUSDT: mom_24 x vol_pct_500 predicts 24-bar return",
@@ -369,52 +139,6 @@
    "status": "queued"
   },
   {
-   "key": "54fcfebaf6",
-   "kind": "interaction",
-   "title": "XRPUSDT: z_close_200 x don_20 predicts 24-bar return",
-   "detail": {
-    "ic": 0.091,
-    "p": 2.0892682108819123e-20,
-    "single_ics": [
-     -0.0407,
-     0.0003
-    ],
-    "symbol": "XRPUSDT"
-   },
-   "created": "2026-11-25T13:29:30+00:00",
-   "priority": 0.8188,
-   "spec": {
-    "name": "H:z_close_200xdon_20",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "z_close_200",
-      "op": "<",
-      "threshold": -0.29216052481159477,
-      "ref": null
-     },
-     {
-      "feature": "don_20",
-      "op": ">",
-      "threshold": 0.49794447994081514,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "5a8138437c05"
-   },
-   "status": "queued"
-  },
-  {
    "key": "7b7d90e7c4",
    "kind": "interaction",
    "title": "SOLUSDT: vwap_dev_24 x h4_adx_14 predicts 24-bar return",
@@ -457,52 +181,6 @@
     "origin": "hypothesis",
     "kind": "rules",
     "id": "403fcf2db79e"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "bcac6d33c3",
-   "kind": "interaction",
-   "title": "XRPUSDT: z_close_200 x vwap_dev_24 predicts 24-bar return",
-   "detail": {
-    "ic": 0.0899,
-    "p": 5.612730320245767e-20,
-    "single_ics": [
-     -0.0407,
-     -0.0134
-    ],
-    "symbol": "XRPUSDT"
-   },
-   "created": "2026-11-25T13:29:30+00:00",
-   "priority": 0.8095,
-   "spec": {
-    "name": "H:z_close_200xvwap_dev_24",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "z_close_200",
-      "op": "<",
-      "threshold": -0.29216052481159477,
-      "ref": null
-     },
-     {
-      "feature": "vwap_dev_24",
-      "op": "<",
-      "threshold": -0.0002826379436192683,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "396000d8a332"
    },
    "status": "queued"
   },
@@ -553,98 +231,6 @@
    "status": "queued"
   },
   {
-   "key": "4ca7fc184c",
-   "kind": "interaction",
-   "title": "XRPUSDT: z_close_200 x pctb_20 predicts 24-bar return",
-   "detail": {
-    "ic": 0.0873,
-    "p": 6.476917519515303e-19,
-    "single_ics": [
-     -0.0407,
-     -0.0011
-    ],
-    "symbol": "XRPUSDT"
-   },
-   "created": "2026-11-25T13:29:30+00:00",
-   "priority": 0.7859,
-   "spec": {
-    "name": "H:z_close_200xpctb_20",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "z_close_200",
-      "op": "<",
-      "threshold": -0.29216052481159477,
-      "ref": null
-     },
-     {
-      "feature": "pctb_20",
-      "op": "<",
-      "threshold": 0.48716245689502086,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "526efa504bb5"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "7ba3979e87",
-   "kind": "interaction",
-   "title": "XRPUSDT: z_close_50 x vwap_dev_24 predicts 24-bar return",
-   "detail": {
-    "ic": 0.0873,
-    "p": 3.750613929239352e-19,
-    "single_ics": [
-     0.001,
-     -0.0134
-    ],
-    "symbol": "XRPUSDT"
-   },
-   "created": "2026-11-25T13:29:30+00:00",
-   "priority": 0.7855,
-   "spec": {
-    "name": "H:z_close_50xvwap_dev_24",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "z_close_50",
-      "op": ">",
-      "threshold": -0.11749153578902459,
-      "ref": null
-     },
-     {
-      "feature": "vwap_dev_24",
-      "op": "<",
-      "threshold": -0.0002826379436192683,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "0370de360cb4"
-   },
-   "status": "queued"
-  },
-  {
    "key": "7deea9e2d3",
    "kind": "interaction",
    "title": "SOLUSDT: vol_pct_500 x h4_rsi_14 predicts 24-bar return",
@@ -687,98 +273,6 @@
     "origin": "hypothesis",
     "kind": "rules",
     "id": "dc4b590f3583"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "49049fd73e",
-   "kind": "interaction",
-   "title": "ETHUSDT: don_100 x d1_mom_20 predicts 24-bar return",
-   "detail": {
-    "ic": 0.0852,
-    "p": 1.409830813628194e-17,
-    "single_ics": [
-     -0.0086,
-     0.0134
-    ],
-    "symbol": "ETHUSDT"
-   },
-   "created": "2026-11-25T13:28:44+00:00",
-   "priority": 0.7669,
-   "spec": {
-    "name": "H:don_100xd1_mom_20",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "don_100",
-      "op": "<",
-      "threshold": 0.4969225916973485,
-      "ref": null
-     },
-     {
-      "feature": "d1_mom_20",
-      "op": ">",
-      "threshold": -0.22716423469829666,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "af3f487c78c0"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "65860bc09a",
-   "kind": "interaction",
-   "title": "XRPUSDT: don_100 x vwap_dev_24 predicts 24-bar return",
-   "detail": {
-    "ic": 0.0843,
-    "p": 7.111664583676487e-18,
-    "single_ics": [
-     -0.0413,
-     -0.0134
-    ],
-    "symbol": "XRPUSDT"
-   },
-   "created": "2026-11-25T13:29:31+00:00",
-   "priority": 0.7584,
-   "spec": {
-    "name": "H:don_100xvwap_dev_24",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "don_100",
-      "op": "<",
-      "threshold": 0.47832008153057937,
-      "ref": null
-     },
-     {
-      "feature": "vwap_dev_24",
-      "op": "<",
-      "threshold": -0.0002826379436192683,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "ed88ecac405d"
    },
    "status": "queued"
   },
@@ -963,52 +457,6 @@
     "origin": "hypothesis",
     "kind": "rules",
     "id": "8c6114431b67"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "67d4509d7f",
-   "kind": "interaction",
-   "title": "ETHUSDT: vwap_dev_24 x d1_z_20 predicts 24-bar return",
-   "detail": {
-    "ic": 0.0822,
-    "p": 1.630200776896083e-16,
-    "single_ics": [
-     -0.036,
-     -0.0283
-    ],
-    "symbol": "ETHUSDT"
-   },
-   "created": "2026-11-25T13:28:44+00:00",
-   "priority": 0.7402,
-   "spec": {
-    "name": "H:vwap_dev_24xd1_z_20",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "vwap_dev_24",
-      "op": "<",
-      "threshold": 0.0006391479759642049,
-      "ref": null
-     },
-     {
-      "feature": "d1_z_20",
-      "op": "<",
-      "threshold": -0.4579916764457457,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "2a053694266d"
    },
    "status": "queued"
   },
@@ -1427,52 +875,6 @@
    "status": "queued"
   },
   {
-   "key": "a100ce242d",
-   "kind": "interaction",
-   "title": "ETHUSDT: vol_ratio x vol_pct_500 predicts 24-bar return",
-   "detail": {
-    "ic": 0.074,
-    "p": 5.166814378341191e-14,
-    "single_ics": [
-     0.0003,
-     0.0001
-    ],
-    "symbol": "ETHUSDT"
-   },
-   "created": "2026-11-25T13:28:44+00:00",
-   "priority": 0.6662,
-   "spec": {
-    "name": "H:vol_ratioxvol_pct_500",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "vol_ratio",
-      "op": ">",
-      "threshold": 0.8634236274272742,
-      "ref": null
-     },
-     {
-      "feature": "vol_pct_500",
-      "op": ">",
-      "threshold": 0.54,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "08ee5cae6760"
-   },
-   "status": "queued"
-  },
-  {
    "key": "1ce5846ae4",
    "kind": "interaction",
    "title": "XRPUSDT: rsi_14 x z_close_200 predicts 24-bar return",
@@ -1607,52 +1009,6 @@
     "origin": "hypothesis",
     "kind": "rules",
     "id": "e9b9627669a7"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "df8f06887f",
-   "kind": "interaction",
-   "title": "ETHUSDT: don_20 x d1_z_20 predicts 24-bar return",
-   "detail": {
-    "ic": 0.0735,
-    "p": 1.7837322172104908e-13,
-    "single_ics": [
-     -0.0225,
-     -0.0283
-    ],
-    "symbol": "ETHUSDT"
-   },
-   "created": "2026-11-25T13:28:44+00:00",
-   "priority": 0.6613,
-   "spec": {
-    "name": "H:don_20xd1_z_20",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "don_20",
-      "op": "<",
-      "threshold": 0.5308154500618161,
-      "ref": null
-     },
-     {
-      "feature": "d1_z_20",
-      "op": "<",
-      "threshold": -0.4579916764457457,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "dafe760eeb1b"
    },
    "status": "queued"
   },
@@ -1837,52 +1193,6 @@
     "origin": "hypothesis",
     "kind": "rules",
     "id": "e31de261ed32"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "58e90071f2",
-   "kind": "interaction",
-   "title": "ETHUSDT: rsi_14 x d1_mom_20 predicts 24-bar return",
-   "detail": {
-    "ic": 0.072,
-    "p": 5.580587145694067e-13,
-    "single_ics": [
-     -0.0119,
-     0.0134
-    ],
-    "symbol": "ETHUSDT"
-   },
-   "created": "2026-11-25T13:28:43+00:00",
-   "priority": 0.6483,
-   "spec": {
-    "name": "H:rsi_14xd1_mom_20",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "rsi_14",
-      "op": "<",
-      "threshold": 50.20616439564344,
-      "ref": null
-     },
-     {
-      "feature": "d1_mom_20",
-      "op": ">",
-      "threshold": -0.22716423469829666,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "009d03840f18"
    },
    "status": "queued"
   },
@@ -2991,52 +2301,6 @@
    "status": "queued"
   },
   {
-   "key": "07b9ad5b92",
-   "kind": "interaction",
-   "title": "BTCUSDT: adx_14 x d1_mom_20 predicts 24-bar return",
-   "detail": {
-    "ic": 0.0608,
-    "p": 1.1379856039654627e-09,
-    "single_ics": [
-     -0.0133,
-     -0.0181
-    ],
-    "symbol": "BTCUSDT"
-   },
-   "created": "2026-11-25T13:28:27+00:00",
-   "priority": 0.5476,
-   "spec": {
-    "name": "H:adx_14xd1_mom_20",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "adx_14",
-      "op": "<",
-      "threshold": 24.531392123692733,
-      "ref": null
-     },
-     {
-      "feature": "d1_mom_20",
-      "op": "<",
-      "threshold": -0.10397982988352023,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "80ff6329fe50"
-   },
-   "status": "queued"
-  },
-  {
    "key": "216c357b4d",
    "kind": "interaction",
    "title": "SOLUSDT: h4_adx_14 x d1_mom_20 predicts 24-bar return",
@@ -3171,52 +2435,6 @@
     "origin": "hypothesis",
     "kind": "rules",
     "id": "b257e3caa7d2"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "cae6d294ad",
-   "kind": "interaction",
-   "title": "BTCUSDT: vol_pct_500 x d1_mom_20 predicts 24-bar return",
-   "detail": {
-    "ic": 0.0604,
-    "p": 1.5060792906089207e-09,
-    "single_ics": [
-     0.0019,
-     -0.0181
-    ],
-    "symbol": "BTCUSDT"
-   },
-   "created": "2026-11-25T13:28:27+00:00",
-   "priority": 0.5436,
-   "spec": {
-    "name": "H:vol_pct_500xd1_mom_20",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "vol_pct_500",
-      "op": ">",
-      "threshold": 0.48,
-      "ref": null
-     },
-     {
-      "feature": "d1_mom_20",
-      "op": "<",
-      "threshold": -0.10397982988352023,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "3ef90cf0afa6"
    },
    "status": "queued"
   },
@@ -3451,52 +2669,6 @@
    "status": "queued"
   },
   {
-   "key": "c305413586",
-   "kind": "interaction",
-   "title": "BTCUSDT: mom_24 x vol_pct_500 predicts 24-bar return",
-   "detail": {
-    "ic": -0.0583,
-    "p": 3.0653195385529757e-09,
-    "single_ics": [
-     -0.0123,
-     0.0019
-    ],
-    "symbol": "BTCUSDT"
-   },
-   "created": "2026-11-25T13:28:26+00:00",
-   "priority": 0.5249,
-   "spec": {
-    "name": "H:mom_24xvol_pct_500",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "mom_24",
-      "op": "<",
-      "threshold": 0.016466891223413625,
-      "ref": null
-     },
-     {
-      "feature": "vol_pct_500",
-      "op": ">",
-      "threshold": 0.48,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "e1c3b3d52643"
-   },
-   "status": "queued"
-  },
-  {
    "key": "ea7b556e75",
    "kind": "interaction",
    "title": "ETHUSDT: pctb_20 x d1_z_20 predicts 24-bar return",
@@ -3631,98 +2803,6 @@
     "origin": "hypothesis",
     "kind": "rules",
     "id": "1b6cfed6939a"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "72dd3fb2ba",
-   "kind": "interaction",
-   "title": "BTCUSDT: z_close_50 x vol_ratio predicts 24-bar return",
-   "detail": {
-    "ic": -0.0573,
-    "p": 4.7786122496423865e-09,
-    "single_ics": [
-     -0.0054,
-     0.017
-    ],
-    "symbol": "BTCUSDT"
-   },
-   "created": "2026-11-25T13:28:26+00:00",
-   "priority": 0.5159,
-   "spec": {
-    "name": "H:z_close_50xvol_ratio",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "z_close_50",
-      "op": "<",
-      "threshold": 0.02407204402115861,
-      "ref": null
-     },
-     {
-      "feature": "vol_ratio",
-      "op": ">",
-      "threshold": 0.8692560821832619,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "d938a977e47f"
-   },
-   "status": "queued"
-  },
-  {
-   "key": "0e5942c3ad",
-   "kind": "interaction",
-   "title": "BTCUSDT: don_20 x vol_pct_500 predicts 24-bar return",
-   "detail": {
-    "ic": -0.0569,
-    "p": 7.332717216622461e-09,
-    "single_ics": [
-     -0.0361,
-     0.0019
-    ],
-    "symbol": "BTCUSDT"
-   },
-   "created": "2026-11-25T13:28:27+00:00",
-   "priority": 0.5121,
-   "spec": {
-    "name": "H:don_20xvol_pct_500",
-    "family": "hybrid",
-    "long_entry": [
-     {
-      "feature": "don_20",
-      "op": "<",
-      "threshold": 0.5326401822396214,
-      "ref": null
-     },
-     {
-      "feature": "vol_pct_500",
-      "op": ">",
-      "threshold": 0.48,
-      "ref": null
-     }
-    ],
-    "short_entry": [],
-    "exit_rules": [],
-    "max_hold": 24,
-    "stop_atr": 3.0,
-    "trail": false,
-    "regimes": null,
-    "version": 1,
-    "parent_ids": [],
-    "origin": "hypothesis",
-    "kind": "rules",
-    "id": "d0e0b97ab410"
    },
    "status": "queued"
   },
@@ -10627,12 +9707,948 @@
     "id": "f2388eb5345c"
    },
    "status": "sent_to_lab"
+  },
+  {
+   "key": "07b9ad5b92",
+   "kind": "interaction",
+   "title": "BTCUSDT: adx_14 x d1_mom_20 predicts 24-bar return",
+   "detail": {
+    "ic": 0.0608,
+    "p": 1.1379856039654627e-09,
+    "single_ics": [
+     -0.0133,
+     -0.0181
+    ],
+    "symbol": "BTCUSDT"
+   },
+   "created": "2026-11-25T13:28:27+00:00",
+   "priority": 0.5476,
+   "spec": {
+    "name": "H:adx_14xd1_mom_20",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "adx_14",
+      "op": "<",
+      "threshold": 24.531392123692733,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": "<",
+      "threshold": -0.10397982988352023,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "80ff6329fe50"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "cae6d294ad",
+   "kind": "interaction",
+   "title": "BTCUSDT: vol_pct_500 x d1_mom_20 predicts 24-bar return",
+   "detail": {
+    "ic": 0.0604,
+    "p": 1.5060792906089207e-09,
+    "single_ics": [
+     0.0019,
+     -0.0181
+    ],
+    "symbol": "BTCUSDT"
+   },
+   "created": "2026-11-25T13:28:27+00:00",
+   "priority": 0.5436,
+   "spec": {
+    "name": "H:vol_pct_500xd1_mom_20",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "vol_pct_500",
+      "op": ">",
+      "threshold": 0.48,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": "<",
+      "threshold": -0.10397982988352023,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "3ef90cf0afa6"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "c305413586",
+   "kind": "interaction",
+   "title": "BTCUSDT: mom_24 x vol_pct_500 predicts 24-bar return",
+   "detail": {
+    "ic": -0.0583,
+    "p": 3.0653195385529757e-09,
+    "single_ics": [
+     -0.0123,
+     0.0019
+    ],
+    "symbol": "BTCUSDT"
+   },
+   "created": "2026-11-25T13:28:26+00:00",
+   "priority": 0.5249,
+   "spec": {
+    "name": "H:mom_24xvol_pct_500",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "mom_24",
+      "op": "<",
+      "threshold": 0.016466891223413625,
+      "ref": null
+     },
+     {
+      "feature": "vol_pct_500",
+      "op": ">",
+      "threshold": 0.48,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "e1c3b3d52643"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "72dd3fb2ba",
+   "kind": "interaction",
+   "title": "BTCUSDT: z_close_50 x vol_ratio predicts 24-bar return",
+   "detail": {
+    "ic": -0.0573,
+    "p": 4.7786122496423865e-09,
+    "single_ics": [
+     -0.0054,
+     0.017
+    ],
+    "symbol": "BTCUSDT"
+   },
+   "created": "2026-11-25T13:28:26+00:00",
+   "priority": 0.5159,
+   "spec": {
+    "name": "H:z_close_50xvol_ratio",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "z_close_50",
+      "op": "<",
+      "threshold": 0.02407204402115861,
+      "ref": null
+     },
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 0.8692560821832619,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "d938a977e47f"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "0e5942c3ad",
+   "kind": "interaction",
+   "title": "BTCUSDT: don_20 x vol_pct_500 predicts 24-bar return",
+   "detail": {
+    "ic": -0.0569,
+    "p": 7.332717216622461e-09,
+    "single_ics": [
+     -0.0361,
+     0.0019
+    ],
+    "symbol": "BTCUSDT"
+   },
+   "created": "2026-11-25T13:28:27+00:00",
+   "priority": 0.5121,
+   "spec": {
+    "name": "H:don_20xvol_pct_500",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "don_20",
+      "op": "<",
+      "threshold": 0.5326401822396214,
+      "ref": null
+     },
+     {
+      "feature": "vol_pct_500",
+      "op": ">",
+      "threshold": 0.48,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "d0e0b97ab410"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "49049fd73e",
+   "kind": "interaction",
+   "title": "ETHUSDT: don_100 x d1_mom_20 predicts 24-bar return",
+   "detail": {
+    "ic": 0.0852,
+    "p": 1.409830813628194e-17,
+    "single_ics": [
+     -0.0086,
+     0.0134
+    ],
+    "symbol": "ETHUSDT"
+   },
+   "created": "2026-11-25T13:28:44+00:00",
+   "priority": 0.7669,
+   "spec": {
+    "name": "H:don_100xd1_mom_20",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "don_100",
+      "op": "<",
+      "threshold": 0.4969225916973485,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": ">",
+      "threshold": -0.22716423469829666,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "af3f487c78c0"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "67d4509d7f",
+   "kind": "interaction",
+   "title": "ETHUSDT: vwap_dev_24 x d1_z_20 predicts 24-bar return",
+   "detail": {
+    "ic": 0.0822,
+    "p": 1.630200776896083e-16,
+    "single_ics": [
+     -0.036,
+     -0.0283
+    ],
+    "symbol": "ETHUSDT"
+   },
+   "created": "2026-11-25T13:28:44+00:00",
+   "priority": 0.7402,
+   "spec": {
+    "name": "H:vwap_dev_24xd1_z_20",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "vwap_dev_24",
+      "op": "<",
+      "threshold": 0.0006391479759642049,
+      "ref": null
+     },
+     {
+      "feature": "d1_z_20",
+      "op": "<",
+      "threshold": -0.4579916764457457,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "2a053694266d"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "a100ce242d",
+   "kind": "interaction",
+   "title": "ETHUSDT: vol_ratio x vol_pct_500 predicts 24-bar return",
+   "detail": {
+    "ic": 0.074,
+    "p": 5.166814378341191e-14,
+    "single_ics": [
+     0.0003,
+     0.0001
+    ],
+    "symbol": "ETHUSDT"
+   },
+   "created": "2026-11-25T13:28:44+00:00",
+   "priority": 0.6662,
+   "spec": {
+    "name": "H:vol_ratioxvol_pct_500",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "vol_ratio",
+      "op": ">",
+      "threshold": 0.8634236274272742,
+      "ref": null
+     },
+     {
+      "feature": "vol_pct_500",
+      "op": ">",
+      "threshold": 0.54,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "08ee5cae6760"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "df8f06887f",
+   "kind": "interaction",
+   "title": "ETHUSDT: don_20 x d1_z_20 predicts 24-bar return",
+   "detail": {
+    "ic": 0.0735,
+    "p": 1.7837322172104908e-13,
+    "single_ics": [
+     -0.0225,
+     -0.0283
+    ],
+    "symbol": "ETHUSDT"
+   },
+   "created": "2026-11-25T13:28:44+00:00",
+   "priority": 0.6613,
+   "spec": {
+    "name": "H:don_20xd1_z_20",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "don_20",
+      "op": "<",
+      "threshold": 0.5308154500618161,
+      "ref": null
+     },
+     {
+      "feature": "d1_z_20",
+      "op": "<",
+      "threshold": -0.4579916764457457,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "dafe760eeb1b"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "58e90071f2",
+   "kind": "interaction",
+   "title": "ETHUSDT: rsi_14 x d1_mom_20 predicts 24-bar return",
+   "detail": {
+    "ic": 0.072,
+    "p": 5.580587145694067e-13,
+    "single_ics": [
+     -0.0119,
+     0.0134
+    ],
+    "symbol": "ETHUSDT"
+   },
+   "created": "2026-11-25T13:28:43+00:00",
+   "priority": 0.6483,
+   "spec": {
+    "name": "H:rsi_14xd1_mom_20",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "rsi_14",
+      "op": "<",
+      "threshold": 50.20616439564344,
+      "ref": null
+     },
+     {
+      "feature": "d1_mom_20",
+      "op": ">",
+      "threshold": -0.22716423469829666,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "009d03840f18"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "57e058a97b",
+   "kind": "interaction",
+   "title": "SOLUSDT: mom_168 x h4_adx_14 predicts 24-bar return",
+   "detail": {
+    "ic": -0.1055,
+    "p": 5.489276385268766e-27,
+    "single_ics": [
+     0.0176,
+     0.0202
+    ],
+    "symbol": "SOLUSDT"
+   },
+   "created": "2026-11-25T13:28:55+00:00",
+   "priority": 0.9494,
+   "spec": {
+    "name": "H:mom_168xh4_adx_14",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "mom_168",
+      "op": "<",
+      "threshold": -0.13144938744884188,
+      "ref": null
+     },
+     {
+      "feature": "h4_adx_14",
+      "op": ">",
+      "threshold": 25.171641320625408,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "1cf95a404b05"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "2ded982262",
+   "kind": "interaction",
+   "title": "SOLUSDT: don_100 x vol_pct_500 predicts 24-bar return",
+   "detail": {
+    "ic": -0.1009,
+    "p": 9.26870248561386e-25,
+    "single_ics": [
+     -0.0199,
+     0.0315
+    ],
+    "symbol": "SOLUSDT"
+   },
+   "created": "2026-11-25T13:28:55+00:00",
+   "priority": 0.9081,
+   "spec": {
+    "name": "H:don_100xvol_pct_500",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "don_100",
+      "op": "<",
+      "threshold": 0.45162998124002707,
+      "ref": null
+     },
+     {
+      "feature": "vol_pct_500",
+      "op": ">",
+      "threshold": 0.5,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "207f7aa3b4aa"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "1c8efd805e",
+   "kind": "interaction",
+   "title": "SOLUSDT: z_close_50 x vol_pct_500 predicts 24-bar return",
+   "detail": {
+    "ic": -0.0992,
+    "p": 5.653593839837284e-24,
+    "single_ics": [
+     0.0012,
+     0.0315
+    ],
+    "symbol": "SOLUSDT"
+   },
+   "created": "2026-11-25T13:28:55+00:00",
+   "priority": 0.8926,
+   "spec": {
+    "name": "H:z_close_50xvol_pct_500",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "z_close_50",
+      "op": "<",
+      "threshold": -0.13442222557521405,
+      "ref": null
+     },
+     {
+      "feature": "vol_pct_500",
+      "op": ">",
+      "threshold": 0.5,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "6ae2d634dc9b"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "1b40ff919b",
+   "kind": "interaction",
+   "title": "SOLUSDT: z_close_200 x h4_adx_14 predicts 24-bar return",
+   "detail": {
+    "ic": -0.0988,
+    "p": 8.185494169646799e-24,
+    "single_ics": [
+     0.0209,
+     0.0202
+    ],
+    "symbol": "SOLUSDT"
+   },
+   "created": "2026-11-25T13:28:55+00:00",
+   "priority": 0.8896,
+   "spec": {
+    "name": "H:z_close_200xh4_adx_14",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "z_close_200",
+      "op": "<",
+      "threshold": -0.2226154504495243,
+      "ref": null
+     },
+     {
+      "feature": "h4_adx_14",
+      "op": ">",
+      "threshold": 25.171641320625408,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "16e01e5520a0"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "8ea615923c",
+   "kind": "interaction",
+   "title": "SOLUSDT: h4_mom_42 x h4_adx_14 predicts 24-bar return",
+   "detail": {
+    "ic": -0.0971,
+    "p": 4.216716756776288e-23,
+    "single_ics": [
+     0.0109,
+     0.0202
+    ],
+    "symbol": "SOLUSDT"
+   },
+   "created": "2026-11-25T13:28:55+00:00",
+   "priority": 0.8743,
+   "spec": {
+    "name": "H:h4_mom_42xh4_adx_14",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "h4_mom_42",
+      "op": "<",
+      "threshold": -0.1307382740371709,
+      "ref": null
+     },
+     {
+      "feature": "h4_adx_14",
+      "op": ">",
+      "threshold": 25.171641320625408,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "4bfcd16790d8"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "54fcfebaf6",
+   "kind": "interaction",
+   "title": "XRPUSDT: z_close_200 x don_20 predicts 24-bar return",
+   "detail": {
+    "ic": 0.091,
+    "p": 2.0892682108819123e-20,
+    "single_ics": [
+     -0.0407,
+     0.0003
+    ],
+    "symbol": "XRPUSDT"
+   },
+   "created": "2026-11-25T13:29:30+00:00",
+   "priority": 0.8188,
+   "spec": {
+    "name": "H:z_close_200xdon_20",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "z_close_200",
+      "op": "<",
+      "threshold": -0.29216052481159477,
+      "ref": null
+     },
+     {
+      "feature": "don_20",
+      "op": ">",
+      "threshold": 0.49794447994081514,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "5a8138437c05"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "bcac6d33c3",
+   "kind": "interaction",
+   "title": "XRPUSDT: z_close_200 x vwap_dev_24 predicts 24-bar return",
+   "detail": {
+    "ic": 0.0899,
+    "p": 5.612730320245767e-20,
+    "single_ics": [
+     -0.0407,
+     -0.0134
+    ],
+    "symbol": "XRPUSDT"
+   },
+   "created": "2026-11-25T13:29:30+00:00",
+   "priority": 0.8095,
+   "spec": {
+    "name": "H:z_close_200xvwap_dev_24",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "z_close_200",
+      "op": "<",
+      "threshold": -0.29216052481159477,
+      "ref": null
+     },
+     {
+      "feature": "vwap_dev_24",
+      "op": "<",
+      "threshold": -0.0002826379436192683,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "396000d8a332"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "4ca7fc184c",
+   "kind": "interaction",
+   "title": "XRPUSDT: z_close_200 x pctb_20 predicts 24-bar return",
+   "detail": {
+    "ic": 0.0873,
+    "p": 6.476917519515303e-19,
+    "single_ics": [
+     -0.0407,
+     -0.0011
+    ],
+    "symbol": "XRPUSDT"
+   },
+   "created": "2026-11-25T13:29:30+00:00",
+   "priority": 0.7859,
+   "spec": {
+    "name": "H:z_close_200xpctb_20",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "z_close_200",
+      "op": "<",
+      "threshold": -0.29216052481159477,
+      "ref": null
+     },
+     {
+      "feature": "pctb_20",
+      "op": "<",
+      "threshold": 0.48716245689502086,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "526efa504bb5"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "7ba3979e87",
+   "kind": "interaction",
+   "title": "XRPUSDT: z_close_50 x vwap_dev_24 predicts 24-bar return",
+   "detail": {
+    "ic": 0.0873,
+    "p": 3.750613929239352e-19,
+    "single_ics": [
+     0.001,
+     -0.0134
+    ],
+    "symbol": "XRPUSDT"
+   },
+   "created": "2026-11-25T13:29:30+00:00",
+   "priority": 0.7855,
+   "spec": {
+    "name": "H:z_close_50xvwap_dev_24",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "z_close_50",
+      "op": ">",
+      "threshold": -0.11749153578902459,
+      "ref": null
+     },
+     {
+      "feature": "vwap_dev_24",
+      "op": "<",
+      "threshold": -0.0002826379436192683,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "0370de360cb4"
+   },
+   "status": "sent_to_lab"
+  },
+  {
+   "key": "65860bc09a",
+   "kind": "interaction",
+   "title": "XRPUSDT: don_100 x vwap_dev_24 predicts 24-bar return",
+   "detail": {
+    "ic": 0.0843,
+    "p": 7.111664583676487e-18,
+    "single_ics": [
+     -0.0413,
+     -0.0134
+    ],
+    "symbol": "XRPUSDT"
+   },
+   "created": "2026-11-25T13:29:31+00:00",
+   "priority": 0.7584,
+   "spec": {
+    "name": "H:don_100xvwap_dev_24",
+    "family": "hybrid",
+    "long_entry": [
+     {
+      "feature": "don_100",
+      "op": "<",
+      "threshold": 0.47832008153057937,
+      "ref": null
+     },
+     {
+      "feature": "vwap_dev_24",
+      "op": "<",
+      "threshold": -0.0002826379436192683,
+      "ref": null
+     }
+    ],
+    "short_entry": [],
+    "exit_rules": [],
+    "max_hold": 24,
+    "stop_atr": 3.0,
+    "trail": false,
+    "regimes": null,
+    "version": 1,
+    "parent_ids": [],
+    "origin": "hypothesis",
+    "kind": "rules",
+    "id": "ed88ecac405d"
+   },
+   "status": "sent_to_lab"
   }
  ],
  "insights": [
   {
    "ts": "2026-11-25T13:29:29+00:00",
    "text": "BNBUSDT: tested 675 strategy variants; 0 passed every gate, 14 finalists rejected."
+  },
+  {
+   "ts": "2026-11-25T13:32:32+00:00",
+   "text": "BTCUSDT: tested 672 strategy variants; 0 passed every gate, 14 finalists rejected."
+  },
+  {
+   "ts": "2026-11-25T13:32:45+00:00",
+   "text": "ETHUSDT: tested 661 strategy variants; 0 passed every gate, 13 finalists rejected."
+  },
+  {
+   "ts": "2026-11-25T13:32:57+00:00",
+   "text": "SOLUSDT: tested 664 strategy variants; 0 passed every gate, 14 finalists rejected."
+  },
+  {
+   "ts": "2026-11-25T13:33:10+00:00",
+   "text": "XRPUSDT: tested 654 strategy variants; 0 passed every gate, 13 finalists rejected."
   }
  ]
 }
