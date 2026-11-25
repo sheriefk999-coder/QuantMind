@@ -70,3 +70,13 @@ def test_advisor_lifecycle_and_honest_record():
     closed = a.on_bar("BTCUSDT", 101, 99.5)                  # touches break-even stop
     assert closed["kind"] == "stop" and closed["return_pct"] < 0  # fees make break-even a small loss
     assert a.track_record()["signals"] == 1
+
+
+def test_ml_survives_a_data_source_that_starts_late():
+    """Real-world case: funding history only covers the last few weeks."""
+    f = F.copy()
+    f["funding"] = np.nan
+    f.iloc[-500:, f.columns.get_loc("funding")] = 0.0001
+    m = ModelSpec("flow", feature_set="flow", min_train=2000, retrain_every=1000)
+    pos = m.positions(f, DF)
+    assert len(pos) == len(DF)

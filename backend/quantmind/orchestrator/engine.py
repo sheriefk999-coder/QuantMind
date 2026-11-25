@@ -355,9 +355,17 @@ class Orchestrator:
                     if len(new_bars):
                         sig["checked_until"] = str(new_bars.index[-1] + pd.Timedelta(hours=1))
                         self.advisor.on_bar(sym, float(new_bars["high"].max()), float(new_bars["low"].min()))
-                if (r := self.research(sym, snap, f)):
-                    research[sym] = r
-                self.monitor_decay(sym, snap, f)
+                # research and monitoring must never stop today's decision for a coin
+                try:
+                    if (r := self.research(sym, snap, f)):
+                        research[sym] = r
+                except Exception as ex:
+                    errors.append(f"{sym}: research error {ex}")
+                    log.error("research error", extra={"data": {"symbol": sym, "tb": traceback.format_exc()}})
+                try:
+                    self.monitor_decay(sym, snap, f)
+                except Exception as ex:
+                    errors.append(f"{sym}: monitor error {ex}")
                 decisions[sym] = self.decide(sym, snap, f, corr)
                 reg = decisions[sym]["regime"]["label"]
                 forecasts[sym] = {"scenarios": regime_scenarios(snap.ohlcv, f, reg),

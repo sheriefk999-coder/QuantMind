@@ -108,12 +108,21 @@ class ModelSpec:
             rows = rows[~np.isnan(fwd[rows]) & informative[rows]]
             if len(rows) < 500 or len(np.unique(y[rows])) < 2:
                 continue
+            # use only columns that actually carry information in THIS training
+            # window (e.g. a data source that only started recently is skipped
+            # until it has enough history) - decided from past rows only
+            Xt = X[rows]
+            finite = np.isfinite(Xt)
+            usable = [j for j in range(Xt.shape[1])
+                      if finite[:, j].mean() >= 0.5 and len(np.unique(Xt[finite[:, j], j])) >= 2]
+            if len(usable) < 2:
+                continue
             m = HistGradientBoostingClassifier(max_depth=self.max_depth, learning_rate=self.learning_rate,
                                                max_iter=self.max_iter, l2_regularization=1.0,
                                                early_stopping=False, random_state=0)
-            m.fit(X[rows], y[rows])
+            m.fit(Xt[:, usable], y[rows])
             seg = slice(r, min(n, r + self.retrain_every))
-            proba[seg] = m.predict_proba(X[seg])[:, 1]
+            proba[seg] = m.predict_proba(X[seg][:, usable])[:, 1]
         if len(_PROBA_CACHE) > 64:
             _PROBA_CACHE.clear()
         _PROBA_CACHE[key] = proba

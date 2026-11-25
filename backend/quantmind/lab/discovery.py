@@ -384,7 +384,12 @@ class DiscoveryLab:
         ranked = self.genetic_search(extra_seeds)
         finalists = [s for sc, s in ranked[: self.cfg.top_k_validate] if sc > -10]
         finalists += [self.bayes_tune(s) for s in finalists[: self.cfg.tune_top]]
-        finalists += [m for sc, m in sorted(self.model_candidates(), key=lambda x: -x[0])[:1] if sc > -10]
+        try:
+            models = self.model_candidates()
+        except Exception as ex:   # an ML failure must not cost the rule-based results
+            log.error("model candidates failed", extra={"data": {"symbol": self.symbol, "err": str(ex)}})
+            models = []
+        finalists += [m for sc, m in sorted(models, key=lambda x: -x[0])[:1] if sc > -10]
         summary = {"symbol": self.symbol, "source": source, "screened": 0, "validated": [], "rejected": []}
         for s in finalists:
             if self.reg.seen(s.fingerprint()):
