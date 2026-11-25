@@ -1,0 +1,8 @@
+# Server mode (optional). GitHub Actions mode needs none of this.
+services:
+  quantmind:
+    build: ./backend
+    restart: unless-stopped
+    ports: ["8000:8000"]
+    volumes: ["./state:/data"]
+    env_file: [.env]

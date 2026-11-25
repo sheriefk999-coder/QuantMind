@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f14">
+<title>QuantMind</title>
+<style>
+  :root{--bg:#0b0f14;--card:#141a22;--line:#222b36;--txt:#e6edf3;--mut:#8b98a7;--acc:#4cc2ff;--up:#2ecc8f;--dn:#ff5d6c;--warn:#ffb547}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,"Segoe UI",Tahoma,sans-serif;font-size:15px;padding-bottom:76px}
+  header{position:sticky;top:0;z-index:5;background:rgba(11,15,20,.92);backdrop-filter:blur(8px);padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+  header h1{margin:0;font-size:19px}
+  header .sub{color:var(--mut);font-size:12px;margin-top:3px}
+  main{padding:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+  .card h2{font-size:15px;margin:0 0 10px;color:var(--acc)}
+  .big{font-size:30px;font-weight:700;direction:ltr;text-align:right}
+  .row{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .row:last-child{border-bottom:0}
+  .mut{color:var(--mut);font-size:13px}
+  .up{color:var(--up)} .dn{color:var(--dn)} .warn{color:var(--warn)}
+  .pill{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;background:#1d2631;color:var(--mut)}
+  .pill.ok{background:#12352a;color:var(--up)} .pill.bad{background:#3a1820;color:var(--dn)} .pill.w{background:#3a2c12;color:var(--warn)}
+  pre{white-space:pre-wrap;font-family:inherit;margin:0;line-height:1.7}
+  .ltr{direction:ltr;text-align:left;font-family:ui-monospace,monospace;font-size:12px;color:var(--mut);white-space:pre-wrap}
+  details{margin-top:8px} summary{cursor:pointer;color:var(--acc);font-size:13px}
+  nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#0f141b;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+  nav button{flex:1;background:none;border:0;color:var(--mut);padding:9px 1px;font-size:11px}
+  .sig{border-width:2px} .sig.buy{border-color:var(--up)} .sig.short{border-color:var(--warn)}
+  .sig .act{font-size:22px;font-weight:800;margin-bottom:6px}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center}
+  .kv b{direction:ltr;text-align:left;font-size:17px}
+  .btns{display:flex;gap:8px} .btns button{flex:1}
+  nav button.on{color:var(--acc)} nav button span{display:block;font-size:20px}
+  button.main{width:100%;padding:14px;border-radius:12px;border:0;font-size:15px;font-weight:600;margin-top:8px}
+  .danger{background:var(--dn);color:#fff} .go{background:var(--up);color:#06261a} .sec{background:#1d2631;color:var(--txt)}
+  input,select{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#0e1319;color:var(--txt);font-size:15px;margin:6px 0 12px}
+  label{font-size:13px;color:var(--mut)}
+  canvas{width:100%;height:150px}
+  .bar{height:8px;background:#1d2631;border-radius:9px;overflow:hidden;margin-top:6px}
+  .bar i{display:block;height:100%;background:var(--acc)}
+  .empty{color:var(--mut);text-align:center;padding:30px 10px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🤖 QuantMind</h1>
+  <div class="sub" id="status">جاري التحميل…</div>
+</header>
+<main id="view"></main>
+<nav>
+  <button data-t="signals" class="on"><span>🔔</span>الإشارات</button>
+  <button data-t="home"><span>💼</span>المحفظة</button>
+  <button data-t="markets"><span>📈</span>الأسواق</button>
+  <button data-t="lab"><span>🧪</span>المختبر</button>
+  <button data-t="brain"><span>🧠</span>التفكير</button>
+  <button data-t="settings"><span>⚙️</span>الإعدادات</button>
+</nav>
+<script>
+"use strict";
+const $ = s => document.querySelector(s);
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num = (v, d=2) => v == null || isNaN(v) ? "—" : Number(v).toLocaleString("en-US",{maximumFractionDigits:d,minimumFractionDigits:d});
+const pct = v => v == null ? "—" : (v>0?"+":"") + num(v) + "%";
+const cfg = () => JSON.parse(localStorage.getItem("qm_cfg") || "{}");
+let S = null, tab = "signals";
+
+async function load() {
+  const c = cfg();
+  try {
+    let r;
+    if (c.server) r = await fetch(c.server.replace(/\/$/,"") + "/snapshot");
+    else if (c.repo) r = await fetch(`https://api.github.com/repos/${c.repo}/contents/snapshot.json?ref=state&t=${Date.now()}`,
+        {headers: Object.assign({Accept:"application/vnd.github.raw+json"}, c.token ? {Authorization:"Bearer "+c.token} : {})});
+    else { $("#status").textContent = "افتح الإعدادات وحط اسم المستودع"; if (tab!=="settings") show("settings"); return; }
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    S = await r.json();
+    localStorage.setItem("qm_last", JSON.stringify(S));
+    const age = Math.round((Date.now() - new Date(S.generated)) / 60000);
+    $("#status").textContent = `${S.level_ar} • آخر تحديث من ${age} دقيقة${S.data_source==="synthetic" ? " • ⚠️ بيانات تجريبية" : ""}`;
+  } catch (e) {
+    S = JSON.parse(localStorage.getItem("qm_last") || "null");
+    $("#status").textContent = "تعذر التحديث (" + e.message + ")" + (S ? " • عرض آخر نسخة" : "");
+  }
+  render();
+}
+
+function show(t){ tab=t; document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on", b.dataset.t===t)); render(); }
+document.querySelectorAll("nav button").forEach(b => b.onclick = () => show(b.dataset.t));
+
+function render(){
+  const v = $("#view");
+  if (tab === "settings") return v.innerHTML = settingsView();
+  if (!S) return v.innerHTML = `<div class="empty">لسه مفيش بيانات. اتأكد من الإعدادات، والبرنامج بيشتغل كل ساعة.</div>`;
+  v.innerHTML = ({signals:signalsView, home:homeView, markets:marketsView, lab:labView, brain:brainView})[tab]();
+  if (tab === "home") drawCurve();
+}
+
+const fp = p => p == null ? "—" : p >= 100 ? num(p,2) : p >= 1 ? num(p,4) : Number(p).toFixed(6);
+function signalsView(){
+  const G = S.signals || {open:[], history:[], track_record:{signals:0}};
+  const open = G.open.map(x => {
+    const buy = x.side === "buy", coin = x.symbol.replace("USDT","");
+    const cur = (S.markets[x.symbol]||{}).price, chg = cur ? ((buy?1:-1)*(cur/x.price-1)*100) : null;
+    return `<div class="card sig ${buy?"buy":"short"}">
+      <div class="act ${buy?"up":"warn"}">${buy?"🟢 اشتري":"🟠 بيع على المكشوف"} ${esc(coin)}</div>
+      <div class="kv">
+        <span class="mut">سعر الدخول</span><b>${fp(x.price)}</b>
+        <span class="mut">${buy?"متشتريش لو السعر فوق":"متدخلش لو السعر تحت"}</span><b>${fp(x.entry_max)}</b>
+        <span class="mut">حجم الصفقة</span><b>${esc(x.size_pct)}% من فلوسك</b>
+        <span class="mut">🛑 وقف الخسارة</span><b class="dn">${fp(x.stop)}</b>
+        <span class="mut">🎯 الهدف الأول</span><b class="up">${fp(x.target1)}${x.target1_hit?" ✔":""}</b>
+        <span class="mut">🎯 الهدف التاني</span><b class="up">${fp(x.target2)}</b>
+        <span class="mut">السعر دلوقتي</span><b>${fp(cur)} <span class="${chg>=0?"up":"dn"}">${chg==null?"":(chg>0?"+":"")+num(chg)+"%"}</span></b>
+        ${x.execution ? `<span class="mut">🧾 طريقة الدخول</span><b style="font-size:13px;text-align:right;direction:rtl">${esc(x.execution.tip_ar)}</b>` : ""}
+        <span class="mut">صالحة لحد</span><b>${esc(x.valid_until.slice(11,16))} UTC</b>
+      </div>
+      <div class="mut" style="margin-top:8px">حالة السوق: ${esc(x.regime_ar)} • قوة الإشارة ${num(x.conviction*100,0)}%</div>
+      ${x.user_in==null ? `<div class="btns"><button class="main go" onclick="control('taken',null,'${esc(x.symbol)}')">✔ دخلت الصفقة</button>
+        <button class="main sec" onclick="control('skipped',null,'${esc(x.symbol)}')">مدخلتش</button></div>`
+        : `<div class="pill ${x.user_in?"ok":""}" style="margin-top:8px">${x.user_in?"انت داخل الصفقة دي، هنبهك وقت البيع":"مدخلتش الصفقة دي"}</div>`}
+    </div>`;}).join("");
+  const t = G.track_record || {signals:0};
+  const hist = (G.history||[]).slice(0,30).map(h => `<div class="row"><span>${h.side==="buy"?"🟢":"🟠"} ${esc(h.symbol.replace("USDT",""))}
+      <span class="mut">${esc(h.opened.slice(5,10))} → ${esc((h.closed||"").slice(5,10))} • ${esc(h.exit_reason||"")}</span></span>
+      <b class="${h.return_pct>=0?"up":"dn"}" dir="ltr">${h.return_pct>0?"+":""}${num(h.return_pct)}%</b></div>`).join("")
+      || `<div class="mut">لسه مفيش إشارات اتقفلت</div>`;
+  return `${open || `<div class="card"><h2>🔔 مفيش إشارة دلوقتي</h2><div class="mut">البرنامج بيراقب السوق كل ساعة.
+      أول ما يلاقي فرصة اتأكد منها هيبعتلك إشعار على تليجرام فيه تعمل إيه بالظبط.
+      ${S.lab.validated ? "" : "<br><br>لسه بيدرس: مفيش استراتيجية عدّت كل الاختبارات لحد دلوقتي، فمش هيقترح أي صفقة."}</div></div>`}
+    <div class="card"><h2>📊 سجل الإشارات (لو كنت نفذتها كلها)</h2>
+      ${t.signals ? `<div class="row"><span class="mut">عدد الإشارات</span><b>${t.signals}</b></div>
+      <div class="row"><span class="mut">نسبة النجاح</span><b>${num(t.win_rate*100,0)}%</b></div>
+      <div class="row"><span class="mut">متوسط الصفقة</span><b dir="ltr" class="${t.avg_return_pct>=0?"up":"dn"}">${num(t.avg_return_pct)}%</b></div>
+      <div class="row"><span class="mut">أحسن / أسوأ</span><b dir="ltr">${num(t.best_pct)}% / ${num(t.worst_pct)}%</b></div>
+      <div class="row"><span class="mut">النتيجة على رأس المال كله</span><b dir="ltr" class="${t.compounded_pct_if_all_taken_at_size>=0?"up":"dn"}">${num(t.compounded_pct_if_all_taken_at_size)}%</b></div>`
+      : `<div class="mut">السجل هيبدأ يتملي مع أول إشارات. متعتمدش على البرنامج بفلوس حقيقية قبل ما تشوف سجل كويس لفترة طويلة.</div>`}
+      ${hist}</div>
+    <div class="card mut">📌 ازاي تستخدمه: لما توصلك إشارة شراء، افتح Binance (أو أي تطبيق)، اشتري بالحجم المكتوب،
+      وحط أمر وقف الخسارة فورًا. لما توصلك «بيع دلوقتي» اقفل الصفقة. ${G.market_type==="spot" ? "الإشارات كلها شراء وبيع عادي (Spot)، من غير رافعة مالية." : ""}</div>`;
+}
+
+function homeView(){
+  const p = S.portfolio, cls = p.return_pct >= 0 ? "up" : "dn";
+  const alerts = S.alerts.map(a => `<div class="row"><span class="${a.level==="critical"?"dn":"warn"}">${esc(a.text)}</span></div>`).join("");
+  const pos = Object.entries(p.positions).map(([s,x]) =>
+    `<div class="row"><span>${esc(s)} • ${esc(x.side)}</span><span class="${x.pnl>=0?"up":"dn"}" dir="ltr">${num(x.pnl)}$</span></div>`).join("")
+    || `<div class="mut">مفيش صفقات مفتوحة دلوقتي</div>`;
+  return `
+  ${alerts ? `<div class="card"><h2>⚠️ تنبيهات</h2>${alerts}</div>` : ""}
+  <div class="card"><h2>💼 المحفظة الوهمية</h2>
+    <div class="big">${num(p.equity)}$</div>
+    <div class="${cls}" style="text-align:left;direction:ltr">${pct(p.return_pct)} منذ البداية</div>
+    <canvas id="curve"></canvas>
+    <div class="row"><span class="mut">ربح/خسارة اليوم</span><span dir="ltr" class="${p.day_pnl>=0?"up":"dn"}">${num(p.day_pnl)}$</span></div>
+    <div class="row"><span class="mut">أكبر تراجع حالي</span><span dir="ltr">${num(p.drawdown_pct)}%</span></div>
+    <div class="row"><span class="mut">عدد الصفقات</span><span>${p.n_trades}${p.win_rate!=null?` • نجاح ${num(p.win_rate*100,0)}%`:""}</span></div>
+  </div>
+  <div class="card"><h2>📌 الصفقات المفتوحة</h2>${pos}</div>
+  ${S.sentiment!=null ? `<div class="card"><h2>😨😀 مؤشر الخوف والطمع</h2><div class="big" style="text-align:center">${num(S.sentiment,0)}</div>
+    <div class="bar"><i style="width:${S.sentiment}%;background:${S.sentiment<30?"var(--dn)":S.sentiment>70?"var(--up)":"var(--warn)"}"></i></div>
+    <div class="mut" style="text-align:center">${S.sentiment<25?"خوف شديد":S.sentiment<45?"خوف":S.sentiment>75?"طمع شديد":S.sentiment>55?"طمع":"محايد"}</div></div>` : ""}
+  <div class="card"><h2>🧠 البرنامج بيفكر في إيه؟</h2>
+    ${Object.entries(S.markets).map(([s,m]) => `<div class="row"><span>${esc(s)}</span><span class="mut">${esc(m.regime.label_ar)} • ${esc(m.action)}</span></div>`).join("")}
+  </div>
+  <div class="card"><h2>🛑 تحكم سريع</h2>
+    <button class="main danger" onclick="control('pause')">إيقاف طوارئ (يقفل كل الصفقات الجديدة)</button>
+    <button class="main sec" onclick="control('resume')">استئناف</button>
+    <button class="main sec" onclick="control('research_now')">ابدأ بحث جديد دلوقتي</button>
+  </div>
+  <div class="card mut">ℹ️ ${esc(S.disclaimer_ar)}</div>`;
+}
+
+function marketsView(){
+  return Object.entries(S.markets).map(([s,m]) => {
+    const d = m.direction>0?'<span class="pill ok">ميل للشراء</span>':m.direction<0?'<span class="pill bad">ميل للبيع</span>':'<span class="pill">انتظار</span>';
+    const f = m.forecast && m.forecast.scenarios;
+    const ops = m.opinions.map(o => `<div class="row"><span>${esc(o.agent)}</span><span class="mut" dir="ltr">${o.abstain?"abstains":(o.score>0?"+":"")+num(o.score)+" • conf "+num(o.adjusted_confidence ?? o.confidence)}</span></div>`).join("");
+    const prob = m.forecast && m.forecast.model;
+    return `<div class="card"><h2>${esc(s)} <span class="mut" dir="ltr">${num(m.price,4)}</span></h2>
+      <div>${d} <span class="pill">${esc(m.regime.label_ar)}</span> <span class="pill">قوة ${num(m.conviction*100,0)}%</span></div>
+      <pre style="margin-top:10px">${esc(m.explanation_ar)}</pre>
+      ${f ? `<details><summary>السيناريوهات (من التاريخ، مش ضمان)</summary>
+        <div class="row"><span class="up">صعود</span><span dir="ltr">${num(f.bullish.move*100)}% • حصل ${num(f.bullish.freq*100,0)}% من المرات</span></div>
+        <div class="row"><span>ثبات</span><span dir="ltr">${num(f.neutral.freq*100,0)}% من المرات</span></div>
+        <div class="row"><span class="dn">هبوط</span><span dir="ltr">${num(f.bearish.move*100)}% • حصل ${num(f.bearish.freq*100,0)}% من المرات</span></div>
+        <div class="row"><span class="warn">حدث مفاجئ</span><span dir="ltr">${num(f.unexpected_event.down_tail*100)}% / +${num(f.unexpected_event.up_tail*100)}%</span></div>
+        <div class="mut">${prob && prob.status==="calibrated" ? `احتمال الصعود (نموذج مُعاير): ${num(prob.p_up*100,0)}%` : "النموذج مش دقيق كفاية، فمش هيعرض احتمال."}</div>
+      </details>` : ""}
+      <details><summary>آراء الوكلاء</summary>${ops}</details>
+      <details><summary>محضر النقاش الكامل</summary><div class="ltr">${esc(m.transcript.join("\n"))}</div></details>
+      ${m.risk ? `<details><summary>قرار مدير المخاطر</summary><div class="ltr">${esc(JSON.stringify(m.risk,null,1))}</div></details>`:""}
+    </div>`;}).join("");
+}
+
+function labView(){
+  const L = S.lab;
+  const lb = L.leaderboard.map(r => `<div class="row"><span>${esc(r.name)} <span class="pill ${r.status==="rejected"?"bad":r.status==="inactive"?"w":"ok"}">${esc(r.status)}</span></span>
+     <span class="mut" dir="ltr">holdout SR ${num(r.holdout_sharpe)} • DSR ${num(r.dsr)}</span></div>`).join("") || `<div class="mut">لسه مفيش نتائج</div>`;
+  const act = L.active_strategies.map(s => `<details><summary>${esc(s.name)} • ${esc(s.symbol)} • ${esc(s.status)}</summary>
+      ${s.monte_carlo ? `<div class="mut">🎲 مونت كارلو (500 سيناريو): أسوأ تراجع متوقع في 95% من الحالات ${num(-s.monte_carlo.max_dd_p95*100,1)}%،
+        واحتمال الخسارة على ~3 شهور ${num(s.monte_carlo.prob_loss*100,0)}%</div>` : ""}
+      ${s.stability ? `<div class="mut">الثبات عبر الزمن: ${s.stability.map(x => x>0?"✅":"❌").join(" ")}</div>` : ""}
+      <div class="ltr">${esc(s.math)}</div></details>`).join("")
+    || `<div class="mut">مفيش استراتيجية عدّت كل الاختبارات لحد دلوقتي. ده طبيعي: البرنامج بيرفض أي حاجة ممكن تكون صدفة.</div>`;
+  return `<div class="card"><h2>🧪 مختبر الاستراتيجيات</h2>
+    <div class="row"><span class="mut">استراتيجيات اتجرّبت</span><b>${L.variants_tested}</b></div>
+    <div class="row"><span class="mut">نجحت في كل الاختبارات</span><b class="up">${L.validated}</b></div>
+    <div class="row"><span class="mut">اترفضت (ومحفوظ السبب)</span><b class="dn">${L.rejected}</b></div>
+    <div class="row"><span class="mut">اتوقفت لأنها بطّلت تشتغل</span><b class="warn">${L.inactive}</b></div></div>
+    <div class="card"><h2>✅ الاستراتيجيات الشغالة</h2>${act}</div>
+    <div class="card"><h2>🏆 لوحة الترتيب</h2>${lb}</div>`;
+}
+
+function brainView(){
+  const R = S.research;
+  const ins = R.insights.slice().reverse().map(i => `<div class="row"><span>${esc(i.text)}</span></div>`).join("") || `<div class="mut">—</div>`;
+  const bl = R.backlog.map(b => `<div class="row"><span>${esc(b.title)}</span><span class="mut">${num(b.priority)}</span></div>`).join("") || `<div class="mut">—</div>`;
+  const ag = S.agents.map(a => `<div class="row"><span>${esc(a.agent)}</span><span class="mut" dir="ltr">${a.calls} calls • hit ${a.hit_rate==null?"—":num(a.hit_rate*100,0)+"%"} • trust ${num(a.reliability)}</span></div>`).join("")
+    || `<div class="mut">الوكلاء لسه بيبنوا سجل أداء</div>`;
+  const hist = S.learning_history.slice().reverse().map(h => `<div class="row"><span>${esc(h.name || h.strategy)}</span><span class="mut">${esc(h.status)} • ${esc((h.reason||"").slice(0,60))}</span></div>`).join("") || `<div class="mut">—</div>`;
+  return `<div class="card"><h2>💡 اللي اتعلمه البرنامج</h2>${ins}</div>
+    <div class="card"><h2>🔬 أفكار بيدرسها (أولوية)</h2>${bl}</div>
+    <div class="card"><h2>🎯 دقة كل وكيل</h2>${ag}</div>
+    <div class="card"><h2>📜 سجل التغييرات</h2>${hist}</div>`;
+}
+
+function settingsView(){
+  const c = cfg();
+  return `<div class="card"><h2>⚙️ الربط</h2>
+    <label>مستودع GitHub (owner/repo)</label><input id="repo" value="${esc(c.repo)}" placeholder="sherif/quantmind" dir="ltr">
+    <label>GitHub Token (fine-grained: Contents read + Actions write)</label><input id="token" type="password" value="${esc(c.token)}" dir="ltr">
+    <label>أو عنوان سيرفر (اختياري)</label><input id="server" value="${esc(c.server)}" placeholder="https://..." dir="ltr">
+    <button class="main go" onclick="save()">حفظ</button></div>
+  <div class="card"><h2>🎚️ مستوى الاستقلالية</h2>
+    <select id="lvl"><option value="1">1 - بحث فقط</option><option value="2">2 - إشارات فقط</option><option value="3" selected>3 - تداول وهمي</option></select>
+    <button class="main sec" onclick="control('level', $('#lvl').value)">تطبيق</button>
+    <div class="mut">التداول الحقيقي (مستوى 4) مقفول من التطبيق عمدًا. لازم يتفتح يدويًا من إعدادات السيرفر بعد شهور من النتائج الوهمية.</div></div>`;
+}
+function save(){
+  localStorage.setItem("qm_cfg", JSON.stringify({repo:$("#repo").value.trim(), token:$("#token").value.trim(), server:$("#server").value.trim()}));
+  $("#status").textContent = "اتحفظ ✔"; load();
+}
+
+async function control(action, level, symbol){
+  const c = cfg();
+  if (action==="pause" && !confirm("متأكد إنك عاوز توقف التداول؟")) return;
+  try {
+    let r;
+    if (c.server) r = await fetch(c.server.replace(/\/$/,"") + "/control", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({action, level, symbol})});
+    else r = await fetch(`https://api.github.com/repos/${c.repo}/actions/workflows/control.yml/dispatches`, {method:"POST",
+      headers:{Authorization:"Bearer "+c.token, Accept:"application/vnd.github+json"},
+      body: JSON.stringify({ref:"main", inputs:{action, level: String(level||""), symbol: symbol||""}})});
+    alert(r.ok ? "تم إرسال الأمر ✔ (هيتنفذ خلال دقيقة أو اتنين)" : "فشل: " + r.status);
+  } catch(e){ alert("فشل: " + e.message); }
+}
+
+function drawCurve(){
+  const cv = $("#curve"); if (!cv) return;
+  const pts = S.portfolio.equity_curve.map(x => x.equity); if (pts.length < 2) return;
+  const dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+  cv.width = w*dpr; cv.height = h*dpr; const g = cv.getContext("2d"); g.scale(dpr,dpr);
+  const mn = Math.min(...pts), mx = Math.max(...pts), rg = (mx-mn)||1;
+  g.strokeStyle = pts[pts.length-1] >= pts[0] ? "#2ecc8f" : "#ff5d6c"; g.lineWidth = 2; g.beginPath();
+  pts.forEach((p,i) => { const x = i/(pts.length-1)*w, y = h-6-(p-mn)/rg*(h-12); i?g.lineTo(x,y):g.moveTo(x,y); }); g.stroke();
+}
+
+load(); setInterval(load, 5*60*1000);
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+# The brain: one intelligence cycle every hour (free on GitHub Actions).
+# State lives on the `state` branch so every change is versioned history.
+name: QuantMind cycle
+on:
+  schedule: [{ cron: "7 * * * *" }]
+  workflow_dispatch:
+concurrency: { group: quantmind-state, cancel-in-progress: false }
+permissions: { contents: write }
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout state branch
+        run: |
+          git fetch origin state && git worktree add state origin/state || (git worktree add --orphan -b state state && echo "{}" > state/control.json)
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip, cache-dependency-path: backend/requirements.txt }
+      - run: pip install -r backend/requirements.txt
+      - name: Run cycle
+        working-directory: backend
+        env:
+          QM_STATE_DIR: ${{ github.workspace }}/state
+          QM_AUTONOMY_LEVEL: "3"          # 3 = signals + paper trading that mirrors them
+          QM_MARKET_TYPE: spot            # buy/sell only, no leverage or shorting
+          QM_TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          QM_TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          QM_ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m quantmind.cli cycle
+      - name: Save state
+        working-directory: state
+        run: |
+          git config user.name "quantmind-bot"; git config user.email "bot@users.noreply.github.com"
+          git add -A && git commit -qm "cycle $(date -u +%FT%TZ)" || exit 0
+          git push origin HEAD:state
