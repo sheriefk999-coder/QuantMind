@@ -1,182 +1,6 @@
 {
  "pending": [
   {
-   "agent": "technical",
-   "symbol": "BTCUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 59928.0,
-   "score": -0.16725980677376456,
-   "conf": 0.7485303957574587
-  },
-  {
-   "agent": "price_action",
-   "symbol": "BTCUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 59928.0,
-   "score": 0.48785031371786486,
-   "conf": 0.7
-  },
-  {
-   "agent": "mean_reversion",
-   "symbol": "BTCUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 59928.0,
-   "score": 0.4541915056352894,
-   "conf": 0.4854260837926296
-  },
-  {
-   "agent": "liquidity_flow",
-   "symbol": "BTCUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 59928.0,
-   "score": -0.2842106288521711,
-   "conf": 0.425
-  },
-  {
-   "agent": "stat_arb",
-   "symbol": "BTCUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 59928.0,
-   "score": 0.4114415481017204,
-   "conf": 0.3220239066112426
-  },
-  {
-   "agent": "sentiment",
-   "symbol": "BTCUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 59928.0,
-   "score": 0.6,
-   "conf": 0.44
-  },
-  {
-   "agent": "technical",
-   "symbol": "ETHUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 1672.03,
-   "score": -0.1275575467500311,
-   "conf": 0.5749166181735584
-  },
-  {
-   "agent": "price_action",
-   "symbol": "ETHUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 1672.03,
-   "score": 0.4139452182380088,
-   "conf": 0.7
-  },
-  {
-   "agent": "mean_reversion",
-   "symbol": "ETHUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 1672.03,
-   "score": 0.5103825791058967,
-   "conf": 0.5693386787080343
-  },
-  {
-   "agent": "sentiment",
-   "symbol": "ETHUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 1672.03,
-   "score": 0.6,
-   "conf": 0.44
-  },
-  {
-   "agent": "price_action",
-   "symbol": "SOLUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 72.08,
-   "score": 0.5949367088607591,
-   "conf": 0.595
-  },
-  {
-   "agent": "mean_reversion",
-   "symbol": "SOLUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 72.08,
-   "score": -0.11310182334615693,
-   "conf": 0.2067352331288903
-  },
-  {
-   "agent": "stat_arb",
-   "symbol": "SOLUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 72.08,
-   "score": -0.951674933650669,
-   "conf": 0.5744801378541179
-  },
-  {
-   "agent": "sentiment",
-   "symbol": "SOLUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 72.08,
-   "score": 0.6,
-   "conf": 0.44
-  },
-  {
-   "agent": "price_action",
-   "symbol": "BNBUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 552.57,
-   "score": 0.5410290237467023,
-   "conf": 0.5599999999999999
-  },
-  {
-   "agent": "mean_reversion",
-   "symbol": "BNBUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 552.57,
-   "score": 0.2861624933944016,
-   "conf": 0.2253814545740915
-  },
-  {
-   "agent": "stat_arb",
-   "symbol": "BNBUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 552.57,
-   "score": 0.14619406117601746,
-   "conf": 0.09153763477795411
-  },
-  {
-   "agent": "sentiment",
-   "symbol": "BNBUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 552.57,
-   "score": 0.6,
-   "conf": 0.35200000000000004
-  },
-  {
-   "agent": "price_action",
-   "symbol": "XRPUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 0.9489,
-   "score": 0.5501094091903717,
-   "conf": 0.5599999999999999
-  },
-  {
-   "agent": "mean_reversion",
-   "symbol": "XRPUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 0.9489,
-   "score": 0.2187697448554642,
-   "conf": 0.10958530143338646
-  },
-  {
-   "agent": "liquidity_flow",
-   "symbol": "XRPUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 0.9489,
-   "score": -0.11841994816669094,
-   "conf": 0.425
-  },
-  {
-   "agent": "sentiment",
-   "symbol": "XRPUSDT",
-   "ts": "2026-11-27 17:00:00+00:00",
-   "price": 0.9489,
-   "score": 0.6,
-   "conf": 0.35200000000000004
-  },
-  {
    "agent": "mean_reversion",
    "symbol": "BTCUSDT",
    "ts": "2026-11-28 00:00:00+00:00",
@@ -471,38 +295,206 @@
    "price": 0.9411,
    "score": 0.6666666666666666,
    "conf": 0.39666666666666667
+  },
+  {
+   "agent": "price_action",
+   "symbol": "BTCUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 59405.18,
+   "score": -0.6597292529296578,
+   "conf": 0.595
+  },
+  {
+   "agent": "mean_reversion",
+   "symbol": "BTCUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 59405.18,
+   "score": 0.33193074530526623,
+   "conf": 0.3805080140858949
+  },
+  {
+   "agent": "liquidity_flow",
+   "symbol": "BTCUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 59405.18,
+   "score": -0.25734803896556935,
+   "conf": 0.5
+  },
+  {
+   "agent": "stat_arb",
+   "symbol": "BTCUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 59405.18,
+   "score": 0.7890617454334503,
+   "conf": 0.49385794205962874
+  },
+  {
+   "agent": "sentiment",
+   "symbol": "BTCUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 59405.18,
+   "score": 0.6666666666666666,
+   "conf": 0.37333333333333335
+  },
+  {
+   "agent": "technical",
+   "symbol": "ETHUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 1645.23,
+   "score": -0.12195378316422972,
+   "conf": 0.998373161711665
+  },
+  {
+   "agent": "price_action",
+   "symbol": "ETHUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 1645.23,
+   "score": -0.801202514348182,
+   "conf": 0.7
+  },
+  {
+   "agent": "mean_reversion",
+   "symbol": "ETHUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 1645.23,
+   "score": 0.45704239442121464,
+   "conf": 0.47621142412114237
+  },
+  {
+   "agent": "stat_arb",
+   "symbol": "ETHUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 1645.23,
+   "score": 0.153043932779968,
+   "conf": 0.118668041830585
+  },
+  {
+   "agent": "sentiment",
+   "symbol": "ETHUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 1645.23,
+   "score": 0.6666666666666666,
+   "conf": 0.39666666666666667
+  },
+  {
+   "agent": "technical",
+   "symbol": "SOLUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 70.3,
+   "score": -0.14990659003846174,
+   "conf": 0.8652819181408933
+  },
+  {
+   "agent": "price_action",
+   "symbol": "SOLUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 70.3,
+   "score": 0.3410383189122365,
+   "conf": 0.5
+  },
+  {
+   "agent": "mean_reversion",
+   "symbol": "SOLUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 70.3,
+   "score": 0.5968833570074921,
+   "conf": 0.542316954820993
+  },
+  {
+   "agent": "stat_arb",
+   "symbol": "SOLUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 70.3,
+   "score": -0.6403203754169999,
+   "conf": 0.4106927900989104
+  },
+  {
+   "agent": "sentiment",
+   "symbol": "SOLUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 70.3,
+   "score": 0.6666666666666666,
+   "conf": 0.4666666666666667
+  },
+  {
+   "agent": "mean_reversion",
+   "symbol": "BNBUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 551.78,
+   "score": 0.21620125543133156,
+   "conf": 0.280050110137465
+  },
+  {
+   "agent": "sentiment",
+   "symbol": "BNBUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 551.78,
+   "score": 0.6666666666666666,
+   "conf": 0.37333333333333335
+  },
+  {
+   "agent": "price_action",
+   "symbol": "XRPUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 0.9365,
+   "score": -0.6134010152284267,
+   "conf": 0.7
+  },
+  {
+   "agent": "mean_reversion",
+   "symbol": "XRPUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 0.9365,
+   "score": 0.5168733638473182,
+   "conf": 0.5008137137470098
+  },
+  {
+   "agent": "stat_arb",
+   "symbol": "XRPUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 0.9365,
+   "score": -0.1834110434619897,
+   "conf": 0.13403310243911054
+  },
+  {
+   "agent": "sentiment",
+   "symbol": "XRPUSDT",
+   "ts": "2026-11-28 17:00:00+00:00",
+   "price": 0.9365,
+   "score": 0.6666666666666666,
+   "conf": 0.39666666666666667
   }
  ],
  "stats": {
   "technical": {
-   "n": 25,
-   "hits": 12,
-   "brier_sum": 6.847544388529127
+   "n": 27,
+   "hits": 14,
+   "brier_sum": 7.253540591487391
   },
   "price_action": {
-   "n": 24,
+   "n": 29,
    "hits": 1,
-   "brier_sum": 11.86404981803397
+   "brier_sum": 14.040336734869763
   },
   "mean_reversion": {
-   "n": 27,
-   "hits": 16,
-   "brier_sum": 6.4206996210481435
+   "n": 32,
+   "hits": 17,
+   "brier_sum": 7.993353879614636
   },
   "stat_arb": {
-   "n": 23,
-   "hits": 14,
-   "brier_sum": 5.675340191830478
+   "n": 26,
+   "hits": 15,
+   "brier_sum": 6.3040778298616065
   },
   "sentiment": {
-   "n": 31,
+   "n": 36,
    "hits": 17,
-   "brier_sum": 7.947750287802468
+   "brier_sum": 9.879525007802469
   },
   "liquidity_flow": {
-   "n": 8,
-   "hits": 2,
-   "brier_sum": 2.215451758922281
+   "n": 10,
+   "hits": 4,
+   "brier_sum": 2.634173527099595
   }
  }
 }
